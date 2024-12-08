@@ -2,7 +2,7 @@ import { zColor } from "@remotion/zod-types";
 import { random } from "remotion/no-react";
 import { z } from "zod";
 
-export const SITE_NAME = "unwrapped2023";
+export const SITE_NAME = "unwrapped2024";
 export const RAM = 1200;
 export const DISK = 2048;
 export const TIMEOUT = 120;

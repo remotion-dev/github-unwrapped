@@ -10,7 +10,7 @@ export const HomeBoxBottom: React.FC<{
     <div className={styles.homeBoxBottomWrapper}>
       <div className={styles.title}>Your coding year in review</div>
       <div className={styles.description}>
-        Get a personalized video of your GitHub activity in 2023.
+        Get a personalized video of your GitHub activity in 2024.
         <br />
         Type your username to get started!
       </div>

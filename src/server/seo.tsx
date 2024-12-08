@@ -18,12 +18,12 @@ const makeAppHead = async (
   params: { handleUsername: boolean; stats: boolean },
 ): Promise<AppHead> => {
   if (username === null) {
-    const title = `#GitHubUnwrapped 2023 - Your coding year in review`;
+    const title = `#GitHubUnwrapped 2024 - Your coding year in review`;
 
     const mainSocialPreview = `${backendCredentials().VITE_HOST}/og_image.jpg`;
     const mainCanonical = `${backendCredentials().VITE_HOST}`;
     const mainDescription =
-      "Get your personalized video of your GitHub activity in 2023.";
+      "Get your personalized video of your GitHub activity in 2024.";
 
     return {
       status: 200,

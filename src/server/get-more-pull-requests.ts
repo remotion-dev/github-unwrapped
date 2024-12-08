@@ -24,7 +24,7 @@ export const getMorePullRequests = async ({
     })) as PullRequestQueryResponse;
 
     const prs = data.pullRequests.nodes
-      .filter((n) => n.createdAt.startsWith("2023"))
+      .filter((n) => n.createdAt.startsWith("2024"))
       .map((n) => ({ createdAt: n.createdAt }));
 
     if (prs.length === 0 || prs.length !== data.pullRequests.nodes.length) {

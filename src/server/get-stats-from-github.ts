@@ -106,7 +106,7 @@ export const getStatsFromGitHub = async ({
   const allDays = baseData.contributionsCollection.contributionCalendar.weeks
     .map((w) => w.contributionDays)
     .flat(1)
-    .filter((d) => d.date.startsWith("2023"));
+    .filter((d) => d.date.startsWith("2024"));
 
   return {
     totalPullRequests: morePullRequests.length,

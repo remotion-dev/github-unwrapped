@@ -17,7 +17,7 @@ export const SharePage = () => {
   const headerProps: ComponentProps<typeof DesktopHeader> = useMemo(
     () => ({
       description:
-        "Follow these instructions to share your GitHub Unwrapped 2023 video.",
+        "Follow these instructions to share your GitHub Unwrapped 2024 video.",
       title: "How to Share",
     }),
     [],

@@ -70,8 +70,8 @@ export const MobileActionsContainer: React.FC<{
 
     const sharableContent = {
       files: [loadingState.file],
-      title: "Your GitHub Unwrapped 2023",
-      text: "Check out my #GitHubUnwrapped 2023! Get yours now on https://githubunwrapped.com",
+      title: "Your GitHub Unwrapped 2024",
+      text: "Check out my #GitHubUnwrapped 2024! Get yours now on https://githubunwrapped.com",
     };
     const sharable = navigator.canShare && navigator.canShare(sharableContent);
     if (!sharable) {

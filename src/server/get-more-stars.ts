@@ -26,7 +26,7 @@ export const getMoreStars = async ({
     })) as StarredReposQueryResponse;
 
     const stars = data.starredRepositories.edges
-      .filter((n) => n.starredAt.startsWith("2023"))
+      .filter((n) => n.starredAt.startsWith("2024"))
       .map((n) => ({ name: n.node.name }));
 
     if (

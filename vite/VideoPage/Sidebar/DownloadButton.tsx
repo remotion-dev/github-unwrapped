@@ -76,7 +76,7 @@ export const DownloadButton: React.FC<{
 
           const a = document.createElement("a");
           a.href = URL.createObjectURL(loadingState.file);
-          a.setAttribute("download", "github-unwrapped-2023.mp4");
+          a.setAttribute("download", "github-unwrapped-2024.mp4");
           a.click();
         }}
       >
@@ -140,7 +140,7 @@ export const DownloadButton: React.FC<{
         onClick={() => {
           const a = document.createElement("a");
           a.href = status.url;
-          a.setAttribute("download", "github-unwrapped-2023.mp4");
+          a.setAttribute("download", "github-unwrapped-2024.mp4");
           a.click();
         }}
       >
