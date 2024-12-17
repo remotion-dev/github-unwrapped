@@ -1,4 +1,4 @@
-import { YEAR_TO_REVIEW } from "../../helpers/year.js";
+import { YEAR_TO_REVIEW } from "../year.js";
 import type { Commit, commits } from "./commits.js";
 
 type CommitsApiResponse = typeof commits;

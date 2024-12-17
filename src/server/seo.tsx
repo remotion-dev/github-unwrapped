@@ -6,7 +6,7 @@ import { getRandomGithubToken } from "./github-token.js";
 import { backendCredentials } from "../helpers/domain.js";
 import { getStatsFromGitHubOrCache } from "./get-stats-from-github-or-cache.js";
 import { sendDiscordMessage } from "./discord.js";
-import { YEAR_TO_REVIEW } from "../helpers/year.js";
+import { YEAR_TO_REVIEW } from "./year.js";
 
 type AppHead = {
   status: number;

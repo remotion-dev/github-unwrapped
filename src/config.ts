@@ -1,7 +1,7 @@
 import { zColor } from "@remotion/zod-types";
 import { random } from "remotion/no-react";
 import { z } from "zod";
-import { YEAR_TO_REVIEW } from "./helpers/year.js";
+import { YEAR_TO_REVIEW } from "./helpers/year";
 
 export const SITE_NAME = `unwrapped${YEAR_TO_REVIEW}`;
 export const RAM = 1200;

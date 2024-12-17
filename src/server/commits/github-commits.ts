@@ -1,5 +1,5 @@
-import { YEAR_TO_REVIEW } from "../../helpers/year.js";
 import { sendDiscordMessage } from "../discord.js";
+import { YEAR_TO_REVIEW } from "../year.js";
 import type { Commit, commits } from "./commits.js";
 import { mapApiResponseToCommits } from "./map-api-response-to-commits.js";
 

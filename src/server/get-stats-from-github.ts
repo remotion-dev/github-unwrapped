@@ -1,6 +1,5 @@
 import { interpolate } from "remotion";
 import type { Hour, ProfileStats } from "../config.js";
-import { YEAR_TO_REVIEW } from "../helpers/year.js";
 import { getMostProductive } from "./commits/commits.js";
 import { getTimesOfDay } from "./commits/get-times-of-day.js";
 import { getALotOfGithubCommits } from "./commits/github-commits.js";
@@ -10,6 +9,7 @@ import { getMoreStars } from "./get-more-stars.js";
 import type { BaseQueryResponse } from "./queries/base.query.js";
 import { baseQuery } from "./queries/base.query.js";
 import { getQuery } from "./queries/query.js";
+import { YEAR_TO_REVIEW } from "./year.js";
 
 const NOT_LANGUAGES = [
   "html",

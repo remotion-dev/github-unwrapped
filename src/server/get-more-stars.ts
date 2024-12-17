@@ -1,10 +1,10 @@
-import { YEAR_TO_REVIEW } from "../helpers/year.js";
 import { executeGitHubGraphQlQuery } from "./fetch-stats.js";
 import { getQuery } from "./queries/query.js";
 import {
   getStarredReposQuery,
   type StarredReposQueryResponse,
 } from "./queries/stars.query.js";
+import { YEAR_TO_REVIEW } from "./year.js";
 
 export const getMoreStars = async ({
   username,

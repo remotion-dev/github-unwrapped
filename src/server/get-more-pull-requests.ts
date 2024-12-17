@@ -1,8 +1,8 @@
-import { YEAR_TO_REVIEW } from "../helpers/year.js";
 import { executeGitHubGraphQlQuery } from "./fetch-stats.js";
 import type { PullRequestQueryResponse } from "./queries/pull-request.query.js";
 import { pullRequestQuery } from "./queries/pull-request.query.js";
 import { getQuery } from "./queries/query.js";
+import { YEAR_TO_REVIEW } from "./year.js";
 
 export const getMorePullRequests = async ({
   username,
