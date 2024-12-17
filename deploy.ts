@@ -31,7 +31,10 @@ for (let i = 2; i <= count; i++) {
         alreadyExisted ? "Ensured" : "Deployed"
       } function "${functionName}" to ${region} in account ${i}`,
     );
-    const { bucketName } = await getOrCreateBucket({ region });
+    const { bucketName } = await getOrCreateBucket({
+      region,
+      enableFolderExpiry: true,
+    });
     const { serveUrl } = await deploySite({
       siteName: SITE_NAME,
       bucketName,
