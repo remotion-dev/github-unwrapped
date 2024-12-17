@@ -47,7 +47,6 @@ export const TopLanguagesTitleCard: React.FC<
       extrapolateRight: "clamp",
     },
   );
-  console.log({ durationInFrames, hide });
   const zoomOutProgress = interpolate(frame, [0, TITLE_CARD_DURATION], [0, 1]);
   const scale = interpolate(zoomOutProgress, [0, 1], [1.3, 1]);
   const opacity = Math.min(frame / 30) * hide;

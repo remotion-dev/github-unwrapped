@@ -7,11 +7,8 @@ import {
   useVideoConfig,
 } from "remotion";
 import type { z } from "zod";
-import {
-  PANE_BACKGROUND,
-  PANE_BORDER,
-  PANE_TEXT_COLOR,
-} from "../TopLanguages/Pane";
+import { PaneEffect } from "../PaneEffect";
+import { PANE_BACKGROUND, PANE_TEXT_COLOR } from "../TopLanguages/Pane";
 import { TitleImage, type openingTitleSchema } from "./TitleImage";
 
 const title: React.CSSProperties = {
@@ -80,21 +77,17 @@ export const OpeningTitle: React.FC<
         scale: String(login.length > 18 ? 0.75 : 1),
       }}
     >
-      <div
+      <PaneEffect
+        innerRadius={INNER_BORDER_RADIUS + PADDING}
         style={{
-          padding: 20,
-          backgroundColor: "rgba(255, 255, 255, 0.1)",
-          borderRadius: INNER_BORDER_RADIUS + PADDING + 20,
           transform: `scale(${scaleDivided}) rotateY(${x}deg) rotateX(${
             rotation + rotateX
           }rad) translateY(${translateY}px)`,
-          border: "1px solid rgba(255, 255, 255, 0.1)",
         }}
       >
         <div
           style={{
             background: PANE_BACKGROUND,
-            border: PANE_BORDER,
             display: "inline-flex",
             flexDirection: "row",
             paddingRight: 70,
@@ -113,7 +106,7 @@ export const OpeningTitle: React.FC<
             <div style={title}>{login}</div>
           </div>
         </div>
-      </div>
+      </PaneEffect>
     </AbsoluteFill>
   );
 };

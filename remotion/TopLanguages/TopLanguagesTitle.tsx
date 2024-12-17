@@ -1,6 +1,7 @@
 import React from "react";
 import { spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { z } from "zod";
+import { PaneEffect } from "../PaneEffect";
 import { PANE_BACKGROUND, PANE_BORDER, PANE_TEXT_COLOR } from "./Pane";
 import { RotatingPlanet } from "./RotatingPlanet";
 
@@ -28,43 +29,47 @@ export const TopLanguagesTitle: React.FC<z.infer<typeof topLanguagesTitle>> = ({
   });
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "row",
-        backgroundColor: PANE_BACKGROUND,
-        border: PANE_BORDER,
-        padding: PADDING,
-        paddingRight: PADDING * 2,
-        alignItems: "center",
-        borderRadius: INNER_BORDER_RADIUS + PADDING,
-        scale: String(spr),
-      }}
+    <PaneEffect
+      style={{ scale: String(spr) }}
+      innerRadius={INNER_BORDER_RADIUS + PADDING}
     >
       <div
         style={{
-          borderRadius: INNER_BORDER_RADIUS,
-          height: 120,
-          width: 120,
-          marginRight: PADDING,
           display: "flex",
-          justifyContent: "center",
+          flexDirection: "row",
+          backgroundColor: PANE_BACKGROUND,
+          border: PANE_BORDER,
+          padding: PADDING,
+          paddingRight: PADDING * 2,
           alignItems: "center",
+          borderRadius: INNER_BORDER_RADIUS + PADDING,
         }}
       >
-        <RotatingPlanet randomSeed={randomizePlanetSeed} />
-      </div>
-      <div
-        style={{
-          color: PANE_TEXT_COLOR,
-          fontSize: 55,
-          fontFamily: "Mona Sans",
-          fontWeight: 800,
-          lineHeight: 1.1,
-        }}
-      >
-        My Top <br /> {pluralize ? "Languages" : "Language"}
-      </div>
-    </div>
+        <div
+          style={{
+            borderRadius: INNER_BORDER_RADIUS,
+            height: 120,
+            width: 120,
+            marginRight: PADDING,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <RotatingPlanet randomSeed={randomizePlanetSeed} />
+        </div>
+        <div
+          style={{
+            color: PANE_TEXT_COLOR,
+            fontSize: 55,
+            fontFamily: "Mona Sans",
+            fontWeight: 800,
+            lineHeight: 1.1,
+          }}
+        >
+          My Top <br /> {pluralize ? "Languages" : "Language"}
+        </div>
+      </div>{" "}
+    </PaneEffect>
   );
 };

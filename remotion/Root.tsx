@@ -24,6 +24,7 @@ import { OgImageContent } from "./OgImage";
 import { OPENING_SCENE_LENGTH, OpeningScene } from "./Opening";
 import { OpeningTitle } from "./Opening/Title";
 import { openingTitleSchema } from "./Opening/TitleImage";
+import { PinkHighlight } from "./PinkHighlight";
 import { Poof } from "./Poof";
 import { Productivity } from "./Productivity/Productivity";
 import { Tablet, tableSchema } from "./Productivity/Tablet";
@@ -78,6 +79,7 @@ import {
   TopLanguagesTitleCard,
   topLanguagesTitleCardSchema,
 } from "./TopLanguages/TitleCard";
+import { WhiteHighlight } from "./WhiteHighlight";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -1123,6 +1125,18 @@ export const RemotionRoot: React.FC = () => {
           }}
         />
       </Folder>
+      <Still
+        component={PinkHighlight}
+        id="PinkHighlight"
+        width={1080}
+        height={1080}
+      />
+      <Still
+        component={WhiteHighlight}
+        id="WhiteHighlight"
+        width={1080}
+        height={540}
+      />
     </>
   );
 };
