@@ -152,7 +152,7 @@ export const OpeningScene: React.FC<z.infer<typeof openingTitleSchema>> = ({
   return (
     <AbsoluteFill
       style={{
-        transform: `scale(${scale}) translateX(${x}px) translateY(50px)`,
+        transform: `scale(${scale}) translateX(${x}px) translateY(0px)`,
       }}
     >
       <OpeningSceneFull startAngle={startAngle} login={login} rocket={rocket} />

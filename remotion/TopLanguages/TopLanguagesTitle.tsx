@@ -63,7 +63,7 @@ export const TopLanguagesTitle: React.FC<z.infer<typeof topLanguagesTitle>> = ({
           lineHeight: 1.1,
         }}
       >
-        My top <br /> {pluralize ? "languages" : "language"}
+        My Top <br /> {pluralize ? "Languages" : "Language"}
       </div>
     </div>
   );

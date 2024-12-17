@@ -18,7 +18,7 @@ const title: React.CSSProperties = {
   fontSize: 80,
   fontWeight: "bold",
   backgroundClip: "text",
-  backgroundImage: `linear-gradient(270.02deg, ${PANE_TEXT_COLOR} 20.63%, #2E0EB6 99.87%)`,
+  backgroundImage: `linear-gradient(270.02deg,black 10.63%,${PANE_TEXT_COLOR} 50.87%)`,
   WebkitBackgroundClip: "text",
   backgroundColor: "text",
   WebkitTextFillColor: "transparent",
@@ -30,7 +30,7 @@ const PADDING = 20;
 
 export const OpeningTitle: React.FC<
   z.infer<typeof openingTitleSchema> & {
-    exitProgress: number;
+    readonly exitProgress: number;
   }
 > = ({ login, exitProgress, startAngle, rocket }) => {
   const { fps, height } = useVideoConfig();

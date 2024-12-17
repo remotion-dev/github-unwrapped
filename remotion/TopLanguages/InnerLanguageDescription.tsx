@@ -6,14 +6,14 @@ import {
   INNER_BORDER_RADIUS,
   InnerLanguagePercentage,
 } from "./InnerLanguagePercentage";
-import { PANE_BACKGROUND, PANE_BORDER } from "./Pane";
+import { OLD_PANE_BACKGROUND, PANE_BORDER } from "./Pane";
 import { computePlanetInfo, mapLanguageToPlanet } from "./constants";
 
 const label: React.CSSProperties = {
   display: "flex",
   flexDirection: "row",
   alignItems: "center",
-  background: PANE_BACKGROUND,
+  background: OLD_PANE_BACKGROUND,
   border: PANE_BORDER,
   paddingLeft: HORIZONTAL_PADDING,
   borderRadius: INNER_BORDER_RADIUS + HORIZONTAL_PADDING,
@@ -43,8 +43,8 @@ const languageBaseStyle: React.CSSProperties = {
 };
 
 export const InnerLanguageDescription: React.FC<{
-  language: z.infer<typeof languageSchema>;
-  position: number;
+  readonly language: z.infer<typeof languageSchema>;
+  readonly position: number;
 }> = ({ language, position }) => {
   const languageStyle = useMemo(() => {
     return {

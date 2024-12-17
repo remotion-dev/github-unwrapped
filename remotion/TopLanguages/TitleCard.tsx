@@ -7,6 +7,7 @@ import {
   random,
   staticFile,
   useCurrentFrame,
+  useVideoConfig,
 } from "remotion";
 import { z } from "zod";
 import { rocketSchema } from "../../src/config";
@@ -36,9 +37,20 @@ export const TopLanguagesTitleCard: React.FC<
   randomizeOctocatSeed,
 }) => {
   const frame = useCurrentFrame();
+  const { durationInFrames } = useVideoConfig();
+  const hide = interpolate(
+    frame,
+    [durationInFrames - 30, durationInFrames - 15],
+    [1, 0],
+    {
+      extrapolateLeft: "clamp",
+      extrapolateRight: "clamp",
+    },
+  );
+  console.log({ durationInFrames, hide });
   const zoomOutProgress = interpolate(frame, [0, TITLE_CARD_DURATION], [0, 1]);
   const scale = interpolate(zoomOutProgress, [0, 1], [1.3, 1]);
-  const opacity = Math.min(frame / 30);
+  const opacity = Math.min(frame / 30) * hide;
 
   return (
     <AbsoluteFill
