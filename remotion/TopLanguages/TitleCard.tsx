@@ -9,7 +9,7 @@ import {
   useCurrentFrame,
 } from "remotion";
 import { z } from "zod";
-import { accentColorSchema, rocketSchema } from "../../src/config";
+import { rocketSchema } from "../../src/config";
 import { Gradient } from "../Gradients/NativeGradient";
 import { Noise } from "../Noise";
 import { accentColorToGradient } from "../Opening/TitleImage";
@@ -20,7 +20,6 @@ import { TopLanguagesTitle } from "./TopLanguagesTitle";
 
 export const topLanguagesTitleCardSchema = z.object({
   pluralizeLanguages: z.boolean(),
-  accentColor: accentColorSchema,
   rocket: rocketSchema,
   randomizePlanetSeed: z.string(),
   randomizeOctocatSeed: z.number(),
@@ -32,7 +31,6 @@ export const TopLanguagesTitleCard: React.FC<
   z.infer<typeof topLanguagesTitleCardSchema>
 > = ({
   pluralizeLanguages,
-  accentColor,
   rocket,
   randomizePlanetSeed,
   randomizeOctocatSeed,
@@ -61,7 +59,7 @@ export const TopLanguagesTitleCard: React.FC<
           opacity,
         }}
       >
-        <Gradient gradient={accentColorToGradient(accentColor)} />
+        <Gradient gradient={accentColorToGradient()} />
         <AbsoluteFill style={{ opacity: 0.5 }}>
           <Noise translateX={0} translateY={0} />
         </AbsoluteFill>
@@ -77,7 +75,7 @@ export const TopLanguagesTitleCard: React.FC<
             random(randomizeOctocatSeed) > 0.5 ? `scaleX(-1)` : undefined,
         }}
       >
-        <TitleCardOctocat accentColor={accentColor} />
+        <TitleCardOctocat />
       </AbsoluteFill>
       <AbsoluteFill
         style={{

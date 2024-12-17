@@ -4,7 +4,6 @@ import type { CalculateMetadataFunction } from "remotion";
 import { AbsoluteFill, Sequence, interpolate, useCurrentFrame } from "remotion";
 import { z } from "zod";
 import {
-  accentColorSchema,
   productivityPerHourSchema,
   topHourSchema,
   topWeekdaySchema,
@@ -32,7 +31,6 @@ export const starsGivenSchema = z.object({
   topWeekday: topWeekdaySchema,
   topHour: topHourSchema,
   graphData: z.array(productivityPerHourSchema),
-  accentColor: accentColorSchema,
   totalPullRequests: z.number(),
   login: z.string(),
   sampleStarredRepos: z.array(z.string()),
@@ -73,7 +71,6 @@ export const StarsGiven: React.FC<Props> = ({
   starsGiven,
   style,
   showCockpit,
-  accentColor,
   totalPullRequests,
   sampleStarredRepos,
   timeUntilTabletHides,
@@ -194,7 +191,7 @@ export const StarsGiven: React.FC<Props> = ({
     <AbsoluteFill style={style}>
       <Sequence durationInFrames={timeUntilTabletHasEntered}>
         <AbsoluteFill style={{ opacity: gradientOpacity }}>
-          <Gradient gradient={accentColorToGradient(accentColor)} />
+          <Gradient gradient={accentColorToGradient()} />
           <Noise translateX={0} translateY={0} />
         </AbsoluteFill>
         {isMobileDevice() ? null : (
@@ -211,7 +208,6 @@ export const StarsGiven: React.FC<Props> = ({
           rotationShake={rotationShake}
           xShake={xShake}
           yShake={yShake}
-          accentColor={accentColor}
           totalPullRequests={totalPullRequests}
           repoText={text}
           starCount={starCount}

@@ -39,7 +39,6 @@ export const MobileActionsContainer: React.FC<{
   const navigate = useNavigate({ from: videoRoute.id });
 
   const { username } = videoRoute.useParams();
-  const { compositionParams } = useUserVideo();
   const { status } = useUserVideo();
 
   // const status: {
@@ -58,10 +57,9 @@ export const MobileActionsContainer: React.FC<{
       params: { username },
       search: {
         platform: undefined,
-        accentColor: compositionParams.accentColor,
       },
     });
-  }, [compositionParams.accentColor, navigate, username]);
+  }, [navigate, username]);
 
   const handleClick = useCallback(() => {
     if (loadingState.type !== "downloaded") {

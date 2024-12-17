@@ -2,11 +2,15 @@ import React from "react";
 import { AbsoluteFill } from "remotion";
 import { z } from "zod";
 import { Gradient } from "../Gradients/NativeGradient";
-import { PANE_BACKGROUND, PANE_BORDER } from "../TopLanguages/Pane";
+import {
+  PANE_BACKGROUND,
+  PANE_BORDER,
+  PANE_TEXT_COLOR,
+} from "../TopLanguages/Pane";
 import { Wheel } from "./Wheel";
 
 const labelStyle: React.CSSProperties = {
-  color: "white",
+  color: PANE_TEXT_COLOR,
   fontWeight: "bold",
   fontSize: 45,
   fontFamily: "Mona Sans",

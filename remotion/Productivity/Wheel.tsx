@@ -1,3 +1,4 @@
+import { transparentize } from "polished";
 import React from "react";
 import {
   AbsoluteFill,
@@ -11,6 +12,7 @@ import {
 } from "remotion";
 import { FPS } from "../Issues/make-ufo-positions";
 import { isMobileDevice } from "../Opening/devices";
+import { PANE_TEXT_COLOR } from "../TopLanguages/Pane";
 
 const wheelSpring = ({
   fps,
@@ -89,8 +91,8 @@ export const Wheel: React.FC<{
               perspective: 1000,
               color:
                 Number(value) === thisIndex && frame - 5 > delay
-                  ? "white"
-                  : "rgba(255, 255, 255, 0.3)",
+                  ? PANE_TEXT_COLOR
+                  : transparentize(0.7, PANE_TEXT_COLOR),
               fontFamily: "Mona Sans",
               fontWeight: "bold",
             }}

@@ -7,7 +7,6 @@ import {
   useCurrentFrame,
   useVideoConfig,
 } from "remotion";
-import { type AccentColor } from "../../src/config";
 import { TABLET_SCENE_HIDE_ANIMATION } from "../Productivity/Tablet";
 import { PullRequests } from "../PullRequests/PullRequests";
 import { Cockpit } from "./Cockpit";
@@ -18,7 +17,6 @@ export const AnimatedCockpit: React.FC<{
   xShake: number;
   yShake: number;
   rotationShake: number;
-  accentColor: AccentColor;
   totalPullRequests: number;
   repoText: RepoText | null;
   starCount: number;
@@ -29,7 +27,6 @@ export const AnimatedCockpit: React.FC<{
   xShake,
   yShake,
   rotationShake,
-  accentColor,
   totalPullRequests,
   repoText,
   starCount,
@@ -74,10 +71,7 @@ export const AnimatedCockpit: React.FC<{
   return (
     <AbsoluteFill style={shake}>
       <Sequence from={timeUntilTabletHides}>
-        <PullRequests
-          accentColor={accentColor}
-          totalPullRequests={totalPullRequests}
-        />
+        <PullRequests totalPullRequests={totalPullRequests} />
       </Sequence>
       <Sequence
         durationInFrames={471}

@@ -132,7 +132,6 @@ export const Main: React.FC<Schema> = ({
   topHour,
   graphData,
   openingSceneStartAngle,
-  accentColor,
   rocket,
   contributionData,
   sampleStarredRepos,
@@ -154,7 +153,6 @@ export const Main: React.FC<Schema> = ({
       <Series>
         <Series.Sequence durationInFrames={OPENING_SCENE_LENGTH}>
           <OpeningScene
-            accentColor={accentColor}
             startAngle={openingSceneStartAngle}
             login={login}
             rocket={rocket}
@@ -173,7 +171,6 @@ export const Main: React.FC<Schema> = ({
               topLanguages={topLanguages}
               showHelperLine={showHelperLine}
               login={login}
-              accentColor={accentColor}
               rocket={rocket}
               octocatSeed={random(login)}
             />
@@ -203,7 +200,6 @@ export const Main: React.FC<Schema> = ({
             topWeekday={topWeekday}
             topHour={topHour}
             graphData={graphData}
-            accentColor={accentColor}
             totalPullRequests={totalPullRequests}
             login={login}
             sampleStarredRepos={sampleStarredRepos}
@@ -218,7 +214,6 @@ export const Main: React.FC<Schema> = ({
             total={totalContributions}
             rocket={rocket}
             contributionData={contributionData}
-            accentColor={accentColor}
             planet={planet}
           />
         </Series.Sequence>
@@ -226,7 +221,7 @@ export const Main: React.FC<Schema> = ({
           durationInFrames={END_SCENE_DURATION}
           offset={-CONTRIBUTIONS_SCENE_EXIT_TRANSITION}
         >
-          <EndScene planet={planet} rocket={rocket} accentColor={accentColor} />
+          <EndScene planet={planet} rocket={rocket} />
         </Series.Sequence>
       </Series>
       {isMobileDevice() ? null : (

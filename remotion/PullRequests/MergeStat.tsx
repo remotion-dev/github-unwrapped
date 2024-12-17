@@ -1,5 +1,9 @@
 import React, { useMemo } from "react";
-import { PANE_BACKGROUND, PANE_BORDER } from "../TopLanguages/Pane";
+import {
+  PANE_BACKGROUND,
+  PANE_BORDER,
+  PANE_TEXT_COLOR,
+} from "../TopLanguages/Pane";
 import { MergeIcon } from "./MergeIcon";
 import { MergeNumber } from "./MergeNumber";
 import { RemotionShineEffect } from "./RemotionShineEffect";
@@ -42,7 +46,7 @@ export const MergeStat: React.FC<{
       fontSize: 24,
       fontFamily: "Mona Sans",
       fontWeight: "800",
-      color: "#fff",
+      color: PANE_TEXT_COLOR,
     };
   }, []);
 

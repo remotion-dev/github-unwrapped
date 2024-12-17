@@ -2,7 +2,6 @@ import { Link } from "@tanstack/react-router";
 import { InstagramIcon } from "../../../icons/InstagramIcon";
 import { LinkedInIcon } from "../../../icons/LinkedInIcon";
 import { XIcon } from "../../../icons/XIcon";
-import type { accentColorValues } from "../../../src/config";
 import { userRoute, videoRoute } from "../../routing";
 import { SharingAction } from "./SharingAction";
 import styles from "./styles.module.css";
@@ -13,9 +12,7 @@ export const twitterSharingLink = `https://twitter.com/intent/tweet?text=${encod
 
 export const linkedInSharingLink = "https://www.linkedin.com/";
 
-export const SharingActions: React.FC<{
-  accentColor: (typeof accentColorValues)[number];
-}> = ({ accentColor }) => {
+export const SharingActions: React.FC<{}> = ({}) => {
   const { username } = userRoute.useParams();
   return (
     <div className={styles.sharingActionsWrapper}>
@@ -25,7 +22,7 @@ export const SharingActions: React.FC<{
         params={() => {
           return { username };
         }}
-        search={{ platform: "twitter", accentColor }}
+        search={{ platform: "twitter" }}
       >
         <SharingAction
           icon={(params) => <XIcon {...params} />}
@@ -37,7 +34,7 @@ export const SharingActions: React.FC<{
         from={videoRoute.id}
         to={"share"}
         params={{ username }}
-        search={{ platform: "linkedin", accentColor }}
+        search={{ platform: "linkedin" }}
       >
         <SharingAction
           icon={(params) => <LinkedInIcon {...params} />}

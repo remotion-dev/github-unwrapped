@@ -1,5 +1,4 @@
 import { Outlet, RootRoute, Route, Router } from "@tanstack/react-router";
-import { accentColorValues } from "../src/config.js";
 import About from "./About/About.jsx";
 import { Dashboard } from "./Dashboard.jsx";
 import Home from "./Home.jsx";
@@ -62,13 +61,9 @@ export const shareRoute = new Route({
   getParentRoute: () => userRoute,
   path: "share",
   component: SharePage,
-  validateSearch: (search: {
-    accentColor?: (typeof accentColorValues)[number];
-    platform?: "twitter" | "linkedin";
-  }) => {
+  validateSearch: (search: { platform?: "twitter" | "linkedin" }) => {
     // validate and parse the search params into a typed state
     return {
-      accentColor: search?.accentColor ?? accentColorValues[0],
       platform: search?.platform,
     };
   },

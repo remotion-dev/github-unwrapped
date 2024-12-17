@@ -1,4 +1,5 @@
 import React from "react";
+import { PANE_TEXT_COLOR } from "../TopLanguages/Pane";
 
 export const MergeNumber: React.FC<{
   num: number;
@@ -10,7 +11,7 @@ export const MergeNumber: React.FC<{
         fontFamily: "Mona Sans",
         fontWeight: "800",
         marginLeft: 10,
-        color: "#fff",
+        color: PANE_TEXT_COLOR,
         fontVariantNumeric: "tabular-nums",
       }}
     >

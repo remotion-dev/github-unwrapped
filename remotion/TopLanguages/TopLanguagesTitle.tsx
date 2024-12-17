@@ -1,7 +1,7 @@
 import React from "react";
 import { spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { z } from "zod";
-import { PANE_BACKGROUND, PANE_BORDER } from "./Pane";
+import { PANE_BACKGROUND, PANE_BORDER, PANE_TEXT_COLOR } from "./Pane";
 import { RotatingPlanet } from "./RotatingPlanet";
 
 const INNER_BORDER_RADIUS = 30;
@@ -56,7 +56,7 @@ export const TopLanguagesTitle: React.FC<z.infer<typeof topLanguagesTitle>> = ({
       </div>
       <div
         style={{
-          color: "white",
+          color: PANE_TEXT_COLOR,
           fontSize: 55,
           fontFamily: "Mona Sans",
           fontWeight: 800,

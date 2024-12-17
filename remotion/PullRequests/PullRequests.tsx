@@ -10,7 +10,6 @@ import {
   useVideoConfig,
 } from "remotion";
 import { z } from "zod";
-import { accentColorSchema } from "../../src/config";
 import { Gradient } from "../Gradients/NativeGradient";
 import { accentColorToGradient } from "../Opening/TitleImage";
 import { isMobileDevice } from "../Opening/devices";
@@ -22,7 +21,6 @@ const endHeight = 1080;
 
 export const pullRequestsSchema = z.object({
   totalPullRequests: z.number().min(0),
-  accentColor: accentColorSchema,
 });
 
 const MAX_PATHS = 30;
@@ -30,7 +28,6 @@ export const PULL_REQUESTS_DURATION = 260;
 
 export const PullRequests: React.FC<z.infer<typeof pullRequestsSchema>> = ({
   totalPullRequests,
-  accentColor,
 }) => {
   const initialOffset = PATHS_COMP_HEIGHT - endHeight;
   const frame = useCurrentFrame();
@@ -77,7 +74,7 @@ export const PullRequests: React.FC<z.infer<typeof pullRequestsSchema>> = ({
       )}
       <AbsoluteFill style={style}>
         <AbsoluteFill>
-          <Gradient gradient={accentColorToGradient(accentColor)} />
+          <Gradient gradient={accentColorToGradient()} />
         </AbsoluteFill>
         <WholePaths
           initialPullRequests={Math.max(0, totalPullRequests - MAX_PATHS)}

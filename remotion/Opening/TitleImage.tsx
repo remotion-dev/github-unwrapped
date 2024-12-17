@@ -7,12 +7,7 @@ import {
   useVideoConfig,
 } from "remotion";
 import { z } from "zod";
-import type { AccentColor } from "../../src/config";
-import {
-  accentColorSchema,
-  openingSceneStartAngle,
-  rocketSchema,
-} from "../../src/config";
+import { openingSceneStartAngle, rocketSchema } from "../../src/config";
 import type { GradientType } from "../Gradients/available-gradients";
 import { PANE_BORDER } from "../TopLanguages/Pane";
 
@@ -20,20 +15,13 @@ export const openingTitleSchema = z.object({
   login: z.string(),
   startAngle: openingSceneStartAngle,
   rocket: rocketSchema,
-  accentColor: accentColorSchema,
 });
 
 const TITLE_IMAGE_INNER_BORDER_RADIUS = 30;
 const TITLE_IMAGE_BORDER_PADDING = 20;
 
-export const accentColorToGradient = (
-  accentColor: AccentColor,
-): GradientType => {
-  if (accentColor === "blue") {
-    return "blueRadial";
-  }
-
-  return "purpleRadial";
+export const accentColorToGradient = (): GradientType => {
+  return "blueRadial";
 };
 
 export const getAvatarImage = (login: string) => {

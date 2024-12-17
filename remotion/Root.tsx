@@ -92,7 +92,6 @@ export const RemotionRoot: React.FC = () => {
           height={VIDEO_HEIGHT}
           schema={endSceneSchema}
           defaultProps={{
-            accentColor: "blue",
             rocket: "blue",
             planet: "Ice",
           }}
@@ -122,7 +121,6 @@ export const RemotionRoot: React.FC = () => {
         defaultProps={{
           login: "JonnyBurger",
           startAngle: "left",
-          accentColor: "blue",
           rocket: "blue",
         }}
       />
@@ -137,7 +135,6 @@ export const RemotionRoot: React.FC = () => {
           login: "JonnyBurger",
           exitProgress: 0,
           startAngle: "left",
-          accentColor: "blue",
           rocket: "blue",
         }}
       />
@@ -148,9 +145,7 @@ export const RemotionRoot: React.FC = () => {
         fps={VIDEO_FPS}
         width={VIDEO_WIDTH}
         height={VIDEO_HEIGHT}
-        defaultProps={{
-          accentColor: "blue",
-        }}
+        defaultProps={{}}
       />
       <Composition
         id={"ContributionsScene2"}
@@ -163,7 +158,6 @@ export const RemotionRoot: React.FC = () => {
           total: 300,
           rocket: "blue",
           planet: "Ice",
-          accentColor: "blue",
           contributionData: jonnysContributions,
         }}
       />
@@ -279,7 +273,6 @@ export const RemotionRoot: React.FC = () => {
           topWeekday: "3",
           topHour: "0",
           graphData: GRAPH_DATA,
-          accentColor: "blue",
           totalPullRequests: 614,
           login: "JonnyBurger",
           sampleStarredRepos: SAMPLE_STARRED_REPOS,
@@ -391,7 +384,6 @@ export const RemotionRoot: React.FC = () => {
           schema={pullRequestsSchema}
           defaultProps={{
             totalPullRequests: 614,
-            accentColor: "purple",
           }}
         />
       </Folder>
@@ -407,7 +399,6 @@ export const RemotionRoot: React.FC = () => {
           defaultProps={{
             randomizePlanetSeed: "randomizePlanetSeed",
             pluralizeLanguages: false,
-            accentColor: "blue",
             rocket: "blue",
             randomizeOctocatSeed: 0.4,
           }}
@@ -512,9 +503,7 @@ export const RemotionRoot: React.FC = () => {
           fps={VIDEO_FPS}
           width={VIDEO_WIDTH}
           height={VIDEO_HEIGHT}
-          defaultProps={{
-            accentColor: "blue",
-          }}
+          defaultProps={{}}
         />
         <Composition
           id={"AllPlanets"}
@@ -553,7 +542,6 @@ export const RemotionRoot: React.FC = () => {
             },
             showHelperLine: false,
             login: "JonnyBurger",
-            accentColor: "blue",
             rocket: "blue",
             octocatSeed: 0.4,
           }}
@@ -697,7 +685,6 @@ export const RemotionRoot: React.FC = () => {
             },
           ],
           openingSceneStartAngle: "right",
-          accentColor: "blue",
           rocket: "yellow",
           contributionData: [
             3, 0, 0, 0, 6, 53, 48, 52, 36, 33, 5, 28, 17, 0, 53, 30, 37, 40, 37,
@@ -838,7 +825,6 @@ export const RemotionRoot: React.FC = () => {
               { productivity: 2, time: 22 },
               { productivity: 0, time: 23 },
             ],
-            accentColor: "purple" as const,
             totalPullRequests: 614,
             login: "JonnyBurger",
             sampleStarredRepos: [
@@ -895,7 +881,6 @@ export const RemotionRoot: React.FC = () => {
               { productivity: 2, time: 22 },
               { productivity: 0, time: 23 },
             ],
-            accentColor: "purple" as const,
             totalPullRequests: 614,
             login: "JonnyBurger",
             sampleStarredRepos: [
@@ -929,7 +914,6 @@ export const RemotionRoot: React.FC = () => {
             topWeekday: "1" as const,
             topHour: "0" as const,
             graphData: GRAPH_DATA,
-            accentColor: "purple" as const,
             totalPullRequests: 614,
             login: "JonnyBurger",
             sampleStarredRepos: SAMPLE_STARRED_REPOS,

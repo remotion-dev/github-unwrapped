@@ -15,7 +15,6 @@ import {
 
 import React, { useMemo } from "react";
 import type { Planet, Rocket } from "../../src/config";
-import { type AccentColor } from "../../src/config";
 import { appearDelays } from "../Contributions/compute-positions";
 import { Gradient } from "../Gradients/NativeGradient";
 import { IssueNumber } from "../Issues/IssueNumber";
@@ -268,12 +267,11 @@ const Dot: React.FC<{
 };
 
 export const ContributionsScene: React.FC<{
-  accentColor: AccentColor;
   contributionData: number[];
   total: number;
   rocket: Rocket;
   planet: Planet;
-}> = ({ accentColor, contributionData, total, rocket, planet }) => {
+}> = ({ contributionData, total, rocket, planet }) => {
   const f = useCurrentFrame();
   const { fps } = useVideoConfig();
 
@@ -309,7 +307,7 @@ export const ContributionsScene: React.FC<{
   return (
     <AbsoluteFill>
       <AbsoluteFill style={{ opacity, transform: `rotate(180deg)` }}>
-        <Gradient gradient={accentColorToGradient(accentColor)} />
+        <Gradient gradient={accentColorToGradient()} />
       </AbsoluteFill>
 
       <AbsoluteFill>

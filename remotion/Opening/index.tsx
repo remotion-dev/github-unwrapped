@@ -38,7 +38,6 @@ const OpeningSceneFull: React.FC<z.infer<typeof openingTitleSchema>> = ({
   login,
   startAngle,
   rocket,
-  accentColor,
 }) => {
   const { fps, durationInFrames } = useVideoConfig();
   const frame = useCurrentFrame();
@@ -85,7 +84,7 @@ const OpeningSceneFull: React.FC<z.infer<typeof openingTitleSchema>> = ({
             opacity: interpolate(exitProgress, [0, 1], [1, 0]),
           }}
         >
-          <Gradient gradient={accentColorToGradient(accentColor)} />
+          <Gradient gradient={accentColorToGradient()} />
           <Noise translateX={100} translateY={30} />
         </AbsoluteFill>
         <AbsoluteFill>
@@ -94,7 +93,6 @@ const OpeningSceneFull: React.FC<z.infer<typeof openingTitleSchema>> = ({
             exitProgress={exitProgress}
             login={login}
             rocket={rocket}
-            accentColor={accentColor}
           />
         </AbsoluteFill>
         <AbsoluteFill
@@ -122,7 +120,6 @@ export const OpeningScene: React.FC<z.infer<typeof openingTitleSchema>> = ({
   login,
   startAngle,
   rocket,
-  accentColor,
 }) => {
   const { width, fps, durationInFrames: actualDuration } = useVideoConfig();
   const frame = useCurrentFrame();
@@ -158,12 +155,7 @@ export const OpeningScene: React.FC<z.infer<typeof openingTitleSchema>> = ({
         transform: `scale(${scale}) translateX(${x}px) translateY(50px)`,
       }}
     >
-      <OpeningSceneFull
-        accentColor={accentColor}
-        startAngle={startAngle}
-        login={login}
-        rocket={rocket}
-      />
+      <OpeningSceneFull startAngle={startAngle} login={login} rocket={rocket} />
       {isMobileDevice() ? null : (
         <Sequence from={actualDuration - 60}>
           <Audio src={staticFile("first-whoosh.mp3")} volume={0.5} />
