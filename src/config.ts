@@ -43,10 +43,12 @@ export const languageSchema = z.discriminatedUnion("type", [
     type: z.literal("other"),
     name: z.string(),
     color: zColor().or(z.null()),
+    percent: z.number(),
   }),
   z.object({
     type: z.literal("designed"),
     name: LanguagesEnum,
+    percent: z.number(),
   }),
 ]);
 
@@ -186,7 +188,11 @@ export type ProfileStats = {
   totalStars: number;
   sampleStarredRepos: string[];
   totalContributions: number;
-  topLanguages: Array<{ languageName: string; color: string | null }>;
+  topLanguages: Array<{
+    languageName: string;
+    color: string | null;
+    percent: number;
+  }>;
   bestHours: Record<string, number>;
   topWeekday: Weekday;
   topHour: Hour;
@@ -220,18 +226,21 @@ const computePlanet = (userStats: ProfileStats): z.infer<typeof PlanetEnum> => {
 export const parseTopLanguage = (topLanguage: {
   languageName: string;
   color: string | null;
+  percent: number;
 }): z.infer<typeof languageSchema> => {
   try {
     const lang = LanguagesEnum.parse(topLanguage.languageName);
     return {
       type: "designed",
       name: lang,
+      percent: topLanguage.percent,
     };
   } catch (e) {
     return {
       type: "other",
       color: topLanguage.color ?? "black",
       name: topLanguage.languageName,
+      percent: topLanguage.percent,
     };
   }
 };

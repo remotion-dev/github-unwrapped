@@ -438,7 +438,11 @@ export const RemotionRoot: React.FC = () => {
           schema={zoomOutSchema}
           defaultProps={{
             corner: "top-right" as const,
-            language: { type: "designed" as const, name: "JavaScript" },
+            language: {
+              type: "designed" as const,
+              name: "JavaScript",
+              percent: 0.3,
+            },
             position: 1,
             rocket: "orange",
           }}
@@ -454,7 +458,12 @@ export const RemotionRoot: React.FC = () => {
           defaultProps={{
             rocket: "blue",
             position: 1,
-            language: { type: "other", name: "Scala", color: "#C22D40" },
+            language: {
+              type: "other",
+              name: "Scala",
+              color: "#C22D40",
+              percent: 0.3,
+            },
             enterDirection: "right-counter-clockwise" as const,
           }}
         />
@@ -467,7 +476,11 @@ export const RemotionRoot: React.FC = () => {
           width={VIDEO_WIDTH}
           height={VIDEO_HEIGHT}
           defaultProps={{
-            language: { type: "designed" as const, name: "Java" as const },
+            language: {
+              type: "designed" as const,
+              name: "Java" as const,
+              percent: 0.4,
+            },
             showHelperLine: false,
             corner: "bottom-right",
             position: 1,
@@ -485,7 +498,7 @@ export const RemotionRoot: React.FC = () => {
           width={VIDEO_WIDTH}
           height={VIDEO_HEIGHT}
           defaultProps={{
-            language: { type: "designed", name: "Java" },
+            language: { type: "designed", name: "Java", percent: 0.3 },
             showHelperLine: false,
             corner: "bottom-right",
             position: 1,
@@ -522,9 +535,21 @@ export const RemotionRoot: React.FC = () => {
           defaultProps={{
             corner: "top-right" as const,
             topLanguages: {
-              language1: { type: "designed" as const, name: "C++" as const },
-              language2: { type: "designed" as const, name: "Go" as const },
-              language3: { type: "designed" as const, name: "Ruby" as const },
+              language1: {
+                type: "designed" as const,
+                name: "C++" as const,
+                percent: 0.4,
+              },
+              language2: {
+                type: "designed" as const,
+                name: "Go" as const,
+                percent: 0.3,
+              },
+              language3: {
+                type: "designed" as const,
+                name: "Ruby" as const,
+                percent: 0.2,
+              },
             },
             showHelperLine: false,
             login: "JonnyBurger",
@@ -550,15 +575,18 @@ export const RemotionRoot: React.FC = () => {
             language1: {
               type: "designed",
               name: "TypeScript",
+              percent: 0.6348066751851184,
             },
             language2: {
               type: "other",
               color: "#fcb32c",
               name: "MDX",
+              percent: 0.3204561738200702,
             },
             language3: {
               type: "designed",
               name: "JavaScript",
+              percent: 0.03752374246343604,
             },
           },
           showHelperLine: false,
@@ -986,6 +1014,7 @@ export const RemotionRoot: React.FC = () => {
             topLanguage: {
               type: "designed",
               name: "PHP",
+              percent: 0.3,
             },
             issues: 10,
             login: "JonnyBurger",
@@ -1030,6 +1059,7 @@ export const RemotionRoot: React.FC = () => {
               type: "other" as const,
               name: "dfasdfasdfsadfsadfsadfasdfdsfa" as const,
               color: "#ffffff",
+              percent: 0.3,
             },
             issues: 10,
             login: "JonnyBurger",
@@ -1074,6 +1104,7 @@ export const RemotionRoot: React.FC = () => {
               type: "other" as const,
               name: "dfasdfasdfsadfsadfsadfasdfdsfa" as const,
               color: "#ffffff",
+              percent: 0.3,
             },
             issues: 10,
             login: "JonnyBurger",

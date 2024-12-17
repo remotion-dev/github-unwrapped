@@ -75,12 +75,20 @@ export const getStatsFromGitHub = async ({
     },
   );
 
+  const valuesAddedTogether = Object.values(acc).reduce(
+    (a, i) => a + i.value,
+    0,
+  );
+
   const topLanguages = Object.entries(acc)
     .sort((a, b) => b[1].value - a[1].value)
-    .map((i) => ({
-      languageName: i[0],
-      color: i[1].color,
-    }))
+    .map((i) => {
+      return {
+        languageName: i[0],
+        color: i[1].color,
+        percent: i[1].value / valuesAddedTogether,
+      };
+    })
     .slice(0, 3);
 
   const productivity = getMostProductive(commits);
