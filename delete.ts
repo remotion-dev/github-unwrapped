@@ -1,5 +1,7 @@
+import type { AwsRegion } from "@remotion/lambda";
 import { getAwsClient, getOrCreateBucket, getRegions } from "@remotion/lambda";
 import dotenv from "dotenv";
+import pLimit from "p-limit";
 import { getAccountCount } from "./src/helpers/get-account-count";
 import { setEnvForKey } from "./src/helpers/set-env-for-key";
 
@@ -8,12 +10,10 @@ dotenv.config();
 const count = getAccountCount();
 console.log(`Found ${count} accounts. Deploying...`);
 
-for (let i = 2; i <= count; i++) {
-  for (const region of getRegions()) {
-    if (region === "us-west-1") {
-      continue;
-    }
+const limit = pLimit(10);
 
+const doTheThingForRegion = (i: number, region: AwsRegion) =>
+  limit(async () => {
     setEnvForKey(i);
     const { bucketName } = await getOrCreateBucket({ region });
     const { sdk, client } = getAwsClient({ region, service: "s3" });
@@ -69,5 +69,10 @@ for (let i = 2; i <= count; i++) {
 
       contToken = res.NextContinuationToken;
     }
+  });
+
+for (let i = 1; i <= count; i++) {
+  for (const region of getRegions()) {
+    doTheThingForRegion(i, region);
   }
 }
