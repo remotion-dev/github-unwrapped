@@ -13,7 +13,7 @@ import {
 } from "remotion";
 
 import React, { useMemo } from "react";
-import type { Planet, Rocket } from "../../src/config";
+import { type Planet, type Rocket } from "../../src/config";
 import { appearDelays } from "../Contributions/compute-positions";
 import { Gradient } from "../Gradients/NativeGradient";
 import { IssueNumber } from "../Issues/IssueNumber";
@@ -46,8 +46,7 @@ const GRID_HEIGHT = ROWS * SIZE;
 const TRANSITION_GLOW = 45;
 const START_SPREAD = TRANSITION_GLOW + 10;
 
-const FADE_OUT_START = 80;
-const FADE_OUT_DURATION = 20;
+const TOP_OFFSET = 200;
 
 const mapRowToMove: Record<number, number> = {
   0: SIZE * 3,
@@ -222,14 +221,16 @@ export const ContributionsScene: React.FC<{
     extrapolateRight: "clamp",
   });
 
-  const numberEnter = spring({
+  const constantScale = interpolate(frame, [0, 50], [0.8, 1]);
+
+  const disappear = spring({
     fps,
     frame,
     config: {
       damping: 200,
     },
+    delay: 90,
   });
-  const numberTop = interpolate(numberEnter, [0, 1], [250, 0]);
 
   return (
     <AbsoluteFill>
@@ -247,92 +248,87 @@ export const ContributionsScene: React.FC<{
       </AbsoluteFill>
       <AbsoluteFill
         style={{
-          justifyContent: "center",
-          alignItems: "center",
-          zIndex: 0,
+          scale: String(constantScale + interpolate(disappear, [0, 1], [0, 3])),
+          transform:
+            "translateY(" + interpolate(disappear, [0, 1], [0, 500]) + "px)",
         }}
       >
-        <PaneEffect
-          padding={20}
-          pinkHighlightOpacity={1}
-          whiteHighlightOpacity={1}
-          innerRadius={20}
-          style={{}}
+        <AbsoluteFill
+          style={{
+            justifyContent: "center",
+            alignItems: "center",
+            zIndex: 0,
+          }}
+        >
+          <PaneEffect
+            padding={20}
+            pinkHighlightOpacity={1}
+            whiteHighlightOpacity={1}
+            innerRadius={20}
+            style={{}}
+          >
+            <div>
+              <IssueNumber
+                align="center"
+                label="Contributions"
+                currentNumber={Math.floor(number)}
+                max={total}
+              />
+            </div>
+            <div
+              style={{
+                width: GRID_WIDTH,
+                height: GRID_HEIGHT,
+                background: PANE_BACKGROUND,
+                padding: 20,
+                boxSizing: "content-box",
+                borderRadius: 20,
+              }}
+            />
+          </PaneEffect>
+        </AbsoluteFill>
+        <AbsoluteFill
+          style={{
+            justifyContent: "center",
+            alignItems: "center",
+            zIndex: 1,
+          }}
         >
           <div
             style={{
+              position: "relative",
               width: GRID_WIDTH,
               height: GRID_HEIGHT,
-              background: PANE_BACKGROUND,
-              padding: 20,
-              boxSizing: "content-box",
-              borderRadius: 20,
+              marginTop: TOP_OFFSET,
             }}
-          />
-        </PaneEffect>
-      </AbsoluteFill>
-      <AbsoluteFill
-        style={{
-          justifyContent: "center",
-          alignItems: "center",
-          zIndex: 1,
-        }}
-      >
-        <div
-          style={{
-            position: "relative",
-            width: GRID_WIDTH,
-            height: GRID_HEIGHT,
-          }}
-        >
-          {new Array(COUNT).fill(0).map((_, i) => (
-            <Dot
-              key={i}
-              frame={frame}
-              i={i}
-              data={contributionData[i]}
-              targetColumn={targetColumn}
-              maxContributions={maxContributions}
-            />
-          ))}
-        </div>
-
-        <AbsoluteFill
-          style={{
-            marginTop: numberTop,
-            opacity:
-              frame >= FADE_OUT_START &&
-              frame < FADE_OUT_START + FADE_OUT_DURATION
-                ? (FADE_OUT_DURATION - (frame - FADE_OUT_START)) /
-                  FADE_OUT_DURATION
-                : frame < FADE_OUT_START
-                  ? 1
-                  : 0,
-          }}
-        >
-          <IssueNumber
-            align="center"
-            label="Contributions"
-            currentNumber={Math.floor(number)}
-            max={total}
-          />
-        </AbsoluteFill>
-
-        <AbsoluteFill
-          style={{
-            left: targetColumn * SIZE + 120,
-            top: 440,
-            position: "absolute",
-          }}
-        >
-          <Img
-            src={FrontRocketSource.getFrontRocketSource(rocket)}
+          >
+            {new Array(COUNT).fill(0).map((_, i) => (
+              <Dot
+                key={i}
+                frame={frame}
+                i={i}
+                data={contributionData[i]}
+                targetColumn={targetColumn}
+                maxContributions={maxContributions}
+              />
+            ))}
+          </div>
+          <AbsoluteFill
             style={{
-              width: 732 / 8,
-              height: 1574 / 8,
-              transform: "rotate(90deg)",
+              left: targetColumn * SIZE + 120,
+              top: 440 + TOP_OFFSET / 2,
+              position: "absolute",
             }}
-          />
+          >
+            <Img
+              src={FrontRocketSource.getFrontRocketSource(rocket)}
+              style={{
+                width: 732 / 8,
+                height: 1574 / 8,
+                transform: "rotate(90deg)",
+              }}
+            />
+          </AbsoluteFill>
         </AbsoluteFill>
       </AbsoluteFill>
     </AbsoluteFill>

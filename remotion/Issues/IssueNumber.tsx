@@ -1,15 +1,14 @@
 import React from "react";
-import { AbsoluteFill } from "remotion";
 import { SevenSegment } from "../SevenSegment/SevenSegmentNumber";
 
 export const IssueNumber: React.FC<{
-  currentNumber: number;
-  max: number;
-  label: string;
-  align: "left" | "right" | "center";
+  readonly currentNumber: number;
+  readonly max: number;
+  readonly label: string;
+  readonly align: "left" | "right" | "center";
 }> = ({ currentNumber, label, align, max }) => {
   return (
-    <AbsoluteFill
+    <div
       style={{
         color: "white",
         fontFamily: "Mona Sans",
@@ -29,8 +28,6 @@ export const IssueNumber: React.FC<{
                   alignItems: "center",
                 }),
           width: 300,
-          position: "absolute",
-          bottom: 35,
           paddingLeft: 10,
           paddingRight: 10,
           paddingTop: 5,
@@ -57,6 +54,6 @@ export const IssueNumber: React.FC<{
           {label}
         </div>
       </div>
-    </AbsoluteFill>
+    </div>
   );
 };

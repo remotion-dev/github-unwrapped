@@ -1,5 +1,3 @@
-import { PANE_TEXT_COLOR } from "../TopLanguages/Pane";
-
 export const PullRequests: React.FC<{
   pullRequests: number;
 }> = ({ pullRequests }) => {
@@ -44,7 +42,7 @@ export const PullRequests: React.FC<{
           style={{
             fontFamily: "Mona Sans",
             fontWeight: "500",
-            color: PANE_TEXT_COLOR,
+            color: "white",
             fontSize: digits > 2 ? 55 : 65,
             lineHeight: "65px",
           }}
