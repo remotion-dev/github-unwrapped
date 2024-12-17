@@ -25,6 +25,7 @@ for (let i = 2; i <= count; i++) {
       memorySizeInMb: RAM,
       timeoutInSeconds: TIMEOUT,
       region,
+      enableV5Runtime: true,
     });
     console.log(
       `  ${

@@ -1,11 +1,13 @@
 import React, { useMemo } from "react";
 import type { z } from "zod";
 import type { languageSchema } from "../../src/config";
+import {
+  HORIZONTAL_PADDING,
+  INNER_BORDER_RADIUS,
+  InnerLanguagePercentage,
+} from "./InnerLanguagePercentage";
 import { PANE_BACKGROUND, PANE_BORDER } from "./Pane";
 import { computePlanetInfo, mapLanguageToPlanet } from "./constants";
-
-const INNER_BORDER_RADIUS = 10;
-const HORIZONTAL_PADDING = 20;
 
 const label: React.CSSProperties = {
   display: "flex",
@@ -13,7 +15,7 @@ const label: React.CSSProperties = {
   alignItems: "center",
   background: PANE_BACKGROUND,
   border: PANE_BORDER,
-  padding: `${HORIZONTAL_PADDING}px ${HORIZONTAL_PADDING}px`,
+  paddingLeft: HORIZONTAL_PADDING,
   borderRadius: INNER_BORDER_RADIUS + HORIZONTAL_PADDING,
   lineHeight: 1,
 };
@@ -54,11 +56,25 @@ export const InnerLanguageDescription: React.FC<{
   return (
     <div style={label}>
       <div style={num}>{position}</div>
-      <div style={languageStyle}>
-        {language.type === "other"
-          ? language.name
-          : mapLanguageToPlanet[language.name].name}
+      <div
+        style={{
+          padding: `${HORIZONTAL_PADDING}px ${HORIZONTAL_PADDING}px`,
+        }}
+      >
+        <div style={languageStyle}>
+          {language.type === "other"
+            ? language.name
+            : mapLanguageToPlanet[language.name].name}
+        </div>
       </div>
+      <div
+        style={{
+          height: "100%",
+          width: 1,
+          borderLeft: PANE_BORDER,
+        }}
+      />
+      <InnerLanguagePercentage language={language} />
     </div>
   );
 };

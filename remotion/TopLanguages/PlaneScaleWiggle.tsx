@@ -117,14 +117,14 @@ export const PlanetScaleWiggle: React.FC<z.infer<typeof wiggleSchema>> = ({
           }}
         />
       </AbsoluteFill>
-      <AbsoluteFill>
+      <Sequence from={10}>
         <LanguageDescription
-          delay={30}
+          delay={10}
           duration={90}
           language={language}
           position={position}
         />
-      </AbsoluteFill>
+      </Sequence>
     </AbsoluteFill>
   );
 };

@@ -80,14 +80,14 @@ export const PlanetScaleSpiral: React.FC<z.infer<typeof spiralSchema>> = ({
           clockDirection={clockDirection}
         />
       </AbsoluteFill>
-      <AbsoluteFill>
+      <Sequence from={40}>
         <LanguageDescription
-          delay={60}
+          delay={0}
           duration={90}
           language={language}
           position={position}
         />
-      </AbsoluteFill>
+      </Sequence>
     </AbsoluteFill>
   );
 };
