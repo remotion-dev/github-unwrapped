@@ -109,6 +109,11 @@ export const rocketValues = ["blue", "orange", "yellow"] as const;
 export const rocketSchema = z.enum(rocketValues);
 export type Rocket = (typeof rocketValues)[number];
 
+export const starredRepoExample = z.object({
+  author: z.string(),
+  name: z.string(),
+});
+
 export const compositionSchema = z.object({
   topLanguages: topLanguagesSchema.or(z.null()),
   corner: cornerType,
@@ -126,7 +131,7 @@ export const compositionSchema = z.object({
   rocket: rocketSchema,
   contributionData: z.array(z.number()),
   totalContributions: z.number(),
-  sampleStarredRepos: z.array(z.string()),
+  sampleStarredRepos: z.array(starredRepoExample),
 });
 
 export const RenderRequest = z.object({
@@ -180,7 +185,10 @@ export type ProfileStats = {
   fetchedAt: number;
   loggedInWithGitHub: boolean;
   totalStars: number;
-  sampleStarredRepos: string[];
+  sampleStarredRepos: {
+    author: string;
+    name: string;
+  }[];
   totalContributions: number;
   topLanguages: Array<{
     languageName: string;

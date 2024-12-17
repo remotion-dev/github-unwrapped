@@ -711,17 +711,7 @@ export const RemotionRoot: React.FC = () => {
             47, 10, 32, 45, 31, 4, 32, 8, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0,
           ],
-          sampleStarredRepos: [
-            "remotion-templates",
-            "react-scan",
-            "mp4-muxer",
-            "core",
-            "ladybird",
-            "remotion-bar-race-chart",
-            "mp4-h264-re-encode",
-            "seamless-aac-split-and-stitch-demo",
-            "analyzer-public",
-          ],
+          sampleStarredRepos: SAMPLE_STARRED_REPOS,
         }}
       />
       <Composition
@@ -829,18 +819,7 @@ export const RemotionRoot: React.FC = () => {
             ],
             totalPullRequests: 614,
             login: "JonnyBurger",
-            sampleStarredRepos: [
-              "remotion-dev/remotion",
-              "Shopify/React-native-skia",
-              "Shopify/argo",
-              "Shopify/argo-checkout",
-              "Shopify/argo-admin",
-              "Shopify/argo-checkout",
-              "Shopify/argo-admin",
-              "Shopify/argo-checkout",
-              "Shopify/argo-admin",
-              "Shopify/argo-checkout",
-            ],
+            sampleStarredRepos: SAMPLE_STARRED_REPOS,
             timeUntilTabletHasEntered: 200,
           }}
           calculateMetadata={starsGivenCalculateMetadata}
@@ -885,18 +864,7 @@ export const RemotionRoot: React.FC = () => {
             ],
             totalPullRequests: 614,
             login: "JonnyBurger",
-            sampleStarredRepos: [
-              "remotion-dev/remotion",
-              "Shopify/React-native-skia",
-              "Shopify/argo",
-              "Shopify/argo-checkout",
-              "Shopify/argo-admin",
-              "Shopify/argo-checkout",
-              "Shopify/argo-admin",
-              "Shopify/argo-checkout",
-              "Shopify/argo-admin",
-              "Shopify/argo-checkout",
-            ],
+            sampleStarredRepos: SAMPLE_STARRED_REPOS,
             timeUntilTabletHasEntered: 200,
             timeUntilTabletHides: 200,
           }}

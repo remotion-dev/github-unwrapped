@@ -17,7 +17,7 @@ export const getMoreStars = async ({
   let cursor: string | null = null;
   let safety = 0;
 
-  const pullRequestData: Array<{ name: string }> = [];
+  const pullRequestData: Array<{ name: string; owner: string }> = [];
 
   while (!done && safety < 10) {
     const data = (await executeGitHubGraphQlQuery({
@@ -28,7 +28,7 @@ export const getMoreStars = async ({
 
     const stars = data.starredRepositories.edges
       .filter((n) => n.starredAt.startsWith(String(YEAR_TO_REVIEW)))
-      .map((n) => ({ name: n.node.name }));
+      .map((n) => ({ name: n.node.name, owner: n.node.owner.login }));
 
     if (
       stars.length === 0 ||

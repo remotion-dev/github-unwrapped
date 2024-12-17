@@ -6,7 +6,6 @@ import {
   Img,
   Sequence,
   interpolate,
-  interpolateColors,
   spring,
   staticFile,
   useCurrentFrame,
@@ -21,6 +20,8 @@ import { IssueNumber } from "../Issues/IssueNumber";
 import { FPS } from "../Issues/make-ufo-positions";
 import { accentColorToGradient } from "../Opening/TitleImage";
 import { isMobileDevice } from "../Opening/devices";
+import { PaneEffect } from "../PaneEffect";
+import { PANE_BACKGROUND } from "../TopLanguages/Pane";
 import * as FrontRocketSource from "../TopLanguages/svgs/FrontRocketSource";
 import { PlanetEntrance } from "./PlanetEntrance";
 
@@ -59,19 +60,17 @@ const mapRowToMove: Record<number, number> = {
 };
 
 const Dot: React.FC<{
-  i: number;
-  data: number;
-  targetColumn: number;
-  frame: number;
-  maxContributions: number;
+  readonly i: number;
+  readonly data: number;
+  readonly targetColumn: number;
+  readonly frame: number;
+  readonly maxContributions: number;
 }> = ({ i, data, targetColumn, maxContributions, frame }) => {
   const col = Math.floor(i / 7);
   const row: number = i % 7;
 
   let top = 0;
-  let fadeOutOpacity = 1;
   let left = 0;
-  let glow = 1;
   let opacity = Math.max(
     0.1,
     data >= maxContributions
@@ -80,12 +79,11 @@ const Dot: React.FC<{
         ? Math.max(data / maxContributions, 0.25)
         : 0,
   );
-  let borderRadius = 4;
-  let glowOpacity = 0;
+  const borderRadius = 4;
 
   let size = SIZE;
 
-  let color = `rgba(0, 166, 255, 1)`;
+  const color = `#070842`;
 
   const startAbsolute = START_SPREAD + 15;
 
@@ -97,41 +95,15 @@ const Dot: React.FC<{
     top = col >= targetColumn ? mapRowToMove[row] : (1 - f) * mapRowToMove[row];
     opacity = col >= targetColumn ? 0 : opacity;
   } else if (frame < START_SPREAD) {
-    borderRadius = interpolate(
-      frame,
-      [TRANSITION_GLOW, START_SPREAD],
-      [4, SIZE / 2],
-    );
-
     size = interpolate(
       frame,
       [TRANSITION_GLOW, START_SPREAD],
       [SIZE, SIZE * 0.95],
     );
-
-    color = interpolateColors(
-      frame,
-      [TRANSITION_GLOW, START_SPREAD],
-      [
-        `rgba(0, 166, 255, 1)`,
-        `rgba(255, 255, 255, ${opacity < 0.8 ? 0.8 : 1})`,
-      ],
-    );
   } else {
     size = SIZE * 0.95;
-    color = `rgba(255, 255, 255, ${opacity < 0.8 ? 0.8 : 1})`;
-    borderRadius = SIZE / 2;
 
     const noise = appearDelays[i];
-
-    glowOpacity = interpolate(
-      frame,
-      [START_SPREAD, START_SPREAD + 15],
-      [0, 1],
-      {
-        extrapolateRight: "clamp",
-      },
-    );
 
     const moveProgress = interpolate(
       frame,
@@ -144,13 +116,6 @@ const Dot: React.FC<{
     );
 
     const noiseAngle = Math.atan2(noise.noiseY, noise.noiseX);
-
-    const maxGlow = interpolate(data, [0, maxContributions], [0, 6], {
-      extrapolateRight: "clamp",
-    });
-
-    glow =
-      interpolate(moveProgress, [0, 1], [6, maxGlow]) + (2 * moveProgress) ** 2;
 
     const d = interpolate(
       frame,
@@ -179,23 +144,7 @@ const Dot: React.FC<{
 
     left = moveProgress * xDelta + pushFromCenter;
     top = moveProgress * yDelta + pushFromTop;
-
-    fadeOutOpacity = interpolate(
-      frame,
-      [START_SPREAD + 70, START_SPREAD + 80],
-      [1, 0],
-      {
-        extrapolateRight: "clamp",
-      },
-    );
-
-    // opacity =
-    //   1 - interpolate(frame, [START_SPREAD + 50, START_SPREAD + 120], [1, 1]);
   }
-
-  // if (data === 0 && frame > START_SPREAD + 5) {
-  //   return null;
-  // }
 
   return (
     <div
@@ -230,31 +179,9 @@ const Dot: React.FC<{
           justifyItems: "center",
         }}
       >
-        {glow > 0 && (
-          <AbsoluteFill
-            style={{
-              opacity: frame > START_SPREAD + 60 ? fadeOutOpacity : 1,
-              transform: `scale(${glow})`,
-              transformOrigin: "center",
-              width: size,
-              height: size,
-              top: 1,
-              left: 1,
-            }}
-          >
-            <Img
-              src={staticFile("blurred-dot-white.png")}
-              style={{
-                opacity: glowOpacity,
-                width: "100%",
-                height: "100%",
-              }}
-            />
-          </AbsoluteFill>
-        )}
         <div
           style={{
-            opacity: 1 - glowOpacity,
+            opacity: 1,
             width: "100%",
             height: "100%",
             backgroundColor: color,
@@ -267,10 +194,10 @@ const Dot: React.FC<{
 };
 
 export const ContributionsScene: React.FC<{
-  contributionData: number[];
-  total: number;
-  rocket: Rocket;
-  planet: Planet;
+  readonly contributionData: number[];
+  readonly total: number;
+  readonly rocket: Rocket;
+  readonly planet: Planet;
 }> = ({ contributionData, total, rocket, planet }) => {
   const f = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -322,6 +249,33 @@ export const ContributionsScene: React.FC<{
         style={{
           justifyContent: "center",
           alignItems: "center",
+          zIndex: 0,
+        }}
+      >
+        <PaneEffect
+          padding={20}
+          pinkHighlightOpacity={1}
+          whiteHighlightOpacity={1}
+          innerRadius={20}
+          style={{}}
+        >
+          <div
+            style={{
+              width: GRID_WIDTH,
+              height: GRID_HEIGHT,
+              background: PANE_BACKGROUND,
+              padding: 20,
+              boxSizing: "content-box",
+              borderRadius: 20,
+            }}
+          />
+        </PaneEffect>
+      </AbsoluteFill>
+      <AbsoluteFill
+        style={{
+          justifyContent: "center",
+          alignItems: "center",
+          zIndex: 1,
         }}
       >
         <div

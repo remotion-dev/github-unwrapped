@@ -134,7 +134,7 @@ export const getStatsFromGitHub = async ({
     topHour: String(mostHour[0]) as Hour,
     graphData,
     contributionData: allDays.map((d) => d.contributionCount),
-    sampleStarredRepos: stars.map((s) => s.name),
+    sampleStarredRepos: stars.map((s) => ({ name: s.name, author: s.owner })),
     allWeekdays: productivity.days,
   };
 };

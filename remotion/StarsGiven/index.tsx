@@ -5,6 +5,7 @@ import { AbsoluteFill, Sequence, interpolate, useCurrentFrame } from "remotion";
 import { z } from "zod";
 import {
   productivityPerHourSchema,
+  starredRepoExample,
   topHourSchema,
   topWeekdaySchema,
 } from "../../src/config";
@@ -33,7 +34,7 @@ export const starsGivenSchema = z.object({
   graphData: z.array(productivityPerHourSchema),
   totalPullRequests: z.number(),
   login: z.string(),
-  sampleStarredRepos: z.array(z.string()),
+  sampleStarredRepos: z.array(starredRepoExample),
 });
 
 export const getStarFlyDuration = ({ starsGiven }: { starsGiven: number }) => {
@@ -142,7 +143,8 @@ export const StarsGiven: React.FC<Props> = ({
       if (hits[lastItemWithFrameVisible + 1] === undefined) {
         return {
           opacity: 1,
-          text: sampleStarredRepos[lastItemWithFrameVisible],
+          text: sampleStarredRepos[lastItemWithFrameVisible].name,
+          text2: sampleStarredRepos[lastItemWithFrameVisible].author,
         };
       }
 
@@ -151,7 +153,8 @@ export const StarsGiven: React.FC<Props> = ({
 
       return {
         opacity,
-        text: sampleStarredRepos[lastItemWithFrameVisible],
+        text: sampleStarredRepos[lastItemWithFrameVisible].name,
+        text2: sampleStarredRepos[lastItemWithFrameVisible + 1].author,
       };
     }
 

@@ -14,15 +14,15 @@ import type { RepoText } from "./HeadsUpDisplay";
 import { getTransitionToPullRequest } from "./transition-to-pull-request";
 
 export const AnimatedCockpit: React.FC<{
-  xShake: number;
-  yShake: number;
-  rotationShake: number;
-  totalPullRequests: number;
-  repoText: RepoText | null;
-  starCount: number;
-  totalStarCount: number;
-  durationOfStars: number;
-  timeUntilTabletHides: number;
+  readonly xShake: number;
+  readonly yShake: number;
+  readonly rotationShake: number;
+  readonly totalPullRequests: number;
+  readonly repoText: RepoText | null;
+  readonly starCount: number;
+  readonly totalStarCount: number;
+  readonly durationOfStars: number;
+  readonly timeUntilTabletHides: number;
 }> = ({
   xShake,
   yShake,
