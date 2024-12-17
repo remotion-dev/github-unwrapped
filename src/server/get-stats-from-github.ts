@@ -1,5 +1,6 @@
 import { interpolate } from "remotion";
 import type { Hour, ProfileStats } from "../config.js";
+import { YEAR_TO_REVIEW } from "../helpers/year.js";
 import { getMostProductive } from "./commits/commits.js";
 import { getTimesOfDay } from "./commits/get-times-of-day.js";
 import { getALotOfGithubCommits } from "./commits/github-commits.js";
@@ -106,7 +107,7 @@ export const getStatsFromGitHub = async ({
   const allDays = baseData.contributionsCollection.contributionCalendar.weeks
     .map((w) => w.contributionDays)
     .flat(1)
-    .filter((d) => d.date.startsWith("2024"));
+    .filter((d) => d.date.startsWith(String(YEAR_TO_REVIEW)));
 
   return {
     totalPullRequests: morePullRequests.length,

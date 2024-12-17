@@ -3,6 +3,7 @@ import { useNavigate } from "@tanstack/react-router";
 import React, { useCallback } from "react";
 import { InstagramIcon } from "../../icons/InstagramIcon";
 import { ShareIcon } from "../../icons/ShareIcon";
+import { YEAR_TO_REVIEW } from "../../src/helpers/year";
 import { Button } from "../Button/Button";
 import { useUserVideo } from "../context";
 import { shareRoute, videoRoute } from "../routing";
@@ -70,8 +71,8 @@ export const MobileActionsContainer: React.FC<{
 
     const sharableContent = {
       files: [loadingState.file],
-      title: "Your GitHub Unwrapped 2024",
-      text: "Check out my #GitHubUnwrapped 2024! Get yours now on https://githubunwrapped.com",
+      title: `Your GitHub Unwrapped ${YEAR_TO_REVIEW}`,
+      text: `Check out my #GitHubUnwrapped ${YEAR_TO_REVIEW}! Get yours now on https://githubunwrapped.com`,
     };
     const sharable = navigator.canShare && navigator.canShare(sharableContent);
     if (!sharable) {

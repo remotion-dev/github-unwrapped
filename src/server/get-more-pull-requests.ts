@@ -1,3 +1,4 @@
+import { YEAR_TO_REVIEW } from "../helpers/year.js";
 import { executeGitHubGraphQlQuery } from "./fetch-stats.js";
 import type { PullRequestQueryResponse } from "./queries/pull-request.query.js";
 import { pullRequestQuery } from "./queries/pull-request.query.js";
@@ -24,7 +25,7 @@ export const getMorePullRequests = async ({
     })) as PullRequestQueryResponse;
 
     const prs = data.pullRequests.nodes
-      .filter((n) => n.createdAt.startsWith("2024"))
+      .filter((n) => n.createdAt.startsWith(String(YEAR_TO_REVIEW)))
       .map((n) => ({ createdAt: n.createdAt }));
 
     if (prs.length === 0 || prs.length !== data.pullRequests.nodes.length) {

@@ -1,3 +1,4 @@
+import { YEAR_TO_REVIEW } from "../../src/helpers/year";
 import { Stars } from "../Home/Stars";
 import { RadialGradient } from "../RadialGradient";
 import { AboutItem } from "./AboutItem";
@@ -7,8 +8,7 @@ import { content } from "./content";
 import styles from "./styles.module.css";
 
 const headerProps = {
-  description:
-    "With this page we hope to answer all your questions about GitHub Unwrapped 2024.",
+  description: `With this page we hope to answer all your questions about GitHub Unwrapped ${YEAR_TO_REVIEW}.`,
   title: "About",
 };
 

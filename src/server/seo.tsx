@@ -6,6 +6,7 @@ import { getRandomGithubToken } from "./github-token.js";
 import { backendCredentials } from "../helpers/domain.js";
 import { getStatsFromGitHubOrCache } from "./get-stats-from-github-or-cache.js";
 import { sendDiscordMessage } from "./discord.js";
+import { YEAR_TO_REVIEW } from "../helpers/year.js";
 
 type AppHead = {
   status: number;
@@ -18,12 +19,11 @@ const makeAppHead = async (
   params: { handleUsername: boolean; stats: boolean },
 ): Promise<AppHead> => {
   if (username === null) {
-    const title = `#GitHubUnwrapped 2024 - Your coding year in review`;
+    const title = `#GitHubUnwrapped - Your coding year in review`;
 
     const mainSocialPreview = `${backendCredentials().VITE_HOST}/og_image.jpg`;
     const mainCanonical = `${backendCredentials().VITE_HOST}`;
-    const mainDescription =
-      "Get your personalized video of your GitHub activity in 2024.";
+    const mainDescription = `Get your personalized video of your GitHub activity in ${YEAR_TO_REVIEW}.`;
 
     return {
       status: 200,

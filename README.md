@@ -9,7 +9,6 @@ A platform that generates a year-in-review video for each GitHub user. Built wit
 Want to make your own year-in-review for your users?
 
 - **Developers**: Feel free to fork and use this repository as a template! Note the legal disclaimers at the bottom of this README.
-- **Non-developers**: Write to [hi@remotion.dev](mailto:hi@remotion.dev) for a free consultation in Fall 2024!
 
 ## Setup
 

@@ -1,6 +1,6 @@
+import { YEAR_TO_REVIEW } from "../../src/helpers/year";
 import { signInWithGitHubLink } from "../sign-in-with-github";
 import styles from "../styles.module.css";
-import { EmailForm } from "./EmailForm";
 
 export type AboutItemContent = {
   id?: string;
@@ -71,6 +71,26 @@ export const content: Array<AboutItemContent> = [
           (can be done up to three times).
         </p>
       </>
+    ),
+  },
+  {
+    id: "same-as-2023",
+    icon: "/calendar.svg",
+    title: "Is this the same as 2023?",
+    description: "",
+    node: (
+      <div>
+        <p>
+          Yes, mostly - the teams from Remotion and For One Red have been busy
+          this year with other projects.
+        </p>
+        <br />
+        <p>
+          For every new campaign we do, we want to excel and improve on the
+          previous one – we decided to take a break and are considering a new
+          campaign for 2025!
+        </p>
+      </div>
     ),
   },
   {
@@ -153,31 +173,25 @@ export const content: Array<AboutItemContent> = [
     title: "Want to host a year in review for your users?",
     description: ``,
     node: (
-      <>
-        <p>
-          Want to give your users their personalized video at the end of 2024?
-          <br />
-          <br />
-          <strong>Developers</strong>: <br />
-          Check out{" "}
-          <a className={styles.aboutLink} href="https://www.remotion.dev">
-            Remotion
-          </a>{" "}
-          and the source code of{" "}
-          <a
-            className={styles.aboutLink}
-            href="https://github.com/remotion-dev/github-unwrapped-2023"
-          >
-            this project
-          </a>
-          !<br />
-          <br /> <strong>Non-developers</strong>:
-          <br />
-          Drop your company email and we{"'"}ll contact you in September 2024
-          for a free consultation!
-        </p>
-        <EmailForm />
-      </>
+      <p>
+        Want to give your users their personalized video at the end of{" "}
+        {YEAR_TO_REVIEW}?
+        <br />
+        <br />
+        <strong>Developers</strong>: <br />
+        Check out{" "}
+        <a className={styles.aboutLink} href="https://www.remotion.dev">
+          Remotion
+        </a>{" "}
+        and the source code of{" "}
+        <a
+          className={styles.aboutLink}
+          href="https://github.com/remotion-dev/github-unwrapped-2023"
+        >
+          this project
+        </a>
+        !<br />
+      </p>
     ),
   },
   {

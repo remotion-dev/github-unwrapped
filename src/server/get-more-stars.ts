@@ -1,3 +1,4 @@
+import { YEAR_TO_REVIEW } from "../helpers/year.js";
 import { executeGitHubGraphQlQuery } from "./fetch-stats.js";
 import { getQuery } from "./queries/query.js";
 import {
@@ -26,7 +27,7 @@ export const getMoreStars = async ({
     })) as StarredReposQueryResponse;
 
     const stars = data.starredRepositories.edges
-      .filter((n) => n.starredAt.startsWith("2024"))
+      .filter((n) => n.starredAt.startsWith(String(YEAR_TO_REVIEW)))
       .map((n) => ({ name: n.node.name }));
 
     if (
