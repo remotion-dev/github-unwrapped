@@ -7,7 +7,7 @@ export type RepoText = {
 };
 
 export const HeadsUpDisplay: React.FC<{
-  textToDisplay: RepoText | null;
+  readonly textToDisplay: RepoText | null;
 }> = ({ textToDisplay }) => {
   return (
     <AbsoluteFill
@@ -26,8 +26,14 @@ export const HeadsUpDisplay: React.FC<{
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          color: textToDisplay ? "white" : "#AC8A4B",
-          fontSize: 40,
+          color: "white",
+          fontSize: textToDisplay
+            ? textToDisplay.text.length > 25
+              ? 22
+              : textToDisplay.text.length > 15
+                ? 30
+                : 40
+            : 40,
         }}
       >
         <span

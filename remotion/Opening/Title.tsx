@@ -64,6 +64,16 @@ export const OpeningTitle: React.FC<
 
   const rotateX = interpolate(exitProgress, [0, 1], [0, Math.PI * 0.2]);
 
+  const effectProgress = spring({
+    fps,
+    frame,
+    config: {
+      damping: 200,
+    },
+    delay: 70,
+    durationInFrames: 20,
+  });
+
   return (
     <AbsoluteFill
       style={{
@@ -84,6 +94,9 @@ export const OpeningTitle: React.FC<
             rotation + rotateX
           }rad) translateY(${translateY}px)`,
         }}
+        whiteHighlightOpacity={1}
+        pinkHighlightOpacity={effectProgress}
+        padding={effectProgress * 20}
       >
         <div
           style={{

@@ -75,7 +75,12 @@ export const EndScene: React.FC<z.infer<typeof endSceneSchema>> = ({
     });
 
   return (
-    <AbsoluteFill>
+    <AbsoluteFill
+      style={{
+        backgroundColor: "black",
+        opacity: enterProgress,
+      }}
+    >
       <AbsoluteFill style={container}>
         <PlanetBackground planet={planet} />
         <HidePlanets exitProgress={exitProgress} planet={planet}>

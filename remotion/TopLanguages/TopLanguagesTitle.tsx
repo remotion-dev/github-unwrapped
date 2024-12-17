@@ -32,6 +32,17 @@ export const TopLanguagesTitle: React.FC<z.infer<typeof topLanguagesTitle>> = ({
     <PaneEffect
       style={{ scale: String(spr) }}
       innerRadius={INNER_BORDER_RADIUS + PADDING}
+      pinkHighlightOpacity={1}
+      whiteHighlightOpacity={1}
+      padding={
+        spring({
+          fps,
+          frame,
+          config: {
+            damping: 200,
+          },
+        }) * 20
+      }
     >
       <div
         style={{

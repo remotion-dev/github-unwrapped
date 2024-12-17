@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import {
-  PANE_BACKGROUND,
+  PANE_BACKGROUND_OPAQUE,
   PANE_BORDER,
   PANE_TEXT_COLOR,
 } from "../TopLanguages/Pane";
@@ -9,21 +9,34 @@ import { MergeNumber } from "./MergeNumber";
 import { RemotionShineEffect } from "./RemotionShineEffect";
 import { PATH_TARGET } from "./make-random-path";
 
+const SIZE = 300;
+const PADDING = 30;
+
+const outer: React.CSSProperties = {
+  padding: PADDING,
+  position: "absolute",
+  transform: "translate(-50%, -50%)",
+  left: PATH_TARGET.x - PADDING,
+  top: PATH_TARGET.y - PADDING,
+  height: SIZE + PADDING * 2,
+  width: SIZE + PADDING * 2,
+  borderRadius: "50%",
+  backgroundColor: "rgba(255, 255, 255, 0.1)",
+};
+
 export const MergeStat: React.FC<{
-  num: number;
-  totalNum: number;
+  readonly num: number;
+  readonly totalNum: number;
 }> = ({ num, totalNum }) => {
   const container: React.CSSProperties = useMemo(() => {
     return {
-      backgroundColor: PANE_BACKGROUND,
+      backgroundColor: PANE_BACKGROUND_OPAQUE,
       border: PANE_BORDER,
-      height: 300,
-      width: 300,
+      height: SIZE,
+      width: SIZE,
       borderRadius: "50%",
-      position: "absolute",
       left: PATH_TARGET.x,
       top: PATH_TARGET.y,
-      transform: "translate(-50%, -50%)",
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
@@ -51,21 +64,23 @@ export const MergeStat: React.FC<{
   }, []);
 
   return (
-    <div style={container}>
-      <RemotionShineEffect
-        height={300}
-        width={300}
-        id="pullrequest"
-        borderRadius={150}
-      />
-      <div style={inner}>
-        <MergeIcon />
-        <MergeNumber num={num} />
-      </div>
-      <div style={subtitle}>
-        pull {totalNum === 1 ? "request" : "requests"}
-        <br />
-        merged
+    <div style={outer}>
+      <div style={container}>
+        <RemotionShineEffect
+          height={300}
+          width={300}
+          id="pullrequest"
+          borderRadius={150}
+        />
+        <div style={inner}>
+          <MergeIcon />
+          <MergeNumber num={num} />
+        </div>
+        <div style={subtitle}>
+          pull {totalNum === 1 ? "request" : "requests"}
+          <br />
+          merged
+        </div>
       </div>
     </div>
   );

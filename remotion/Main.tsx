@@ -146,7 +146,7 @@ export const Main: React.FC<Schema> = ({
   return (
     <AbsoluteFill
       style={{
-        backgroundColor: "black",
+        backgroundColor: "#060842",
       }}
     >
       <Audio src={soundTrack} />

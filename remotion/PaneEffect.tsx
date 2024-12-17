@@ -5,7 +5,17 @@ export const PaneEffect: React.FC<{
   readonly children: React.ReactNode;
   readonly innerRadius: number;
   readonly style: React.CSSProperties;
-}> = ({ children, innerRadius, style }) => {
+  readonly whiteHighlightOpacity: number;
+  readonly pinkHighlightOpacity: number;
+  readonly padding: number;
+}> = ({
+  children,
+  innerRadius,
+  style,
+  whiteHighlightOpacity,
+  pinkHighlightOpacity,
+  padding,
+}) => {
   return (
     <div
       style={{
@@ -19,6 +29,7 @@ export const PaneEffect: React.FC<{
             height: "100%",
             width: "100%",
             zIndex: -1,
+            opacity: whiteHighlightOpacity,
           }}
         >
           <Img
@@ -27,8 +38,8 @@ export const PaneEffect: React.FC<{
               marginTop: "-5%",
               width: "100%",
               objectFit: "fill",
-              scale: String(1.6),
-              opacity: 0.1,
+              scale: String(1.45),
+              opacity: 0.2,
             }}
             src={staticFile("WhiteHighlight.png")}
           />
@@ -51,6 +62,7 @@ export const PaneEffect: React.FC<{
               marginTop: "-5%",
               aspectRatio: "1 / 1",
               scale: "4",
+              opacity: pinkHighlightOpacity,
             }}
             src={staticFile("PinkHighlight.png")}
           />
@@ -59,10 +71,10 @@ export const PaneEffect: React.FC<{
 
       <div
         style={{
-          padding: 20,
+          padding,
           backgroundColor: "rgba(255, 255, 255, 0.1)",
-          border: "1px solid rgba(255, 255, 255, 0.2)",
-          borderRadius: innerRadius + 20,
+          border: padding === 0 ? "0" : "1px solid rgba(255, 255, 255, 0.2)",
+          borderRadius: innerRadius + padding,
         }}
       >
         {children}
