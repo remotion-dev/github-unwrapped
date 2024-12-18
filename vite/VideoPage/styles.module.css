@@ -69,6 +69,7 @@
   font-size: 20px;
   margin-left: 12px;
   align-items: center;
+  color: white;
 
   @media only screen and (min-width: 40em) {
     display: none;
