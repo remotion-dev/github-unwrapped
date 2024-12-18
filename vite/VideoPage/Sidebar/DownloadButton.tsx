@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { DownloadIcon } from "../../../icons/DownloadIcon";
 import { YEAR_TO_REVIEW } from "../../../src/helpers/year";
 import { Button } from "../../Button/Button";
-import { HoverEffect } from "../../Button/HoverEffect";
 import { useUserVideo } from "../../context";
+import shadow from "./shadow.module.css";
 import styles from "./styles.module.css";
 
 const getWindowSize = () => {
@@ -134,21 +134,38 @@ export const DownloadButton: React.FC<{
 
   if (status.type === "video-available") {
     return (
-      <Button
-        hoverEffect
-        className={classNames.join(" ")}
+      <a
+        type="button"
+        className={[shadow.newdownload].join(" ")}
         style={{ ...style }}
-        onClick={() => {
-          const a = document.createElement("a");
-          a.href = status.url;
-          a.setAttribute("download", `github-unwrapped-${YEAR_TO_REVIEW}.mp4`);
-          a.click();
-        }}
+        href={status.url}
+        download={`github-unwrapped-${YEAR_TO_REVIEW}.mp4`}
       >
-        <HoverEffect />
-        <DownloadIcon />
-        Download Video
-      </Button>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            backgroundColor: "white",
+            position: "absolute",
+            inset: 0,
+            borderRadius: 5,
+            justifyContent: "center",
+            alignItems: "center",
+            color: "var(--pane-text)",
+          }}
+        >
+          <DownloadIcon />
+          <div
+            style={{
+              marginLeft: 10,
+              fontWeight: "bold",
+              fontSize: 16,
+            }}
+          >
+            Download Video
+          </div>
+        </div>
+      </a>
     );
   }
 

@@ -1,0 +1,26 @@
+.newdownload {
+  position: relative;
+  width: 100%;
+  display: block;
+  padding: 0;
+  height: 50px;
+}
+
+.newdownload::before {
+  transition: filter 0.3s ease;
+  content: "";
+}
+
+.newdownload:hover::before {
+  color: white;
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  transform: translateZ(-1px);
+  pointer-events: none;
+  background: linear-gradient(123deg, #fa6f00, #e433ff 50%, #8575ff);
+  background-clip: content-box;
+  padding: 1px;
+  z-index: 0;
+  filter: blur(15px);
+}

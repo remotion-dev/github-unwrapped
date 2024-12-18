@@ -6,7 +6,6 @@ import { AboutItem } from "../About/AboutItem";
 import { DesktopHeader } from "../About/DesktopHeader";
 import { MobileHeader } from "../About/MobileHeader";
 import styles from "../About/styles.module.css";
-import { Stars } from "../Home/Stars";
 import { RadialGradient } from "../RadialGradient";
 import { shareRoute } from "../routing";
 import { useShareContent } from "./content";
@@ -25,7 +24,6 @@ export const SharePage = () => {
   return (
     <div className={styles.wrapper}>
       <RadialGradient />
-      <Stars />
       <div className={styles.contentWrapper}>
         <MobileHeader {...headerProps} />
         <DesktopHeader {...headerProps} />

@@ -73,9 +73,8 @@
   width: 32px;
   aspect-ratio: 1;
   border-radius: 50%;
-  background-color: rgba(23, 24, 35, 1);
-  border: 1px solid rgba(55, 57, 69, 1);
-  color: rgba(80, 126, 255, 1);
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.4);
   display: flex;
   justify-content: center;
   align-items: center;

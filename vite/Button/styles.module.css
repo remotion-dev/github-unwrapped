@@ -23,7 +23,6 @@
 /* SECODARY BUTTON STYLES */
 
 .secondaryButton {
-  background-color: #484a5b;
   border: 1px solid var(--button-border-color);
 }
 

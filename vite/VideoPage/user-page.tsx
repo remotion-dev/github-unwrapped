@@ -4,9 +4,11 @@ import { computeCompositionParameters, type Rocket } from "../../src/config";
 import { MobileHeader } from "../About/MobileHeader";
 import { NotFound } from "../NotFound/NotFound";
 import { useUserVideo } from "../context";
+import "../variables.css";
 import { VideoPageBackground } from "./Background";
 import { VideoBox } from "./VideoBox";
 import styles from "./styles.module.css";
+
 declare global {
   interface Window {
     __USER__: ProfileStats | "not-found";
