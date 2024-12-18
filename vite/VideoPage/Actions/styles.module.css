@@ -62,18 +62,14 @@
   gap: 12px;
   align-items: center;
   color: var(--pane-text);
-  transition: font-weight 0.2s ease-in-out;
-
-  &:hover {
-    font-weight: 600;
-  }
+  font-weight: 600;
 }
 
 .furtherActionIconContainer {
   width: 32px;
   aspect-ratio: 1;
   border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 1);
   border: 1px solid rgba(255, 255, 255, 0.4);
   display: flex;
   justify-content: center;

@@ -12,7 +12,6 @@ export const FurtherActions: React.FC = () => {
 
   return (
     <div className={styles.furtherActionsWrapper}>
-      <div className={styles.furtherActionsTitle}>Still curious?</div>
       <div className={styles.furtherActionsButtonContainer}>
         <Link to="/">
           <FurtherAction
