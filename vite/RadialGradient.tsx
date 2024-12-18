@@ -7,7 +7,7 @@ export const RadialGradient: React.FC = () => {
       style={{
         zIndex: -1,
         background:
-          "radial-gradient(121.11% 121.11% at 47.08% 100%, #0F102E 0%, #000 100%)",
+          "linear-gradient(180deg, #060842 0%, #474280 50%, #396A91 100%)",
       }}
     />
   );

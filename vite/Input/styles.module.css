@@ -1,11 +1,11 @@
 .input {
   padding: 0 16px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.1);
   border-radius: 5px;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: white;
   display: flex;
   align-items: center;
-  caret-color: white;
+  caret-color: var(--input-color);
   color: white;
   flex: 1;
   font-size: 18px;
@@ -22,12 +22,12 @@
 }
 
 .input:focus {
-  border-color: var(--button-border-color);
+  border-color: var(--input-color);
   outline: none;
 }
 
 .input::placeholder {
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(0, 0, 0, 0.7);
   opacity: 0.4;
 }
 

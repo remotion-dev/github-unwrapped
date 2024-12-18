@@ -2,13 +2,13 @@ import React from "react";
 import styles from "./styles.module.css";
 
 export const Input: React.FC<{
-  text: string;
-  setText: (v: string) => void;
-  disabled?: boolean;
-  placeHolder?: string;
-  style?: React.CSSProperties;
-  invalid?: boolean;
-  className?: string;
+  readonly text: string;
+  readonly setText: (v: string) => void;
+  readonly disabled?: boolean;
+  readonly placeHolder?: string;
+  readonly style?: React.CSSProperties;
+  readonly invalid?: boolean;
+  readonly className?: string;
 }> = ({ text, setText, disabled, placeHolder, style, invalid, className }) => {
   return (
     <input

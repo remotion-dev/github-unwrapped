@@ -3,13 +3,13 @@ import React from "react";
 import styles from "./styles.module.css";
 
 export const Box: React.FC<{
-  children: ReactNode;
-  style?: React.CSSProperties;
-  className?: string;
+  readonly children: ReactNode;
+  readonly style?: React.CSSProperties;
+  readonly className?: string;
 }> = ({ style, className, children }) => {
   return (
     <div className={[styles.box, className].join(" ")} style={style}>
-      {children}
+      <div className={styles.boxinner}>{children}</div>
     </div>
   );
 };

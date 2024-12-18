@@ -1,12 +1,18 @@
 .box {
-  background: #191c29eb;
-  border: 1px solid rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(5px);
-  overflow: visible;
   width: calc(100% - 24px);
   max-width: 1000px;
-  border-radius: 10px;
+  border-radius: 25px;
   height: fit-content;
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--pane-text);
+}
+
+.boxinner {
+  background: var(--pane-bg);
+  border-radius: 10px;
 }
 
 /*

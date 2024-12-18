@@ -27,18 +27,12 @@
   }
 }
 
-.homeBoxWrapper {
-  @media only screen and (min-width: 40em) {
-  }
-}
-
 .title {
   font-size: 32px;
   font-weight: 700;
   line-height: 1.1;
   margin-bottom: 12px;
-  background: linear-gradient(270.02deg, #ddd 20.63%, #fff 99.87%);
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  background: linear-gradient(90.02deg, var(--pane-text) 80.63%, #000 99.87%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
