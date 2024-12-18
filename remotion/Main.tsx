@@ -226,9 +226,7 @@ export const Main: React.FC<Schema> = ({
           durationInFrames={END_SCENE_DURATION}
           offset={-CONTRIBUTIONS_SCENE_EXIT_TRANSITION}
         >
-          <AbsoluteFill style={{ background: "black" }}>
-            <EndScene planet={planet} rocket={rocket} />
-          </AbsoluteFill>
+          <EndScene planet={planet} rocket={rocket} />
         </Series.Sequence>
       </Series>
       {isMobileDevice() ? null : (
