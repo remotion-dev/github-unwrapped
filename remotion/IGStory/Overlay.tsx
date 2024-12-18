@@ -81,6 +81,7 @@ export const Overlay: React.FC<{
           <BarChart graphData={weekdays} />
         </div>
         <ContributionGraphic
+          login={login}
           longestStreak={longestStreak}
           totalContributions={totalContributions}
           graphData={contributionData}

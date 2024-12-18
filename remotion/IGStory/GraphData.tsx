@@ -60,7 +60,8 @@ export const ContributionGraphic: React.FC<{
   readonly graphData: number[];
   readonly totalContributions: number;
   readonly longestStreak: number;
-}> = ({ graphData, totalContributions, longestStreak }) => {
+  readonly login: string;
+}> = ({ graphData, totalContributions, longestStreak, login }) => {
   return (
     <div
       style={{
@@ -76,7 +77,7 @@ export const ContributionGraphic: React.FC<{
           paddingLeft: 20,
         }}
       >
-        <Stat align="left" data={2024} label="Longest streak" />
+        <Stat align="left" data={2024} label={login} />
         <div style={{ flex: 1 }} />
         <Stat align="right" data={longestStreak} label="Longest streak" />
         <div style={{ width: 30 }} />

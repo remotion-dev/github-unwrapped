@@ -18,6 +18,8 @@ export const Planets: React.FC<{
         flexDirection: "row",
         overflow: "hidden",
         paddingLeft: 30,
+        paddingTop: 10,
+        paddingBottom: 10,
         borderBottom: `1px solid rgb(183, 171, 239)`,
       }}
     >
