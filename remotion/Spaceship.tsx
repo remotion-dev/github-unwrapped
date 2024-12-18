@@ -13,7 +13,7 @@ export const getSideRocketSource = (rocket: Rocket) => {
   return staticFile("rocket-side-yellow.png");
 };
 
-export const RocketSide = (props: { rocket: Rocket }) => (
+export const RocketSide = (props: { readonly rocket: Rocket }) => (
   <AbsoluteFill
     style={{
       justifyContent: "center",

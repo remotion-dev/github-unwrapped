@@ -2,9 +2,9 @@ import React from "react";
 import { interpolateColors } from "remotion";
 
 const Dot: React.FC<{
-  index: number;
-  value: number;
-  max: number;
+  readonly index: number;
+  readonly value: number;
+  readonly max: number;
 }> = ({ index, max, value }) => {
   const row = index % 7;
   const column = Math.floor(index / 7);
@@ -31,7 +31,7 @@ const Dot: React.FC<{
 };
 
 export const ContributionGraphic: React.FC<{
-  graphData: number[];
+  readonly graphData: number[];
 }> = ({ graphData }) => {
   return (
     <div

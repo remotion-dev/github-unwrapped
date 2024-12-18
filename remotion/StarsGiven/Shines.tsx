@@ -109,8 +109,8 @@ export const Shine: React.FC<z.infer<typeof shineSchema>> = ({
 };
 
 const ShineSequence: React.FC<{
-  rotationShake: number;
-  i: number;
+  readonly rotationShake: number;
+  readonly i: number;
 }> = ({ i, rotationShake }) => {
   return (
     <AbsoluteFill
@@ -133,9 +133,9 @@ const sequenceStyle = {
 };
 
 export const Shines: React.FC<{
-  xShake: number;
-  yShake: number;
-  rotationShake: number;
+  readonly xShake: number;
+  readonly yShake: number;
+  readonly rotationShake: number;
 }> = ({ xShake, yShake, rotationShake }) => {
   const sequences = useMemo(() => {
     return new Array(150).fill(true).map((a, i) => {

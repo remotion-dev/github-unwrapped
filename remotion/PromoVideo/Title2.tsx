@@ -11,7 +11,7 @@ import { RemotionShineEffect } from "../PullRequests/RemotionShineEffect";
 import type { PromoVideoLayout } from "./promo-video-layout";
 
 export const YourYearInReview: React.FC<{
-  layout: PromoVideoLayout;
+  readonly layout: PromoVideoLayout;
 }> = ({ layout }) => {
   const widthWidth = layout === "short" ? 800 : 350;
   const frame = useCurrentFrame();

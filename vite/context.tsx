@@ -20,8 +20,8 @@ type ContextType = {
 const UserVideoContext = React.createContext<ContextType | null>(null);
 
 const UserVideoProvider: React.FC<{
-  children: ReactNode;
-  user: ProfileStats;
+  readonly children: ReactNode;
+  readonly user: ProfileStats;
 }> = ({ children, user }) => {
   const { compositionParams, setRocket } = useCompositionParams(user);
   const status = useVideo({
@@ -105,7 +105,7 @@ const UserVideoProvider: React.FC<{
   );
 };
 
-export const UserVideoContextProvider: React.FC<{ children: ReactNode }> = ({
+export const UserVideoContextProvider: React.FC<{ readonly children: ReactNode }> = ({
   children,
 }) => {
   const user = window.__USER__;

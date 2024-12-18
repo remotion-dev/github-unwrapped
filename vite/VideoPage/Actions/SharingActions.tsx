@@ -12,7 +12,7 @@ export const twitterSharingLink = `https://twitter.com/intent/tweet?text=${encod
 
 export const linkedInSharingLink = "https://www.linkedin.com/";
 
-export const SharingActions: React.FC<{}> = ({}) => {
+export const SharingActions: React.FC<{}> = () => {
   const { username } = userRoute.useParams();
   return (
     <div className={styles.sharingActionsWrapper}>

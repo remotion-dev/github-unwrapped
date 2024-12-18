@@ -1,6 +1,6 @@
 import React from "react";
 
-export const Earth: React.FC<{ className?: string }> = ({ className }) => {
+export const Earth: React.FC<{ readonly className?: string }> = ({ className }) => {
   return (
     <svg
       viewBox="0 0 650 651"

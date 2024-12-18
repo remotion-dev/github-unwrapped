@@ -5,10 +5,10 @@ import type { Planet, Rocket, TopLanguage } from "../../../src/config";
 import { PlayButton } from "./PlayButton";
 
 export const PlayState: React.FC<{
-  isPlaying: boolean;
-  onClickPlayButton: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
-  onClickPauseButton: () => void;
-  props: {
+  readonly isPlaying: boolean;
+  readonly onClickPlayButton: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
+  readonly onClickPauseButton: () => void;
+  readonly props: {
     rocket: Rocket;
     planetType: Planet;
     durationInFrames: number;

@@ -11,8 +11,8 @@ import { RocketSide } from "../Spaceship";
 import { remapSpeed } from "../TopLanguages/remap-speed";
 
 export const LandingRocket: React.FC<{
-  rocket: Rocket;
-  planetType: Planet;
+  readonly rocket: Rocket;
+  readonly planetType: Planet;
 }> = ({ rocket, planetType }) => {
   const frame = useCurrentFrame();
 

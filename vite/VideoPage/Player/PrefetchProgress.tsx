@@ -3,7 +3,7 @@ import React from "react";
 import { AbsoluteFill } from "remotion";
 
 export const PrefetchProgress: React.FC<{
-  progress: number;
+  readonly progress: number;
 }> = ({ progress }) => {
   return (
     <AbsoluteFill

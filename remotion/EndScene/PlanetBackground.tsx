@@ -17,7 +17,7 @@ export const prefetchPlanetLandingBackground = (planet: Planet): string[] => {
 };
 
 export const PlanetBackground: React.FC<{
-  planet: Planet;
+  readonly planet: Planet;
 }> = ({ planet }) => {
   const frame = useCurrentFrame();
 

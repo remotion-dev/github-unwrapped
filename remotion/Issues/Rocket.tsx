@@ -23,9 +23,9 @@ export const RocketComponent = ({
   rocket,
   ...props
 }: SVGProps<SVGSVGElement> & {
-  shots: ShotWithShootDelay[];
-  jumpIn: number;
-  rocket: Rocket;
+  readonly shots: ShotWithShootDelay[];
+  readonly jumpIn: number;
+  readonly rocket: Rocket;
 }) => {
   const frame = useCurrentFrame();
 

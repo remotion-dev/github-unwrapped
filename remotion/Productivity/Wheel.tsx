@@ -42,12 +42,12 @@ const WHEEL_INIT_SPEED =
   wheelSpring({ fps: FPS, frame: 0, delay: 0 });
 
 export const Wheel: React.FC<{
-  value: string;
-  values: string[];
-  radius: number;
-  renderLabel: (value: string) => React.ReactNode;
-  delay: number;
-  soundDelay: number;
+  readonly value: string;
+  readonly values: string[];
+  readonly radius: number;
+  readonly renderLabel: (value: string) => React.ReactNode;
+  readonly delay: number;
+  readonly soundDelay: number;
 }> = ({ value, values, radius, renderLabel, delay, soundDelay }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();

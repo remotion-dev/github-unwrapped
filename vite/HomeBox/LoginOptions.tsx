@@ -5,8 +5,8 @@ import { SignInWithGitHub } from "../SignInWithGitHub";
 import styles from "./styles.module.css";
 
 type Props = {
-  userNotFound: boolean;
-  setUserNotFound: React.Dispatch<React.SetStateAction<boolean>>;
+  readonly userNotFound: boolean;
+  readonly setUserNotFound: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const getRandomUsername = () => {

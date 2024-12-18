@@ -22,7 +22,7 @@ const PLANETS_ASSETS = [
 ];
 
 export const Planets: React.FC<{
-  layout: PromoVideoLayout;
+  readonly layout: PromoVideoLayout;
 }> = ({ layout }) => {
   const { height, width, fps } = useVideoConfig();
   const frame = useCurrentFrame();

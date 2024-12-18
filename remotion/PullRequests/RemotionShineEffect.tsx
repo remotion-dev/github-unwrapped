@@ -3,10 +3,10 @@ import React, { useMemo, useRef } from "react";
 import { AbsoluteFill, useCurrentFrame } from "remotion";
 
 export const RemotionShineEffect: React.FC<{
-  borderRadius: number;
-  width: number;
-  height: number;
-  id: string;
+  readonly borderRadius: number;
+  readonly width: number;
+  readonly height: number;
+  readonly id: string;
 }> = ({ borderRadius, width, height, id }) => {
   const ref = useRef<HTMLDivElement>(null);
   const linearGradient = useRef<SVGLinearGradientElement>(null);

@@ -29,7 +29,7 @@ const planetStyle: React.CSSProperties = {
 };
 
 export const RotatingPlanet: React.FC<{
-  randomSeed: string;
+  readonly randomSeed: string;
 }> = ({ randomSeed }) => {
   const sortedRandomly = useMemo(() => {
     return planets.slice().sort((a) => {

@@ -4,8 +4,8 @@ import { type Planet } from "../../src/config";
 import { getPlanetFile } from "../planets";
 
 export const PlanetEntrance: React.FC<{
-  planet: Planet;
-  frame: number;
+  readonly planet: Planet;
+  readonly frame: number;
 }> = ({ planet, frame }) => {
   const planetSize = interpolate(frame, [80, 180], [0, 1200], {
     extrapolateRight: "clamp",

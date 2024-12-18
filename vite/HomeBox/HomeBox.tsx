@@ -6,8 +6,8 @@ import { HomeBoxTop } from "./HomeBoxTop";
 import styles from "./styles.module.css";
 
 export const HomeBox: React.FC<{
-  userNotFound: boolean;
-  setUserNotFound: React.Dispatch<React.SetStateAction<boolean>>;
+  readonly userNotFound: boolean;
+  readonly setUserNotFound: React.Dispatch<React.SetStateAction<boolean>>;
 }> = (props) => {
   return (
     <Box

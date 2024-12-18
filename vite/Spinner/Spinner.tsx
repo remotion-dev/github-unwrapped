@@ -16,7 +16,7 @@ const { path } = makeRect({
 const translated = translatePath(path, viewBox / 2 - width / 2, viewBox * 0.03);
 
 export const Spinner: React.FC<{
-  size: number;
+  readonly size: number;
 }> = ({ size }) => {
   const style = useMemo(() => {
     return {

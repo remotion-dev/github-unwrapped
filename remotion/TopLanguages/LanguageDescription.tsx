@@ -11,10 +11,10 @@ import type { languageSchema } from "../../src/config";
 import { InnerLanguageDescription } from "./InnerLanguageDescription";
 
 export const LanguageDescription: React.FC<{
-  language: z.infer<typeof languageSchema>;
-  position: number;
-  delay: number;
-  duration: number;
+  readonly language: z.infer<typeof languageSchema>;
+  readonly position: number;
+  readonly delay: number;
+  readonly duration: number;
 }> = ({ language, position, delay, duration }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();

@@ -4,7 +4,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import { AbsoluteFill } from "remotion";
 
 export const ShineEffect: React.FC<{
-  borderRadius: number;
+  readonly borderRadius: number;
 }> = ({ borderRadius }) => {
   const ref = useRef<HTMLDivElement>(null);
   const linearGradient = useRef<SVGLinearGradientElement>(null);

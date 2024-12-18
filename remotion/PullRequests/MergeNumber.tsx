@@ -2,7 +2,7 @@ import React from "react";
 import { PANE_TEXT_COLOR } from "../TopLanguages/Pane";
 
 export const MergeNumber: React.FC<{
-  num: number;
+  readonly num: number;
 }> = ({ num }) => {
   return (
     <div

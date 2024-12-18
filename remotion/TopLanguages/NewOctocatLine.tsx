@@ -6,8 +6,8 @@ const getLeftColor = () => {
 };
 
 export const NewOctocatLine: React.FC<{
-  progress: number;
-  d: string;
+  readonly progress: number;
+  readonly d: string;
 }> = ({ progress, d }) => {
   const { strokeDasharray, strokeDashoffset } = evolvePath(progress, d);
 

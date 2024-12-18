@@ -16,14 +16,14 @@ export const Ufo = ({
   columns,
   ...props
 }: SVGProps<SVGSVGElement> & {
-  x: number;
-  y: number;
-  scale: number;
-  columns: number;
-  column: number;
-  explodeAfter: number;
-  yOffset: number;
-  exit: number;
+  readonly x: number;
+  readonly y: number;
+  readonly scale: number;
+  readonly columns: number;
+  readonly column: number;
+  readonly explodeAfter: number;
+  readonly yOffset: number;
+  readonly exit: number;
 }) => {
   const actualUfoWidth = UFO_WIDTH * scale;
   const actualUfoHeight = UFO_HEIGHT * scale;

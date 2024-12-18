@@ -8,8 +8,8 @@ import styles from "./playbutton.module.css";
 const HIDE_ANIMATION = 500;
 
 export const PlayButton: React.FC<{
-  onPlay: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
-  progress: number;
+  readonly onPlay: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
+  readonly progress: number;
 }> = ({ onPlay, progress }) => {
   const ref = useRef<HTMLDivElement>(null);
 

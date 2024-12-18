@@ -8,15 +8,15 @@ import styles from "./styles.module.css";
 const ButtonForward: React.ForwardRefRenderFunction<
   HTMLButtonElement,
   {
-    onClick?: () => void;
-    disabled?: boolean;
-    children: React.ReactNode;
-    loading?: boolean;
-    primary?: boolean;
-    style?: React.CSSProperties;
-    className?: string;
-    type?: ButtonHTMLAttributes<HTMLButtonElement>["type"];
-    hoverEffect?: boolean;
+    readonly onClick?: () => void;
+    readonly disabled?: boolean;
+    readonly children: React.ReactNode;
+    readonly loading?: boolean;
+    readonly primary?: boolean;
+    readonly style?: React.CSSProperties;
+    readonly className?: string;
+    readonly type?: ButtonHTMLAttributes<HTMLButtonElement>["type"];
+    readonly hoverEffect?: boolean;
   }
 > = (
   {

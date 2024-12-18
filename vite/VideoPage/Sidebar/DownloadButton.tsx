@@ -45,8 +45,8 @@ export type LoadingState =
     };
 
 export const DownloadButton: React.FC<{
-  style?: React.CSSProperties;
-  className?: string;
+  readonly style?: React.CSSProperties;
+  readonly className?: string;
 }> = ({ style, ...props }) => {
   const { status, loadingState } = useUserVideo();
 

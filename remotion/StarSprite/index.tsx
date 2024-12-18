@@ -15,7 +15,7 @@ const BIGGEST_HEIGHT = 284;
 export const STAR_EXPLODE_DURATION = 8;
 
 export const StarSprite: React.FC<{
-  burstFrame?: number;
+  readonly burstFrame?: number;
 }> = ({ burstFrame }) => {
   const frame = useCurrentFrame();
 
