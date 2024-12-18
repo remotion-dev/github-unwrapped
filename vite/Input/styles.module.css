@@ -6,7 +6,7 @@
   display: flex;
   align-items: center;
   caret-color: var(--input-color);
-  color: white;
+  color: inherit;
   flex: 1;
   font-size: 18px;
   font-weight: bold;

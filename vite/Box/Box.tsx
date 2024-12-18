@@ -9,7 +9,13 @@ export const Box: React.FC<{
 }> = ({ style, className, children }) => {
   return (
     <div className={[styles.box, className].join(" ")} style={style}>
-      <div className={styles.boxinner}>{children}</div>
+      {children}
     </div>
   );
+};
+
+export const BoxInner: React.FC<{
+  readonly children: React.ReactNode;
+}> = ({ children }) => {
+  return <div className={styles.boxinner}>{children}</div>;
 };

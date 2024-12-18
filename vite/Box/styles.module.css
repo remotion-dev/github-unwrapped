@@ -21,10 +21,9 @@
 
 .headerTopContainer {
   display: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 8px 6px;
+  padding: 0px 0px;
+  padding-bottom: 12px;
   align-items: center;
-  background: rgba(255, 255, 255, 0.03);
 
   @media only screen and (min-width: 40em) {
     display: flex;

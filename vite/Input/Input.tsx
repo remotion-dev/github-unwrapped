@@ -19,6 +19,7 @@ export const Input: React.FC<{
       ].join(" ")}
       disabled={disabled}
       name="title"
+      autoFocus
       value={text}
       onChange={(v) => setText(v.target.value)}
       placeholder={placeHolder}

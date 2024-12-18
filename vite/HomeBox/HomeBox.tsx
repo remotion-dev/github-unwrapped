@@ -1,5 +1,6 @@
 import React from "react";
-import { Box } from "../Box/Box";
+import { Box, BoxInner } from "../Box/Box";
+import { BoxHighlight, PinkHighlightBox } from "./BoxHighlight";
 import { HomeBoxBottom } from "./HomeBoxBottom";
 import { HomeBoxTop } from "./HomeBoxTop";
 
@@ -9,8 +10,12 @@ export const HomeBox: React.FC<{
 }> = (props) => {
   return (
     <Box style={{ maxWidth: 800, position: "relative" }}>
+      <BoxHighlight />
+      <PinkHighlightBox />
       <HomeBoxTop />
-      <HomeBoxBottom {...props} />
+      <BoxInner>
+        <HomeBoxBottom {...props} />
+      </BoxInner>
     </Box>
   );
 };
