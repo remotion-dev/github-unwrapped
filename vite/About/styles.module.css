@@ -32,8 +32,6 @@
 }
 
 .aboutDescription {
-  color: #ebeaee;
-
   font-family: Mona Sans;
   font-size: 16px;
   font-style: normal;
@@ -49,8 +47,7 @@
   align-items: flex-start;
   gap: 24px;
   border-radius: 8px;
-  border: 2px solid #20222f;
-  background: #171823;
+  background: var(--pane-bg);
   font-weight: 500;
   @media only screen and (min-width: 40em) {
     padding: 32px;
@@ -62,7 +59,7 @@
 }
 
 .aboutItemTitle {
-  color: white;
+  color: var(--pane-text);
   font-size: 20px;
   font-weight: 600;
   line-height: normal;

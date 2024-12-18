@@ -12,6 +12,7 @@ export const HomeBox: React.FC<{
     <Box style={{ maxWidth: 800, position: "relative" }}>
       <BoxHighlight />
       <PinkHighlightBox />
+      <PinkHighlightBox />
       <HomeBoxTop />
       <BoxInner>
         <HomeBoxBottom {...props} />

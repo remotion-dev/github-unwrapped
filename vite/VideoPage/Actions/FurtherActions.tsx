@@ -24,7 +24,7 @@ export const FurtherActions: React.FC = () => {
           <a href={signInWithGitHubLink()}>
             <FurtherAction
               icon={(params) => (
-                <PrivateContributionsIcon {...params} width={20} />
+                <PrivateContributionsIcon {...params} width={12} />
               )}
               label="Unlock private metrics"
             />

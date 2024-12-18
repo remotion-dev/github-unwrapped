@@ -4,7 +4,8 @@ import React, { useRef, useState } from "react";
 import ReactDOM from "react-dom";
 import type { z } from "zod";
 import type { Rocket, compositionSchema } from "../../src/config";
-import { Box } from "../Box/Box";
+import { Box, BoxInner } from "../Box/Box";
+import { BoxHighlight, PinkHighlightBox } from "../HomeBox/BoxHighlight";
 import { useUserVideo } from "../context";
 import { MobileActionsContainer } from "./MobileActionsContainer";
 import { PlayerContainer } from "./Player/Player";
@@ -46,7 +47,9 @@ export const VideoBox: React.FC<{
         ) : null,
         modalElement,
       )}
-      <Box style={{ overflow: "hidden" }} className={styles.box}>
+      <Box style={{}} className={styles.box}>
+        <BoxHighlight />
+        <PinkHighlightBox />
         <VideoBoxTop
           inputProps={inputProps}
           rocket={rocket}
@@ -54,23 +57,25 @@ export const VideoBox: React.FC<{
           setIsPlaying={setIsPlaying}
           playerRef={playerRef}
         />
-        <div className={styles.roworcolumn}>
-          <PlayerContainer
-            playerRef={playerRef}
-            inputProps={inputProps}
-            isPlaying={isPlaying}
-            setIsPlaying={setIsPlaying}
-          />
-          <Sidebar
-            inputProps={inputProps}
-            setIsModalOpen={setIsModalOpen}
-            rocket={rocket}
-            setIsPlaying={setIsPlaying}
-            playerRef={playerRef}
-            status={status}
-          />
-          <MobileActionsContainer loadingState={loadingState} />
-        </div>
+        <BoxInner>
+          <div className={styles.roworcolumn}>
+            <PlayerContainer
+              playerRef={playerRef}
+              inputProps={inputProps}
+              isPlaying={isPlaying}
+              setIsPlaying={setIsPlaying}
+            />
+            <Sidebar
+              inputProps={inputProps}
+              setIsModalOpen={setIsModalOpen}
+              rocket={rocket}
+              setIsPlaying={setIsPlaying}
+              playerRef={playerRef}
+              status={status}
+            />
+            <MobileActionsContainer loadingState={loadingState} />
+          </div>
+        </BoxInner>
       </Box>
     </>
   );
