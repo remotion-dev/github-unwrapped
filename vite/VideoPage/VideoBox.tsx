@@ -24,7 +24,7 @@ export const VideoBox: React.FC<{
   const [isPlaying, setIsPlaying] = useState(false);
   const playerRef = useRef<PlayerRef>(null);
 
-  const { status, loadingState } = useUserVideo();
+  const { status } = useUserVideo();
 
   const modalElement = document.getElementById("rocketModal");
   if (!modalElement) {
@@ -73,7 +73,7 @@ export const VideoBox: React.FC<{
               playerRef={playerRef}
               status={status}
             />
-            <MobileActionsContainer loadingState={loadingState} />
+            <MobileActionsContainer />
           </div>
         </BoxInner>
       </Box>

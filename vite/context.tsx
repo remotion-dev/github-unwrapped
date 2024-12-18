@@ -1,8 +1,7 @@
 import type { ReactNode } from "react";
-import React, { useCallback, useEffect } from "react";
+import React from "react";
 import type { CompositionParameters, ProfileStats } from "../src/config";
 import { NotFound } from "./NotFound/NotFound";
-import type { LoadingState } from "./VideoPage/Sidebar/DownloadButton";
 import type { RenderStatus } from "./VideoPage/useVideo";
 import { useVideo } from "./VideoPage/useVideo";
 import { useCompositionParams } from "./VideoPage/user-page";
@@ -13,8 +12,6 @@ type ContextType = {
     React.SetStateAction<CompositionParameters["rocket"] | null>
   >;
   status: RenderStatus;
-  loadingState: LoadingState;
-  setLoadingState: React.Dispatch<React.SetStateAction<LoadingState>>;
 };
 
 const UserVideoContext = React.createContext<ContextType | null>(null);
@@ -28,75 +25,14 @@ const UserVideoProvider: React.FC<{
     theme: compositionParams.rocket,
     username: compositionParams.login,
   });
-  const [loadingState, setLoadingState] = React.useState<LoadingState>({
-    type: "no-file",
-  });
 
   const contextValue: ContextType = React.useMemo(() => {
     return {
       compositionParams,
       setRocket,
       status,
-      loadingState,
-      setLoadingState,
     };
-  }, [compositionParams, loadingState, setRocket, status]);
-
-  const fetchFile = useCallback(async () => {
-    if (status.type !== "video-available") {
-      setLoadingState({ type: "no-file" });
-      return;
-    }
-
-    const response = await fetch(status.url);
-    const contentLength = Number(
-      response.headers.get("Content-Length") as string,
-    );
-
-    if (!response.body) {
-      throw new Error("No response body");
-    }
-
-    const reader = response.body.getReader();
-
-    let receivedLength = 0;
-    const chunks = [];
-
-    // eslint-disable-next-line no-constant-condition
-    while (true) {
-      const { done, value } = await reader.read();
-
-      if (done) {
-        break;
-      }
-
-      chunks.push(value);
-      receivedLength += value.length;
-
-      setLoadingState({
-        type: "downloading",
-        progress: receivedLength / contentLength,
-      });
-      // console.log(`Received ${receivedLength} of ${contentLength}`);
-    }
-
-    const chunksAll = new Uint8Array(receivedLength);
-    let position = 0;
-    for (const chunk of chunks) {
-      chunksAll.set(chunk, position);
-      position += chunk.length;
-    }
-
-    const downloadedFile = new File([chunksAll], "github_unwrapped.mp4", {
-      type: "video/mp4",
-    });
-
-    setLoadingState({ type: "downloaded", file: downloadedFile });
-  }, [setLoadingState, status]);
-
-  useEffect(() => {
-    fetchFile();
-  }, [fetchFile]);
+  }, [compositionParams, setRocket, status]);
 
   return (
     <UserVideoContext.Provider value={contextValue}>
@@ -105,9 +41,9 @@ const UserVideoProvider: React.FC<{
   );
 };
 
-export const UserVideoContextProvider: React.FC<{ readonly children: ReactNode }> = ({
-  children,
-}) => {
+export const UserVideoContextProvider: React.FC<{
+  readonly children: ReactNode;
+}> = ({ children }) => {
   const user = window.__USER__;
 
   if (user === "not-found") {

@@ -1,4 +1,3 @@
-import { Pie } from "@remotion/shapes";
 import { useNavigate } from "@tanstack/react-router";
 import React, { useCallback } from "react";
 import { InstagramIcon } from "../../icons/InstagramIcon";
@@ -8,7 +7,6 @@ import { useUserVideo } from "../context";
 import { shareRoute, videoRoute } from "../routing";
 import { FurtherActions } from "./Actions/FurtherActions";
 import { SharingAction } from "./Actions/SharingAction";
-import type { LoadingState } from "./Sidebar/DownloadButton";
 import { DownloadButton } from "./Sidebar/DownloadButton";
 import styles from "./styles.module.css";
 import type { RenderStatus } from "./useVideo";
@@ -32,9 +30,7 @@ const getRenderDescription = (status: RenderStatus) => {
   }
 };
 
-export const MobileActionsContainer: React.FC<{
-  readonly loadingState: LoadingState;
-}> = ({ loadingState }) => {
+export const MobileActionsContainer: React.FC = () => {
   const navigate = useNavigate({ from: videoRoute.id });
 
   const { username } = videoRoute.useParams();
@@ -67,30 +63,14 @@ export const MobileActionsContainer: React.FC<{
       {getRenderDescription(status)}
 
       <div style={{ display: "flex", gap: 16 }}>
-        <DownloadButton style={{ flex: 1 }} />
+        <DownloadButton style={{ flex: 3 }} />
         <Button
           disabled={status.type !== "video-available"}
           hoverEffect
           style={{ flex: 1, gap: 8 }}
           onClick={goToFallbackSharePage}
         >
-          {loadingState.type === "downloading" ||
-          loadingState.type === "no-file" ? (
-            <Pie
-              radius={8}
-              fill="none"
-              closePath={false}
-              progress={
-                loadingState.type === "no-file" ? 0 : loadingState.progress
-              }
-              stroke="white"
-              strokeWidth={2}
-              strokeLinecap="round"
-            />
-          ) : (
-            <ShareIcon width={20} color="white" />
-          )}
-          Share
+          <ShareIcon width={20} color="white" />
         </Button>
       </div>
       <a href={`/ig/${username}.jpg`}>

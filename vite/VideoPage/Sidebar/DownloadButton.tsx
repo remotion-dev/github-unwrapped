@@ -6,19 +6,6 @@ import { useUserVideo } from "../../context";
 import shadow from "./shadow.module.css";
 import styles from "./styles.module.css";
 
-export type LoadingState =
-  | {
-      type: "no-file";
-    }
-  | {
-      type: "downloading";
-      progress: number;
-    }
-  | {
-      type: "downloaded";
-      file: File;
-    };
-
 export const DownloadButton: React.FC<{
   readonly style?: React.CSSProperties;
   readonly className?: string;
