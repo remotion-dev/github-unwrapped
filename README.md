@@ -8,7 +8,14 @@ A platform that generates a year-in-review video for each GitHub user. Built wit
 
 Want to make your own year-in-review for your users?
 
-- **Developers**: Feel free to fork and use this repository as a template! Note the legal disclaimers at the bottom of this README.
+Feel free to fork and use this repository as a template! Note the legal disclaimers at the bottom of this README.
+
+## Versions
+
+- 2024: `main` branch
+- 2023: `2023` branch
+- 2022: [`github-unwrapped-2022` Repo](https://github.com/remotion-dev/github-unwrapped-2022)
+- 2021: [`github-unwrapped-2021` Repo](https://github.com/remotion-dev/github-unwrapped-2021)
 
 ## Setup
 
