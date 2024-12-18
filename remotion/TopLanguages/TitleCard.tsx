@@ -7,9 +7,10 @@ import {
   random,
   staticFile,
   useCurrentFrame,
+  useVideoConfig,
 } from "remotion";
 import { z } from "zod";
-import { accentColorSchema, rocketSchema } from "../../src/config";
+import { rocketSchema } from "../../src/config";
 import { Gradient } from "../Gradients/NativeGradient";
 import { Noise } from "../Noise";
 import { accentColorToGradient } from "../Opening/TitleImage";
@@ -20,7 +21,6 @@ import { TopLanguagesTitle } from "./TopLanguagesTitle";
 
 export const topLanguagesTitleCardSchema = z.object({
   pluralizeLanguages: z.boolean(),
-  accentColor: accentColorSchema,
   rocket: rocketSchema,
   randomizePlanetSeed: z.string(),
   randomizeOctocatSeed: z.number(),
@@ -32,15 +32,24 @@ export const TopLanguagesTitleCard: React.FC<
   z.infer<typeof topLanguagesTitleCardSchema>
 > = ({
   pluralizeLanguages,
-  accentColor,
   rocket,
   randomizePlanetSeed,
   randomizeOctocatSeed,
 }) => {
   const frame = useCurrentFrame();
+  const { durationInFrames } = useVideoConfig();
+  const hide = interpolate(
+    frame,
+    [durationInFrames - 30, durationInFrames - 15],
+    [1, 0],
+    {
+      extrapolateLeft: "clamp",
+      extrapolateRight: "clamp",
+    },
+  );
   const zoomOutProgress = interpolate(frame, [0, TITLE_CARD_DURATION], [0, 1]);
   const scale = interpolate(zoomOutProgress, [0, 1], [1.3, 1]);
-  const opacity = Math.min(frame / 30);
+  const opacity = Math.min(frame / 30) * hide;
 
   return (
     <AbsoluteFill
@@ -61,7 +70,7 @@ export const TopLanguagesTitleCard: React.FC<
           opacity,
         }}
       >
-        <Gradient gradient={accentColorToGradient(accentColor)} />
+        <Gradient gradient={accentColorToGradient()} />
         <AbsoluteFill style={{ opacity: 0.5 }}>
           <Noise translateX={0} translateY={0} />
         </AbsoluteFill>
@@ -77,7 +86,7 @@ export const TopLanguagesTitleCard: React.FC<
             random(randomizeOctocatSeed) > 0.5 ? `scaleX(-1)` : undefined,
         }}
       >
-        <TitleCardOctocat accentColor={accentColor} />
+        <TitleCardOctocat />
       </AbsoluteFill>
       <AbsoluteFill
         style={{

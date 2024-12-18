@@ -3,12 +3,7 @@ import { slide } from "@remotion/transitions/slide";
 import { Internals } from "remotion";
 import { z } from "zod";
 import type { TopLanguage } from "../../src/config";
-import {
-  accentColorSchema,
-  cornerType,
-  rocketSchema,
-  topLanguagesSchema,
-} from "../../src/config";
+import { cornerType, rocketSchema, topLanguagesSchema } from "../../src/config";
 import { PlanetScaleWiggle } from "./PlaneScaleWiggle";
 import { PlanetScaleOut } from "./PlanetScaleOut";
 import { PlanetScaleSpiral } from "./PlanetScaleSpiral";
@@ -27,7 +22,6 @@ export const allPlanetsSchema = z.object({
   corner: cornerType,
   showHelperLine: z.boolean(),
   login: z.string(),
-  accentColor: accentColorSchema,
   rocket: rocketSchema,
   octocatSeed: z.number(),
 });
@@ -100,7 +94,6 @@ export const AllPlanets: React.FC<z.infer<typeof allPlanetsSchema>> = ({
   showHelperLine,
   login,
   topLanguages,
-  accentColor,
   rocket,
   octocatSeed,
 }) => {
@@ -114,7 +107,6 @@ export const AllPlanets: React.FC<z.infer<typeof allPlanetsSchema>> = ({
         <TopLanguagesTitleCard
           rocket={rocket}
           pluralizeLanguages={language2 !== null}
-          accentColor={accentColor}
           randomizePlanetSeed={login}
           randomizeOctocatSeed={octocatSeed}
         />

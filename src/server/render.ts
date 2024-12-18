@@ -139,6 +139,7 @@ export const renderOrGetProgress = async (
         type: "download",
         fileName: `unwrapped-${username}.mp4`,
       },
+      deleteAfter: "30-days",
     }),
     makeOrGetOgImage(userStat),
     makeOrGetIgStory(userStat),

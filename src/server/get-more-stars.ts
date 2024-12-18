@@ -4,6 +4,7 @@ import {
   getStarredReposQuery,
   type StarredReposQueryResponse,
 } from "./queries/stars.query.js";
+import { YEAR_TO_REVIEW } from "./year.js";
 
 export const getMoreStars = async ({
   username,
@@ -16,7 +17,7 @@ export const getMoreStars = async ({
   let cursor: string | null = null;
   let safety = 0;
 
-  const pullRequestData: Array<{ name: string }> = [];
+  const pullRequestData: Array<{ name: string; owner: string }> = [];
 
   while (!done && safety < 10) {
     const data = (await executeGitHubGraphQlQuery({
@@ -26,8 +27,8 @@ export const getMoreStars = async ({
     })) as StarredReposQueryResponse;
 
     const stars = data.starredRepositories.edges
-      .filter((n) => n.starredAt.startsWith("2023"))
-      .map((n) => ({ name: n.node.name }));
+      .filter((n) => n.starredAt.startsWith(String(YEAR_TO_REVIEW)))
+      .map((n) => ({ name: n.node.name, owner: n.node.owner.login }));
 
     if (
       stars.length === 0 ||

@@ -6,7 +6,6 @@ import {
   Img,
   Sequence,
   interpolate,
-  interpolateColors,
   spring,
   staticFile,
   useCurrentFrame,
@@ -14,15 +13,15 @@ import {
 } from "remotion";
 
 import React, { useMemo } from "react";
-import type { Planet, Rocket } from "../../src/config";
-import { type AccentColor } from "../../src/config";
-import { appearDelays } from "../Contributions/compute-positions";
+import { type Planet, type Rocket } from "../../src/config";
 import { Gradient } from "../Gradients/NativeGradient";
-import { IssueNumber } from "../Issues/IssueNumber";
 import { FPS } from "../Issues/make-ufo-positions";
 import { accentColorToGradient } from "../Opening/TitleImage";
 import { isMobileDevice } from "../Opening/devices";
+import { PaneEffect } from "../PaneEffect";
+import { PANE_BACKGROUND } from "../TopLanguages/Pane";
 import * as FrontRocketSource from "../TopLanguages/svgs/FrontRocketSource";
+import { ContributionLabel, ContributionNumber } from "./ContributionNumber";
 import { PlanetEntrance } from "./PlanetEntrance";
 
 export const CONTRIBUTIONS_SCENE_DURATION = 7.5 * FPS;
@@ -43,11 +42,7 @@ const GRID_HEIGHT = ROWS * SIZE;
 
 // const MAX_CONTRIBUTIONS = 16;
 
-const TRANSITION_GLOW = 45;
-const START_SPREAD = TRANSITION_GLOW + 10;
-
-const FADE_OUT_START = 80;
-const FADE_OUT_DURATION = 20;
+const TOP_OFFSET = 100;
 
 const mapRowToMove: Record<number, number> = {
   0: SIZE * 3,
@@ -60,19 +55,16 @@ const mapRowToMove: Record<number, number> = {
 };
 
 const Dot: React.FC<{
-  i: number;
-  data: number;
-  targetColumn: number;
-  frame: number;
-  maxContributions: number;
-}> = ({ i, data, targetColumn, maxContributions, frame }) => {
+  readonly i: number;
+  readonly data: number;
+  readonly targetColumn: number;
+  readonly maxContributions: number;
+}> = ({ i, data, targetColumn, maxContributions }) => {
   const col = Math.floor(i / 7);
   const row: number = i % 7;
 
   let top = 0;
-  let fadeOutOpacity = 1;
-  let left = 0;
-  let glow = 1;
+  const left = 0;
   let opacity = Math.max(
     0.1,
     data >= maxContributions
@@ -81,122 +73,18 @@ const Dot: React.FC<{
         ? Math.max(data / maxContributions, 0.25)
         : 0,
   );
-  let borderRadius = 4;
-  let glowOpacity = 0;
+  const borderRadius = 4;
 
-  let size = SIZE;
+  const size = SIZE;
 
-  let color = `rgba(0, 166, 255, 1)`;
+  const color = `#070842`;
 
-  const startAbsolute = START_SPREAD + 15;
+  let f = (targetColumn - col) / (COLUMNS / 3);
 
-  if (frame < TRANSITION_GLOW) {
-    let f = (targetColumn - col) / (COLUMNS / 3);
+  f = Math.min(...[Math.abs(f), 1]);
 
-    f = Math.min(...[Math.abs(f), 1]);
-
-    top = col >= targetColumn ? mapRowToMove[row] : (1 - f) * mapRowToMove[row];
-    opacity = col >= targetColumn ? 0 : opacity;
-  } else if (frame < START_SPREAD) {
-    borderRadius = interpolate(
-      frame,
-      [TRANSITION_GLOW, START_SPREAD],
-      [4, SIZE / 2],
-    );
-
-    size = interpolate(
-      frame,
-      [TRANSITION_GLOW, START_SPREAD],
-      [SIZE, SIZE * 0.95],
-    );
-
-    color = interpolateColors(
-      frame,
-      [TRANSITION_GLOW, START_SPREAD],
-      [
-        `rgba(0, 166, 255, 1)`,
-        `rgba(255, 255, 255, ${opacity < 0.8 ? 0.8 : 1})`,
-      ],
-    );
-  } else {
-    size = SIZE * 0.95;
-    color = `rgba(255, 255, 255, ${opacity < 0.8 ? 0.8 : 1})`;
-    borderRadius = SIZE / 2;
-
-    const noise = appearDelays[i];
-
-    glowOpacity = interpolate(
-      frame,
-      [START_SPREAD, START_SPREAD + 15],
-      [0, 1],
-      {
-        extrapolateRight: "clamp",
-      },
-    );
-
-    const moveProgress = interpolate(
-      frame,
-      [START_SPREAD, noise.delay + 100],
-      [0, 1],
-      {
-        extrapolateRight: "clamp",
-        easing: Easing.bezier(0.8, -0.02, 0.32, 1),
-      },
-    );
-
-    const noiseAngle = Math.atan2(noise.noiseY, noise.noiseX);
-
-    const maxGlow = interpolate(data, [0, maxContributions], [0, 6], {
-      extrapolateRight: "clamp",
-    });
-
-    glow =
-      interpolate(moveProgress, [0, 1], [6, maxGlow]) + (2 * moveProgress) ** 2;
-
-    const d = interpolate(
-      frame,
-      [START_SPREAD + 50, START_SPREAD + 120],
-      [400, 1200],
-      {},
-    );
-
-    const towardsCenter = moveProgress * d;
-
-    const pushFromCenter = Math.sin(noiseAngle + frame / 90) * towardsCenter;
-    const pushFromTop = Math.cos(noiseAngle + frame / 100) * towardsCenter;
-
-    const noiseProgress = interpolate(
-      frame,
-      [startAbsolute, startAbsolute + 10],
-      [0, 1],
-      {
-        extrapolateLeft: "clamp",
-        extrapolateRight: "clamp",
-      },
-    );
-
-    const xDelta = noise.noiseX * 300 * noiseProgress;
-    const yDelta = noise.noiseY * 10 * noiseProgress;
-
-    left = moveProgress * xDelta + pushFromCenter;
-    top = moveProgress * yDelta + pushFromTop;
-
-    fadeOutOpacity = interpolate(
-      frame,
-      [START_SPREAD + 70, START_SPREAD + 80],
-      [1, 0],
-      {
-        extrapolateRight: "clamp",
-      },
-    );
-
-    // opacity =
-    //   1 - interpolate(frame, [START_SPREAD + 50, START_SPREAD + 120], [1, 1]);
-  }
-
-  // if (data === 0 && frame > START_SPREAD + 5) {
-  //   return null;
-  // }
+  top = col >= targetColumn ? mapRowToMove[row] : (1 - f) * mapRowToMove[row];
+  opacity = col >= targetColumn ? 0 : opacity;
 
   return (
     <div
@@ -213,13 +101,9 @@ const Dot: React.FC<{
     >
       <div
         style={{
-          ...(frame < TRANSITION_GLOW || frame >= startAbsolute
-            ? {
-                position: "absolute",
-                top,
-                left,
-              }
-            : {}),
+          position: "absolute",
+          top,
+          left,
           width: size,
           height: size,
           opacity,
@@ -231,31 +115,9 @@ const Dot: React.FC<{
           justifyItems: "center",
         }}
       >
-        {glow > 0 && (
-          <AbsoluteFill
-            style={{
-              opacity: frame > START_SPREAD + 60 ? fadeOutOpacity : 1,
-              transform: `scale(${glow})`,
-              transformOrigin: "center",
-              width: size,
-              height: size,
-              top: 1,
-              left: 1,
-            }}
-          >
-            <Img
-              src={staticFile("blurred-dot-white.png")}
-              style={{
-                opacity: glowOpacity,
-                width: "100%",
-                height: "100%",
-              }}
-            />
-          </AbsoluteFill>
-        )}
         <div
           style={{
-            opacity: 1 - glowOpacity,
+            opacity: 1,
             width: "100%",
             height: "100%",
             backgroundColor: color,
@@ -268,21 +130,27 @@ const Dot: React.FC<{
 };
 
 export const ContributionsScene: React.FC<{
-  accentColor: AccentColor;
-  contributionData: number[];
-  total: number;
-  rocket: Rocket;
-  planet: Planet;
-}> = ({ accentColor, contributionData, total, rocket, planet }) => {
+  readonly contributionData: number[];
+  readonly total: number;
+  readonly longestStreak: number;
+  readonly rocket: Rocket;
+  readonly planet: Planet;
+  readonly username: string;
+}> = ({ contributionData, total, rocket, planet, username, longestStreak }) => {
   const f = useCurrentFrame();
   const { fps } = useVideoConfig();
 
   const frame = f / 1.5;
 
-  const targetColumn = interpolate(frame / 0.5, [0, 120], [-33, COLUMNS + 20], {
-    extrapolateRight: "clamp",
-    easing: Easing.bezier(0.2, -0.02, 0.32, 1),
-  });
+  const targetColumn = interpolate(
+    frame / 0.5,
+    [0, 120],
+    [-100, COLUMNS + 20],
+    {
+      extrapolateRight: "clamp",
+      easing: Easing.bezier(0.2, -0.02, 0.32, 1),
+    },
+  );
 
   let number = interpolate(frame / 0.5, [25, 85], [0, total]);
 
@@ -297,19 +165,29 @@ export const ContributionsScene: React.FC<{
     extrapolateRight: "clamp",
   });
 
-  const numberEnter = spring({
+  const constantScale = interpolate(frame, [0, 150], [0.8, 1]);
+  const scaleIn =
+    spring({
+      fps,
+      frame,
+      config: {
+        damping: 200,
+      },
+    }) * constantScale;
+
+  const disappear = spring({
     fps,
     frame,
     config: {
       damping: 200,
     },
+    delay: 90,
   });
-  const numberTop = interpolate(numberEnter, [0, 1], [250, 0]);
 
   return (
     <AbsoluteFill>
       <AbsoluteFill style={{ opacity, transform: `rotate(180deg)` }}>
-        <Gradient gradient={accentColorToGradient(accentColor)} />
+        <Gradient gradient={accentColorToGradient()} />
       </AbsoluteFill>
 
       <AbsoluteFill>
@@ -322,65 +200,110 @@ export const ContributionsScene: React.FC<{
       </AbsoluteFill>
       <AbsoluteFill
         style={{
-          justifyContent: "center",
-          alignItems: "center",
+          scale: String(scaleIn + interpolate(disappear, [0, 1], [0, 3])),
+          transform:
+            "translateY(" + interpolate(disappear, [0, 1], [0, 500]) + "px)",
         }}
       >
-        <div
+        <AbsoluteFill
           style={{
-            position: "relative",
-            width: GRID_WIDTH,
-            height: GRID_HEIGHT,
+            justifyContent: "center",
+            alignItems: "center",
+            zIndex: 0,
           }}
         >
-          {new Array(COUNT).fill(0).map((_, i) => (
-            <Dot
-              key={i}
-              frame={frame}
-              i={i}
-              data={contributionData[i]}
-              targetColumn={targetColumn}
-              maxContributions={maxContributions}
+          <PaneEffect
+            padding={20}
+            pinkHighlightOpacity={1}
+            whiteHighlightOpacity={1}
+            innerRadius={20}
+            style={{}}
+          >
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                paddingBottom: 20,
+                paddingTop: 5,
+              }}
+            >
+              <div style={{ textAlign: "left", paddingLeft: 10 }}>
+                <ContributionNumber currentNumber={2024} suffix="" />
+                <ContributionLabel>@{username}</ContributionLabel>
+              </div>
+              <div style={{ flex: 1 }} />
+              <div style={{ textAlign: "right" }}>
+                <ContributionNumber
+                  currentNumber={Math.floor(longestStreak)}
+                  suffix="d"
+                />
+                <ContributionLabel>Longest streak</ContributionLabel>
+              </div>
+              <div
+                style={{ textAlign: "right", marginLeft: 80, marginRight: 20 }}
+              >
+                <ContributionNumber
+                  currentNumber={Math.floor(number)}
+                  suffix=""
+                />
+                <ContributionLabel>Contributions</ContributionLabel>
+              </div>
+            </div>
+            <div
+              style={{
+                width: GRID_WIDTH,
+                height: GRID_HEIGHT,
+                background: PANE_BACKGROUND,
+                padding: 20,
+                boxSizing: "content-box",
+                borderRadius: 20,
+              }}
             />
-          ))}
-        </div>
-
-        <AbsoluteFill
-          style={{
-            marginTop: numberTop,
-            opacity:
-              frame >= FADE_OUT_START &&
-              frame < FADE_OUT_START + FADE_OUT_DURATION
-                ? (FADE_OUT_DURATION - (frame - FADE_OUT_START)) /
-                  FADE_OUT_DURATION
-                : frame < FADE_OUT_START
-                  ? 1
-                  : 0,
-          }}
-        >
-          <IssueNumber
-            align="center"
-            label="Contributions"
-            currentNumber={Math.floor(number)}
-            max={total}
-          />
+          </PaneEffect>
         </AbsoluteFill>
-
         <AbsoluteFill
           style={{
-            left: targetColumn * SIZE + 120,
-            top: 440,
-            position: "absolute",
+            justifyContent: "center",
+            alignItems: "center",
+            zIndex: 1,
           }}
         >
-          <Img
-            src={FrontRocketSource.getFrontRocketSource(rocket)}
+          <div
             style={{
-              width: 732 / 8,
-              height: 1574 / 8,
-              transform: "rotate(90deg)",
+              position: "relative",
+              width: GRID_WIDTH,
+              height: GRID_HEIGHT,
+              marginTop: TOP_OFFSET,
             }}
-          />
+          >
+            {new Array(COUNT).fill(0).map((_, i) => (
+              <Dot
+                key={i}
+                i={i}
+                data={contributionData[i]}
+                targetColumn={targetColumn}
+                maxContributions={maxContributions}
+              />
+            ))}
+          </div>
+          {frame > 10 ? (
+            <AbsoluteFill
+              style={{
+                left: targetColumn * SIZE + 120,
+                top: 440 + TOP_OFFSET / 2,
+                position: "absolute",
+              }}
+            >
+              <Img
+                src={FrontRocketSource.getFrontRocketSource(rocket)}
+                style={{
+                  width: 732 / 8,
+                  height: 1574 / 8,
+                  transform: "rotate(90deg)",
+                }}
+              />
+            </AbsoluteFill>
+          ) : null}
         </AbsoluteFill>
       </AbsoluteFill>
     </AbsoluteFill>

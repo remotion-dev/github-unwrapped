@@ -1,4 +1,4 @@
-import { prefetch } from "remotion";
+import { prefetch, staticFile } from "remotion";
 import type { Planet, Rocket, TopLanguage } from "../src/config";
 import { contributionSceneAssets } from "./Contributions";
 import { prefetchLandingAssets } from "./EndScene";
@@ -34,6 +34,8 @@ const collectAllAssetsToPrefetch = ({
   return [
     sideRocket,
     frontRocket,
+    staticFile("WhiteHighlight.png"),
+    staticFile("PinkHighlight.png"),
     ...getMainAssetsToPrefetch(durationInFrames, rocket),
     ...getTopLanguageAssetsToPrefetch({ language1, language2, language3 }),
     ...getOpeningAssetsToPrefetch(rocket),

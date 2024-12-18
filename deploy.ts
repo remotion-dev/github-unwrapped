@@ -25,13 +25,17 @@ for (let i = 2; i <= count; i++) {
       memorySizeInMb: RAM,
       timeoutInSeconds: TIMEOUT,
       region,
+      enableV5Runtime: true,
     });
     console.log(
       `  ${
         alreadyExisted ? "Ensured" : "Deployed"
       } function "${functionName}" to ${region} in account ${i}`,
     );
-    const { bucketName } = await getOrCreateBucket({ region });
+    const { bucketName } = await getOrCreateBucket({
+      region,
+      enableFolderExpiry: true,
+    });
     const { serveUrl } = await deploySite({
       siteName: SITE_NAME,
       bucketName,

@@ -9,7 +9,7 @@ import type { GradientType } from "./available-gradients";
 import { availableGradients } from "./available-gradients";
 
 type Props = {
-  gradient: GradientType;
+  readonly gradient: GradientType;
 };
 
 export const NativeGradient: React.FC<Props> = ({ gradient }) => {

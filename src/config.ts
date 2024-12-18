@@ -1,10 +1,11 @@
 import { zColor } from "@remotion/zod-types";
 import { random } from "remotion/no-react";
 import { z } from "zod";
+import { YEAR_TO_REVIEW } from "./helpers/year";
 
-export const SITE_NAME = "unwrapped2023";
+export const SITE_NAME = `unwrapped${YEAR_TO_REVIEW}`;
 export const RAM = 1200;
-export const DISK = 2048;
+export const DISK = 10240;
 export const TIMEOUT = 120;
 
 const availablePlanets = ["Ice", "Silver", "Gold", "Leafy", "Fire"] as const;
@@ -42,10 +43,12 @@ export const languageSchema = z.discriminatedUnion("type", [
     type: z.literal("other"),
     name: z.string(),
     color: zColor().or(z.null()),
+    percent: z.number(),
   }),
   z.object({
     type: z.literal("designed"),
     name: LanguagesEnum,
+    percent: z.number(),
   }),
 ]);
 
@@ -102,14 +105,14 @@ export const topLanguagesSchema = z.object({
 
 export const openingSceneStartAngle = z.enum(["left", "right"]);
 
-export const accentColorValues = ["blue", "purple"] as const;
-export const accentColorSchema = z.enum(accentColorValues);
-
 export const rocketValues = ["blue", "orange", "yellow"] as const;
 export const rocketSchema = z.enum(rocketValues);
 export type Rocket = (typeof rocketValues)[number];
 
-export type AccentColor = z.infer<typeof accentColorSchema>;
+export const starredRepoExample = z.object({
+  author: z.string(),
+  name: z.string(),
+});
 
 export const compositionSchema = z.object({
   topLanguages: topLanguagesSchema.or(z.null()),
@@ -125,11 +128,11 @@ export const compositionSchema = z.object({
   topHour: topHourSchema,
   graphData: z.array(productivityPerHourSchema),
   openingSceneStartAngle,
-  accentColor: accentColorSchema,
   rocket: rocketSchema,
   contributionData: z.array(z.number()),
   totalContributions: z.number(),
-  sampleStarredRepos: z.array(z.string()),
+  longestStreak: z.number(),
+  sampleStarredRepos: z.array(starredRepoExample),
 });
 
 export const RenderRequest = z.object({
@@ -183,9 +186,17 @@ export type ProfileStats = {
   fetchedAt: number;
   loggedInWithGitHub: boolean;
   totalStars: number;
-  sampleStarredRepos: string[];
+  sampleStarredRepos: {
+    author: string;
+    name: string;
+  }[];
+  longestStreak: number;
   totalContributions: number;
-  topLanguages: Array<{ languageName: string; color: string | null }>;
+  topLanguages: Array<{
+    languageName: string;
+    color: string | null;
+    percent: number;
+  }>;
   bestHours: Record<string, number>;
   topWeekday: Weekday;
   topHour: Hour;
@@ -219,18 +230,21 @@ const computePlanet = (userStats: ProfileStats): z.infer<typeof PlanetEnum> => {
 export const parseTopLanguage = (topLanguage: {
   languageName: string;
   color: string | null;
+  percent: number;
 }): z.infer<typeof languageSchema> => {
   try {
     const lang = LanguagesEnum.parse(topLanguage.languageName);
     return {
       type: "designed",
       name: lang,
+      percent: topLanguage.percent,
     };
   } catch (e) {
     return {
       type: "other",
       color: topLanguage.color ?? "black",
       name: topLanguage.languageName,
+      percent: topLanguage.percent,
     };
   }
 };
@@ -239,14 +253,6 @@ export const computeCompositionParameters = (
   userStats: ProfileStats,
   rocketPreference: Rocket | null,
 ): CompositionParameters => {
-  const accentColor =
-    accentColorValues[
-      Math.floor(
-        random(userStats.lowercasedUsername + "accent") *
-          accentColorValues.length,
-      )
-    ];
-
   const defaultRocket =
     rocketValues[
       Math.floor(
@@ -287,10 +293,10 @@ export const computeCompositionParameters = (
       random(userStats.lowercasedUsername + "startAngle") > 0.5
         ? "left"
         : "right",
-    accentColor,
     rocket: rocketPreference ? rocketPreference : defaultRocket,
     contributionData: userStats.contributionData,
     sampleStarredRepos: userStats.sampleStarredRepos,
+    longestStreak: userStats.longestStreak,
   };
 };
 

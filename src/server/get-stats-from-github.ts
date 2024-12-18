@@ -9,6 +9,7 @@ import { getMoreStars } from "./get-more-stars.js";
 import type { BaseQueryResponse } from "./queries/base.query.js";
 import { baseQuery } from "./queries/base.query.js";
 import { getQuery } from "./queries/query.js";
+import { YEAR_TO_REVIEW } from "./year.js";
 
 const NOT_LANGUAGES = [
   "html",
@@ -74,12 +75,20 @@ export const getStatsFromGitHub = async ({
     },
   );
 
+  const valuesAddedTogether = Object.values(acc).reduce(
+    (a, i) => a + i.value,
+    0,
+  );
+
   const topLanguages = Object.entries(acc)
     .sort((a, b) => b[1].value - a[1].value)
-    .map((i) => ({
-      languageName: i[0],
-      color: i[1].color,
-    }))
+    .map((i) => {
+      return {
+        languageName: i[0],
+        color: i[1].color,
+        percent: i[1].value / valuesAddedTogether,
+      };
+    })
     .slice(0, 3);
 
   const productivity = getMostProductive(commits);
@@ -106,9 +115,21 @@ export const getStatsFromGitHub = async ({
   const allDays = baseData.contributionsCollection.contributionCalendar.weeks
     .map((w) => w.contributionDays)
     .flat(1)
-    .filter((d) => d.date.startsWith("2023"));
+    .filter((d) => d.date.startsWith(String(YEAR_TO_REVIEW)));
+
+  let longestStreak = 0;
+  let currentStreak = 0;
+  for (const day of allDays) {
+    if (day.contributionCount > 0) {
+      currentStreak++;
+    } else {
+      longestStreak = Math.max(longestStreak, currentStreak);
+      currentStreak = 0;
+    }
+  }
 
   return {
+    longestStreak,
     totalPullRequests: morePullRequests.length,
     topLanguages,
     totalStars: stars.length,
@@ -125,7 +146,7 @@ export const getStatsFromGitHub = async ({
     topHour: String(mostHour[0]) as Hour,
     graphData,
     contributionData: allDays.map((d) => d.contributionCount),
-    sampleStarredRepos: stars.map((s) => s.name),
+    sampleStarredRepos: stars.map((s) => ({ name: s.name, author: s.owner })),
     allWeekdays: productivity.days,
   };
 };

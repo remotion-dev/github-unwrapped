@@ -1,6 +1,7 @@
 import { useSearch } from "@tanstack/react-router";
 import type { ComponentProps } from "react";
 import { useMemo } from "react";
+import { YEAR_TO_REVIEW } from "../../src/helpers/year";
 import { AboutItem } from "../About/AboutItem";
 import { DesktopHeader } from "../About/DesktopHeader";
 import { MobileHeader } from "../About/MobileHeader";
@@ -14,14 +15,12 @@ export const SharePage = () => {
   const { platform } = useSearch({ from: shareRoute.id });
   const content = useShareContent(platform as any);
 
-  const headerProps: ComponentProps<typeof DesktopHeader> = useMemo(
-    () => ({
-      description:
-        "Follow these instructions to share your GitHub Unwrapped 2023 video.",
+  const headerProps: ComponentProps<typeof DesktopHeader> = useMemo(() => {
+    return {
+      description: `Follow these instructions to share your GitHub Unwrapped ${YEAR_TO_REVIEW} video.`,
       title: "How to Share",
-    }),
-    [],
-  );
+    };
+  }, []);
 
   return (
     <div className={styles.wrapper}>

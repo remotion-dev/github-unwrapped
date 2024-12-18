@@ -132,11 +132,11 @@ export const Main: React.FC<Schema> = ({
   topHour,
   graphData,
   openingSceneStartAngle,
-  accentColor,
   rocket,
   contributionData,
   sampleStarredRepos,
   totalContributions,
+  longestStreak,
 }) => {
   const { durationInFrames } = useVideoConfig();
 
@@ -147,14 +147,13 @@ export const Main: React.FC<Schema> = ({
   return (
     <AbsoluteFill
       style={{
-        backgroundColor: "black",
+        backgroundColor: "#060842",
       }}
     >
       <Audio src={soundTrack} />
       <Series>
         <Series.Sequence durationInFrames={OPENING_SCENE_LENGTH}>
           <OpeningScene
-            accentColor={accentColor}
             startAngle={openingSceneStartAngle}
             login={login}
             rocket={rocket}
@@ -173,7 +172,6 @@ export const Main: React.FC<Schema> = ({
               topLanguages={topLanguages}
               showHelperLine={showHelperLine}
               login={login}
-              accentColor={accentColor}
               rocket={rocket}
               octocatSeed={random(login)}
             />
@@ -203,7 +201,6 @@ export const Main: React.FC<Schema> = ({
             topWeekday={topWeekday}
             topHour={topHour}
             graphData={graphData}
-            accentColor={accentColor}
             totalPullRequests={totalPullRequests}
             login={login}
             sampleStarredRepos={sampleStarredRepos}
@@ -214,19 +211,22 @@ export const Main: React.FC<Schema> = ({
           durationInFrames={CONTRIBUTIONS_SCENE_DURATION}
           offset={-CONTRIBUTIONS_SCENE_ENTRANCE_TRANSITION}
         >
-          <ContributionsScene
-            total={totalContributions}
-            rocket={rocket}
-            contributionData={contributionData}
-            accentColor={accentColor}
-            planet={planet}
-          />
+          <AbsoluteFill style={{ background: "black" }}>
+            <ContributionsScene
+              longestStreak={longestStreak}
+              total={totalContributions}
+              rocket={rocket}
+              contributionData={contributionData}
+              planet={planet}
+              username={login}
+            />
+          </AbsoluteFill>
         </Series.Sequence>
         <Series.Sequence
           durationInFrames={END_SCENE_DURATION}
           offset={-CONTRIBUTIONS_SCENE_EXIT_TRANSITION}
         >
-          <EndScene planet={planet} rocket={rocket} accentColor={accentColor} />
+          <EndScene planet={planet} rocket={rocket} />
         </Series.Sequence>
       </Series>
       {isMobileDevice() ? null : (

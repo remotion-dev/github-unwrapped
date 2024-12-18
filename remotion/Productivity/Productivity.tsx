@@ -8,7 +8,7 @@ import {
 } from "remotion";
 import type { Hour, ProductivityPerHour, Weekday } from "../../src/config";
 import { isMobileDevice } from "../Opening/devices";
-import { TABLET_BG } from "./TabletSVG";
+import { PANE_BACKGROUND } from "../TopLanguages/Pane";
 import { TopDay } from "./TopDay";
 
 type Props = {
@@ -18,9 +18,9 @@ type Props = {
 };
 
 const Bar = (props: {
-  productivity: number;
-  index: number;
-  mostProductive: boolean;
+  readonly productivity: number;
+  readonly index: number;
+  readonly mostProductive: boolean;
 }) => {
   const { fps } = useVideoConfig();
   const frame = useCurrentFrame();
@@ -51,9 +51,7 @@ const Bar = (props: {
           width: "100%",
           height: `${props.productivity * 100}%`,
           borderRadius: 4,
-          backgroundColor: props.mostProductive
-            ? "rgba(255, 255, 255, 0.7)"
-            : "#181B28",
+          backgroundColor: props.mostProductive ? PANE_BACKGROUND : "#181B28",
           border: "3px solid rgba(255, 255, 255, 0.1)",
         }}
       />
@@ -62,8 +60,8 @@ const Bar = (props: {
 };
 
 const ProductivityGraph = (props: {
-  productivityPerHour: Array<ProductivityPerHour>;
-  style?: React.CSSProperties;
+  readonly productivityPerHour: Array<ProductivityPerHour>;
+  readonly style?: React.CSSProperties;
 }) => {
   const maxProductivity = Math.max(
     ...props.productivityPerHour.map((p) => p.productivity),
@@ -128,7 +126,6 @@ export const Productivity: React.FC<Props> = ({ graphData, weekday, hour }) => {
   return (
     <AbsoluteFill
       style={{
-        background: TABLET_BG,
         display: "flex",
       }}
     >
@@ -152,6 +149,8 @@ export const Productivity: React.FC<Props> = ({ graphData, weekday, hour }) => {
         delay={60}
         soundDelay={95}
       />
+      <br />
+      <br />
       <TopDay
         values={[
           "0",
@@ -187,7 +186,7 @@ export const Productivity: React.FC<Props> = ({ graphData, weekday, hour }) => {
           if (value === "12") {
             return "12 pm";
           }
-          
+
           if (value === "0") {
             return "12 am";
           }
@@ -200,7 +199,13 @@ export const Productivity: React.FC<Props> = ({ graphData, weekday, hour }) => {
         }}
         soundDelay={120}
       />
-
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
       <div
         style={{
           display: "flex",

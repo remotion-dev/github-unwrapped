@@ -3,10 +3,10 @@ import { AbsoluteFill } from "remotion";
 import { SevenSegment } from "../SevenSegment/SevenSegmentNumber";
 
 export const IssueNumber: React.FC<{
-  currentNumber: number;
-  max: number;
-  label: string;
-  align: "left" | "right" | "center";
+  readonly currentNumber: number;
+  readonly max: number;
+  readonly label: string;
+  readonly align: "left" | "right" | "center";
 }> = ({ currentNumber, label, align, max }) => {
   return (
     <AbsoluteFill

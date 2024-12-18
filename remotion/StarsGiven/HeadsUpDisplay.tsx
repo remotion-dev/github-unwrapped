@@ -3,11 +3,12 @@ import { AbsoluteFill } from "remotion";
 
 export type RepoText = {
   text: string;
+  text2: string;
   opacity: number;
 };
 
 export const HeadsUpDisplay: React.FC<{
-  textToDisplay: RepoText | null;
+  readonly textToDisplay: RepoText | null;
 }> = ({ textToDisplay }) => {
   return (
     <AbsoluteFill
@@ -26,8 +27,16 @@ export const HeadsUpDisplay: React.FC<{
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          color: textToDisplay ? "white" : "#AC8A4B",
-          fontSize: 40,
+          color: "white",
+          lineHeight: "40px",
+          fontSize: textToDisplay
+            ? textToDisplay.text.length > 25
+              ? 22
+              : textToDisplay.text.length > 15
+                ? 30
+                : 40
+            : 40,
+          textAlign: "center",
         }}
       >
         <span
@@ -36,7 +45,22 @@ export const HeadsUpDisplay: React.FC<{
             marginTop: 5,
           }}
         >
-          <span
+          <div
+            style={{
+              opacity: textToDisplay ? textToDisplay.opacity : 1,
+              fontFamily: "Seven Segment",
+              fontWeight: "bold",
+              maxWidth: 400,
+              whiteSpace: "nowrap",
+              textOverflow: "ellipsis",
+              overflow: "hidden",
+              fontSize: 20,
+              lineHeight: 1.5,
+            }}
+          >
+            {textToDisplay ? textToDisplay.text2 : ""}
+          </div>
+          <div
             style={{
               opacity: textToDisplay ? textToDisplay.opacity : 1,
               fontFamily: "Seven Segment",
@@ -48,7 +72,7 @@ export const HeadsUpDisplay: React.FC<{
             }}
           >
             {textToDisplay ? textToDisplay.text : "repos starred"}
-          </span>
+          </div>
         </span>
       </div>
     </AbsoluteFill>

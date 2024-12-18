@@ -51,7 +51,6 @@ export const StarsAndProductivity: React.FC<
   topWeekday,
   topHour,
   graphData,
-  accentColor,
   totalPullRequests,
   login,
   sampleStarredRepos,
@@ -104,7 +103,7 @@ export const StarsAndProductivity: React.FC<
     TABLET_SCENE_ENTER_ANIMATION;
 
   return (
-    <AbsoluteFill>
+    <AbsoluteFill style={{}}>
       {frame < timeUntilTabletIsEntered || frame > timeUntilTabletHides ? (
         <StarsGiven
           starsGiven={starsGiven}
@@ -113,7 +112,6 @@ export const StarsAndProductivity: React.FC<
           topWeekday={topWeekday}
           topHour={topHour}
           graphData={graphData}
-          accentColor={accentColor}
           totalPullRequests={totalPullRequests}
           login={login}
           sampleStarredRepos={sampleStarredRepos}

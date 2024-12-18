@@ -8,7 +8,7 @@
     },
     {
       "files": ["src/**/*.{ts,tsx}"],
-      "extends": ["@jonny", "plugin:require-extensions/recommended"]
+      "extends": ["@jonny"]
     }
   ]
 }

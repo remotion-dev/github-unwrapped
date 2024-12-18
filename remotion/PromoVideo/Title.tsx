@@ -59,7 +59,7 @@ export const PromoVideoTitle: React.FC<{
             top: layout === "short" ? -800 : 40,
           }}
         >
-          <TitleCardOctocat accentColor="blue" />
+          <TitleCardOctocat />
         </AbsoluteFill>
       </AbsoluteFill>
       <AbsoluteFill

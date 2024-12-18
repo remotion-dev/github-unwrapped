@@ -7,7 +7,6 @@ import {
   useCurrentFrame,
   useVideoConfig,
 } from "remotion";
-import { type AccentColor } from "../../src/config";
 import { TABLET_SCENE_HIDE_ANIMATION } from "../Productivity/Tablet";
 import { PullRequests } from "../PullRequests/PullRequests";
 import { Cockpit } from "./Cockpit";
@@ -15,21 +14,19 @@ import type { RepoText } from "./HeadsUpDisplay";
 import { getTransitionToPullRequest } from "./transition-to-pull-request";
 
 export const AnimatedCockpit: React.FC<{
-  xShake: number;
-  yShake: number;
-  rotationShake: number;
-  accentColor: AccentColor;
-  totalPullRequests: number;
-  repoText: RepoText | null;
-  starCount: number;
-  totalStarCount: number;
-  durationOfStars: number;
-  timeUntilTabletHides: number;
+  readonly xShake: number;
+  readonly yShake: number;
+  readonly rotationShake: number;
+  readonly totalPullRequests: number;
+  readonly repoText: RepoText | null;
+  readonly starCount: number;
+  readonly totalStarCount: number;
+  readonly durationOfStars: number;
+  readonly timeUntilTabletHides: number;
 }> = ({
   xShake,
   yShake,
   rotationShake,
-  accentColor,
   totalPullRequests,
   repoText,
   starCount,
@@ -74,10 +71,7 @@ export const AnimatedCockpit: React.FC<{
   return (
     <AbsoluteFill style={shake}>
       <Sequence from={timeUntilTabletHides}>
-        <PullRequests
-          accentColor={accentColor}
-          totalPullRequests={totalPullRequests}
-        />
+        <PullRequests totalPullRequests={totalPullRequests} />
       </Sequence>
       <Sequence
         durationInFrames={471}

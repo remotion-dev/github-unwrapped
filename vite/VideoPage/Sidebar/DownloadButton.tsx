@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { DownloadIcon } from "../../../icons/DownloadIcon";
+import { YEAR_TO_REVIEW } from "../../../src/helpers/year";
 import { Button } from "../../Button/Button";
 import { HoverEffect } from "../../Button/HoverEffect";
 import { useUserVideo } from "../../context";
@@ -76,7 +77,7 @@ export const DownloadButton: React.FC<{
 
           const a = document.createElement("a");
           a.href = URL.createObjectURL(loadingState.file);
-          a.setAttribute("download", "github-unwrapped-2023.mp4");
+          a.setAttribute("download", `github-unwrapped-${YEAR_TO_REVIEW}.mp4`);
           a.click();
         }}
       >
@@ -140,7 +141,7 @@ export const DownloadButton: React.FC<{
         onClick={() => {
           const a = document.createElement("a");
           a.href = status.url;
-          a.setAttribute("download", "github-unwrapped-2023.mp4");
+          a.setAttribute("download", `github-unwrapped-${YEAR_TO_REVIEW}.mp4`);
           a.click();
         }}
       >

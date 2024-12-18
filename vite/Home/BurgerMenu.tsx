@@ -21,7 +21,7 @@ export const BurgerMenu = () => {
             <animated.div style={style} className={styles.navWrapper}>
               <a
                 target="_blank"
-                href={"https://github.com/remotion-dev/github-unwrapped-2023"}
+                href={"https://github.com/remotion-dev/github-unwrapped"}
               >
                 <div className={styles.navLink}>
                   <GithubIcon width={24} height={24} />

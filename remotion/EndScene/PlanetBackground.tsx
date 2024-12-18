@@ -1,7 +1,7 @@
 import React from "react";
 import { AbsoluteFill, Img, interpolate, useCurrentFrame } from "remotion";
 import { GOLD_PLANET_BG } from ".";
-import type { AccentColor, Planet } from "../../src/config";
+import type { Planet } from "../../src/config";
 import { Gradient } from "../Gradients/NativeGradient";
 import { Noise } from "../Noise";
 import { planetToGradient } from "../planets";
@@ -18,7 +18,6 @@ export const prefetchPlanetLandingBackground = (planet: Planet): string[] => {
 
 export const PlanetBackground: React.FC<{
   planet: Planet;
-  accentColor: AccentColor;
 }> = ({ planet }) => {
   const frame = useCurrentFrame();
 

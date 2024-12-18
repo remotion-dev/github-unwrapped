@@ -1,4 +1,4 @@
-import { YEAR_TO_REVIEW } from "../../helpers/year.js";
+import { YEAR_TO_REVIEW } from "../year.js";
 
 export const baseQuery = `
 openIssues: issues(filterBy: {since: "${YEAR_TO_REVIEW}-01-01T00:00:00.000Z"}, states: OPEN) {

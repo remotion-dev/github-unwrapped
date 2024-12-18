@@ -9,10 +9,10 @@ import { CockpitLeftScreen } from "./LeftScreenCockpit";
 import { ShinyStarOutline } from "./ShinyStarOutline";
 
 export const Cockpit: React.FC<{
-  starCount: number;
-  totalStarCount: number;
-  repoText: RepoText | null;
-  durationOfStarsWithShake: number;
+  readonly starCount: number;
+  readonly totalStarCount: number;
+  readonly repoText: RepoText | null;
+  readonly durationOfStarsWithShake: number;
 }> = ({ durationOfStarsWithShake, repoText, starCount, totalStarCount }) => {
   return (
     <AbsoluteFill>

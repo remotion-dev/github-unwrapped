@@ -213,7 +213,7 @@ export const Issues: React.FC<z.infer<typeof issuesSchema>> = ({
   return (
     <AbsoluteFill>
       <AbsoluteFill style={{ opacity }}>
-        <Gradient gradient="greenRadial" />
+        <Gradient gradient="greenAlient" />
         <AbsoluteFill style={{ opacity: 0.4 }}>
           <Noise translateX={3} translateY={10} />
         </AbsoluteFill>

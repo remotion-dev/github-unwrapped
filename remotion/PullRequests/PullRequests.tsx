@@ -10,7 +10,6 @@ import {
   useVideoConfig,
 } from "remotion";
 import { z } from "zod";
-import { accentColorSchema } from "../../src/config";
 import { Gradient } from "../Gradients/NativeGradient";
 import { accentColorToGradient } from "../Opening/TitleImage";
 import { isMobileDevice } from "../Opening/devices";
@@ -22,7 +21,6 @@ const endHeight = 1080;
 
 export const pullRequestsSchema = z.object({
   totalPullRequests: z.number().min(0),
-  accentColor: accentColorSchema,
 });
 
 const MAX_PATHS = 30;
@@ -30,11 +28,10 @@ export const PULL_REQUESTS_DURATION = 260;
 
 export const PullRequests: React.FC<z.infer<typeof pullRequestsSchema>> = ({
   totalPullRequests,
-  accentColor,
 }) => {
   const initialOffset = PATHS_COMP_HEIGHT - endHeight;
   const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
+  const { fps, durationInFrames } = useVideoConfig();
   const evolution = interpolate(frame, [0, 200], [0, 1], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
@@ -77,12 +74,35 @@ export const PullRequests: React.FC<z.infer<typeof pullRequestsSchema>> = ({
       )}
       <AbsoluteFill style={style}>
         <AbsoluteFill>
-          <Gradient gradient={accentColorToGradient(accentColor)} />
+          <Gradient gradient={accentColorToGradient()} />
         </AbsoluteFill>
-        <WholePaths
-          initialPullRequests={Math.max(0, totalPullRequests - MAX_PATHS)}
-          extraPaths={Math.min(MAX_PATHS, totalPullRequests)}
+        <AbsoluteFill
+          style={{
+            background: "black",
+            opacity: interpolate(
+              frame,
+              [durationInFrames - 20, durationInFrames],
+              [0, 1],
+            ),
+          }}
         />
+        <AbsoluteFill
+          style={{
+            opacity: interpolate(
+              frame,
+              [durationInFrames - 20, durationInFrames],
+              [1, 0],
+              {
+                extrapolateLeft: "clamp",
+              },
+            ),
+          }}
+        >
+          <WholePaths
+            initialPullRequests={Math.max(0, totalPullRequests - MAX_PATHS)}
+            extraPaths={Math.min(MAX_PATHS, totalPullRequests)}
+          />
+        </AbsoluteFill>
       </AbsoluteFill>
     </AbsoluteFill>
   );
