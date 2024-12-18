@@ -41,9 +41,9 @@ export const getStarBurstFirstFrame = ({
 };
 
 export const Star: React.FC<{
-  duration: number;
-  angle: number;
-  hitSpaceship: null | { index: number };
+  readonly duration: number;
+  readonly angle: number;
+  readonly hitSpaceship: null | { index: number };
 }> = ({ duration, angle, hitSpaceship }) => {
   const frame = useCurrentFrame();
 

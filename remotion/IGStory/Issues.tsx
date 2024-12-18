@@ -1,7 +1,7 @@
 import React from "react";
 
 export const Issues: React.FC<{
-  issues: number;
+  readonly issues: number;
 }> = ({ issues }) => {
   return (
     <div

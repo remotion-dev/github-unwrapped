@@ -79,7 +79,7 @@ type ThreadT = {
   orbs: Array<{ top: number; type: number }>;
 };
 
-const Thread = (props: { thread: ThreadT }) => {
+const Thread = (props: { readonly thread: ThreadT }) => {
   const frame = useCurrentFrame();
 
   return (

@@ -54,7 +54,7 @@ export const getTakeOffAssetToPrefetch = (rocket: Rocket) => {
 };
 
 export const TakeOff: React.FC<{
-  rocket: Rocket;
+  readonly rocket: Rocket;
 }> = ({ rocket }) => {
   const frame = useCurrentFrame();
   const acceleratedFrame = remapSpeed(frame, takeOffSpeedFucntion);

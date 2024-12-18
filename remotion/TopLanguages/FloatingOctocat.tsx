@@ -5,7 +5,7 @@ import { OctocatBody } from "../../vite/VideoPage/Background/Octocat-body";
 import { NewOctocatLine } from "./NewOctocatLine";
 import { getOctocatLine } from "./octocat-line";
 
-export const FloatingOctocat: React.FC<{}> = ({}) => {
+export const FloatingOctocat: React.FC<{}> = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 

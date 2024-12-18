@@ -11,9 +11,9 @@ const padding = 10;
 const iconHeight = 120;
 
 export const CallToAction: React.FC<{
-  exitProgress: number;
-  enterProgress: number;
-  planet: Planet;
+  readonly exitProgress: number;
+  readonly enterProgress: number;
+  readonly planet: Planet;
 }> = ({ exitProgress, enterProgress, planet }) => {
   const startDistance = 10;
   const stillDistance = 1;

@@ -12,8 +12,8 @@ import { PATH_ANIMATION_DURATION, Path } from "./Path";
 import { makeRandomPath } from "./make-random-path";
 
 export const WholePaths: React.FC<{
-  extraPaths: number;
-  initialPullRequests: number;
+  readonly extraPaths: number;
+  readonly initialPullRequests: number;
 }> = ({ extraPaths, initialPullRequests }) => {
   const frame = useCurrentFrame();
 

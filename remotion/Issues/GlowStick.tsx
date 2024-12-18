@@ -14,10 +14,10 @@ const IMAGE_HEIGHT = 165;
 const STICK_PADDING_TOP = 10;
 
 export const GlowStick: React.FC<{
-  targetX: number;
-  targetY: number;
-  shootDelay: number;
-  duration: number;
+  readonly targetX: number;
+  readonly targetY: number;
+  readonly shootDelay: number;
+  readonly duration: number;
 }> = ({ targetX, targetY, shootDelay, duration }) => {
   const angleRadians = getAngleForShoot(targetX, targetY);
 

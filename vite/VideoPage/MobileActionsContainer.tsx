@@ -34,7 +34,7 @@ const getRenderDescription = (status: RenderStatus) => {
 };
 
 export const MobileActionsContainer: React.FC<{
-  loadingState: LoadingState;
+  readonly loadingState: LoadingState;
 }> = ({ loadingState }) => {
   const navigate = useNavigate({ from: videoRoute.id });
 

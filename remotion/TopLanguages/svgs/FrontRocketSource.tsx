@@ -23,8 +23,8 @@ export const getFrontRocketSource = (rocket: Rocket) => {
 };
 
 export const RocketFront = (props: {
-  style?: React.CSSProperties;
-  rocket: Rocket;
+  readonly style?: React.CSSProperties;
+  readonly rocket: Rocket;
 }) => (
   <Img
     src={getFrontRocketSource(props.rocket)}

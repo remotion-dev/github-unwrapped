@@ -12,7 +12,7 @@ export const StandardPlanet = ({
   customColor,
   ...props
 }: SVGProps<SVGSVGElement> & {
-  customColor: string | null;
+  readonly customColor: string | null;
 }) => {
   if (!customColor) {
     throw new Error("customColor is null");

@@ -2,7 +2,7 @@ import React, { useMemo } from "react";
 import { AbsoluteFill } from "remotion";
 
 export const CockpitLeftScreen: React.FC<{
-  children: React.ReactNode;
+  readonly children: React.ReactNode;
 }> = ({ children }) => {
   const outer: React.CSSProperties = useMemo(() => {
     return {

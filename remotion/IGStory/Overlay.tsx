@@ -10,13 +10,13 @@ import { Stars } from "./Stars";
 import { Title } from "./Title";
 
 export const Overlay: React.FC<{
-  issues: number;
-  contributionData: number[];
-  weekdays: number[];
-  pullRequests: number;
-  stars: number;
-  login: string;
-  topLanguage: TopLanguage | null;
+  readonly issues: number;
+  readonly contributionData: number[];
+  readonly weekdays: number[];
+  readonly pullRequests: number;
+  readonly stars: number;
+  readonly login: string;
+  readonly topLanguage: TopLanguage | null;
 }> = ({
   issues,
   contributionData,

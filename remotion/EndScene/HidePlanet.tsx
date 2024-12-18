@@ -3,9 +3,9 @@ import { AbsoluteFill } from "remotion";
 import type { Planet } from "../../src/config";
 
 export const HidePlanets: React.FC<{
-  children: React.ReactNode;
-  planet: Planet;
-  exitProgress: number;
+  readonly children: React.ReactNode;
+  readonly planet: Planet;
+  readonly exitProgress: number;
 }> = ({ children, exitProgress }) => {
   return (
     <AbsoluteFill

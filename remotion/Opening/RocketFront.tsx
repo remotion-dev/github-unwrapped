@@ -2,7 +2,7 @@ import { AbsoluteFill, Img } from "remotion";
 import type { Rocket } from "../../src/config";
 import { getSideRocketSource } from "../Spaceship";
 
-const SvgComponent = (props: { rocket: Rocket }) => (
+const SvgComponent = (props: { readonly rocket: Rocket }) => (
   <AbsoluteFill
     style={{
       justifyContent: "center",

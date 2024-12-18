@@ -3,9 +3,9 @@ import { z } from "zod";
 import { PANE_BACKGROUND, PANE_BORDER } from "../TopLanguages/Pane";
 
 const Bar: React.FC<{
-  progress: number;
-  letter: string;
-  most: boolean;
+  readonly progress: number;
+  readonly letter: string;
+  readonly most: boolean;
 }> = ({ progress, letter, most }) => {
   return (
     <div
@@ -44,7 +44,7 @@ const Bar: React.FC<{
 const schema = z.array(z.number());
 
 export const BarChart: React.FC<{
-  graphData: z.infer<typeof schema>;
+  readonly graphData: z.infer<typeof schema>;
 }> = ({ graphData }) => {
   const highest = Math.max(...graphData.map((g) => g));
 

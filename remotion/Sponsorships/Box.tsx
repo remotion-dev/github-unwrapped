@@ -550,11 +550,11 @@ const BIGGEST_WIDTH = 256;
 const BIGGEST_HEIGHT = 284;
 
 export const Box: React.FC<{
-  x: number;
-  y: number;
-  scale: number;
-  startFrame: number;
-  currentFrame: number;
+  readonly x: number;
+  readonly y: number;
+  readonly scale: number;
+  readonly startFrame: number;
+  readonly currentFrame: number;
 }> = ({ x, y, scale, currentFrame, startFrame }) => {
   const actualScale = scale * 1.5;
 

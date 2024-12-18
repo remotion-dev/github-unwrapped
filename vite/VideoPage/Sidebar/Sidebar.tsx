@@ -10,12 +10,12 @@ import { DownloadButton } from "./DownloadButton";
 import styles from "./styles.module.css";
 
 export const Sidebar: React.FC<{
-  inputProps: z.infer<typeof compositionSchema>;
-  setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  rocket: Rocket;
-  setIsPlaying: React.Dispatch<React.SetStateAction<boolean>>;
-  playerRef: React.RefObject<PlayerRef>;
-  status: RenderStatus;
+  readonly inputProps: z.infer<typeof compositionSchema>;
+  readonly setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  readonly rocket: Rocket;
+  readonly setIsPlaying: React.Dispatch<React.SetStateAction<boolean>>;
+  readonly playerRef: React.RefObject<PlayerRef>;
+  readonly status: RenderStatus;
 }> = ({
   inputProps,
   status,

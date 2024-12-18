@@ -13,7 +13,7 @@ import { RemotionShineEffect } from "../PullRequests/RemotionShineEffect";
 import type { PromoVideoLayout } from "./promo-video-layout";
 
 export const PromoVideoCallToAction: React.FC<{
-  layout: PromoVideoLayout;
+  readonly layout: PromoVideoLayout;
 }> = ({ layout }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();

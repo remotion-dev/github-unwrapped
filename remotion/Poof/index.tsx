@@ -284,9 +284,9 @@ const PoofSprite: React.FC = () => {
 };
 
 export const Poof: React.FC<{
-  x: number;
-  y: number;
-  ufoScale: number;
+  readonly x: number;
+  readonly y: number;
+  readonly ufoScale: number;
 }> = ({ x, y, ufoScale }) => {
   const actualScale = ufoScale * 1.5;
 
