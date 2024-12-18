@@ -103,7 +103,7 @@ export const CallToAction: React.FC<{
               WebkitTextFillColor: "transparent",
             }}
           >
-            Get your year in review
+            Get your Year in Review
           </div>
           <div
             style={{
