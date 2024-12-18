@@ -131,6 +131,7 @@ export const compositionSchema = z.object({
   rocket: rocketSchema,
   contributionData: z.array(z.number()),
   totalContributions: z.number(),
+  longestStreak: z.number(),
   sampleStarredRepos: z.array(starredRepoExample),
 });
 
@@ -189,6 +190,7 @@ export type ProfileStats = {
     author: string;
     name: string;
   }[];
+  longestStreak: number;
   totalContributions: number;
   topLanguages: Array<{
     languageName: string;
@@ -294,6 +296,7 @@ export const computeCompositionParameters = (
     rocket: rocketPreference ? rocketPreference : defaultRocket,
     contributionData: userStats.contributionData,
     sampleStarredRepos: userStats.sampleStarredRepos,
+    longestStreak: userStats.longestStreak,
   };
 };
 

@@ -154,7 +154,7 @@ export const StarsGiven: React.FC<Props> = ({
       return {
         opacity,
         text: sampleStarredRepos[lastItemWithFrameVisible].name,
-        text2: sampleStarredRepos[lastItemWithFrameVisible + 1].author,
+        text2: sampleStarredRepos[lastItemWithFrameVisible].author,
       };
     }
 

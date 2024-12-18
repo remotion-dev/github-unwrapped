@@ -28,6 +28,7 @@ export const HeadsUpDisplay: React.FC<{
           justifyContent: "center",
           alignItems: "center",
           color: "white",
+          lineHeight: "40px",
           fontSize: textToDisplay
             ? textToDisplay.text.length > 25
               ? 22
@@ -54,6 +55,7 @@ export const HeadsUpDisplay: React.FC<{
               textOverflow: "ellipsis",
               overflow: "hidden",
               fontSize: 20,
+              lineHeight: 1.5,
             }}
           >
             {textToDisplay ? textToDisplay.text2 : ""}

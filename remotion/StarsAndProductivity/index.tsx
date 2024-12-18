@@ -103,7 +103,7 @@ export const StarsAndProductivity: React.FC<
     TABLET_SCENE_ENTER_ANIMATION;
 
   return (
-    <AbsoluteFill>
+    <AbsoluteFill style={{}}>
       {frame < timeUntilTabletIsEntered || frame > timeUntilTabletHides ? (
         <StarsGiven
           starsGiven={starsGiven}

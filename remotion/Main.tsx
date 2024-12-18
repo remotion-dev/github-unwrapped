@@ -136,6 +136,7 @@ export const Main: React.FC<Schema> = ({
   contributionData,
   sampleStarredRepos,
   totalContributions,
+  longestStreak,
 }) => {
   const { durationInFrames } = useVideoConfig();
 
@@ -210,18 +211,24 @@ export const Main: React.FC<Schema> = ({
           durationInFrames={CONTRIBUTIONS_SCENE_DURATION}
           offset={-CONTRIBUTIONS_SCENE_ENTRANCE_TRANSITION}
         >
-          <ContributionsScene
-            total={totalContributions}
-            rocket={rocket}
-            contributionData={contributionData}
-            planet={planet}
-          />
+          <AbsoluteFill style={{ background: "black" }}>
+            <ContributionsScene
+              longestStreak={longestStreak}
+              total={totalContributions}
+              rocket={rocket}
+              contributionData={contributionData}
+              planet={planet}
+              username={login}
+            />
+          </AbsoluteFill>
         </Series.Sequence>
         <Series.Sequence
           durationInFrames={END_SCENE_DURATION}
           offset={-CONTRIBUTIONS_SCENE_EXIT_TRANSITION}
         >
-          <EndScene planet={planet} rocket={rocket} />
+          <AbsoluteFill style={{ background: "black" }}>
+            <EndScene planet={planet} rocket={rocket} />
+          </AbsoluteFill>
         </Series.Sequence>
       </Series>
       {isMobileDevice() ? null : (

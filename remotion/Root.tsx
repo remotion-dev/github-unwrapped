@@ -157,6 +157,8 @@ export const RemotionRoot: React.FC = () => {
         width={VIDEO_WIDTH}
         height={VIDEO_HEIGHT}
         defaultProps={{
+          username: "JonnyBurger",
+          longestStreak: 90,
           total: 300,
           rocket: "blue",
           planet: "Ice",
@@ -586,7 +588,7 @@ export const RemotionRoot: React.FC = () => {
           issuesOpened: 39,
           totalPullRequests: 873,
           topWeekday: "4",
-          totalContributions: 9486,
+          totalContributions: 9489,
           topHour: "10",
           graphData: [
             {
@@ -708,10 +710,48 @@ export const RemotionRoot: React.FC = () => {
             85, 25, 3, 13, 6, 0, 0, 5, 2, 38, 5, 2, 5, 1, 7, 34, 33, 23, 37, 58,
             16, 30, 22, 45, 59, 40, 0, 21, 24, 24, 22, 12, 15, 3, 0, 8, 66, 14,
             48, 33, 6, 12, 25, 18, 10, 16, 40, 33, 1, 50, 33, 28, 36, 42, 9, 0,
-            47, 10, 32, 45, 31, 4, 32, 8, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            47, 10, 32, 45, 31, 4, 32, 8, 10, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0,
           ],
-          sampleStarredRepos: SAMPLE_STARRED_REPOS,
+          sampleStarredRepos: [
+            {
+              name: "remotion-templates",
+              author: "reactvideoeditor",
+            },
+            {
+              name: "react-scan",
+              author: "aidenybai",
+            },
+            {
+              name: "mp4-muxer",
+              author: "Vanilagy",
+            },
+            {
+              name: "core",
+              author: "diffusionstudio",
+            },
+            {
+              name: "ladybird",
+              author: "LadybirdBrowser",
+            },
+            {
+              name: "remotion-bar-race-chart",
+              author: "hylarucoder",
+            },
+            {
+              name: "mp4-h264-re-encode",
+              author: "vjeux",
+            },
+            {
+              name: "seamless-aac-split-and-stitch-demo",
+              author: "wistia",
+            },
+            {
+              name: "analyzer-public",
+              author: "vtclab",
+            },
+          ],
+          longestStreak: 48,
         }}
       />
       <Composition

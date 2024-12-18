@@ -117,7 +117,19 @@ export const getStatsFromGitHub = async ({
     .flat(1)
     .filter((d) => d.date.startsWith(String(YEAR_TO_REVIEW)));
 
+  let longestStreak = 0;
+  let currentStreak = 0;
+  for (const day of allDays) {
+    if (day.contributionCount > 0) {
+      currentStreak++;
+    } else {
+      longestStreak = Math.max(longestStreak, currentStreak);
+      currentStreak = 0;
+    }
+  }
+
   return {
+    longestStreak,
     totalPullRequests: morePullRequests.length,
     topLanguages,
     totalStars: stars.length,
