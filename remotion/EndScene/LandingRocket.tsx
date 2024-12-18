@@ -5,43 +5,22 @@ import {
   interpolate,
   useCurrentFrame,
 } from "remotion";
-import type { Planet, Rocket } from "../../src/config";
+import type { Rocket } from "../../src/config";
 import { getFlame, takeOffSpeedFucntion } from "../Opening/TakeOff";
 import { RocketSide } from "../Spaceship";
 import { remapSpeed } from "../TopLanguages/remap-speed";
 
 export const LandingRocket: React.FC<{
   readonly rocket: Rocket;
-  readonly planetType: Planet;
-}> = ({ rocket, planetType }) => {
+}> = ({ rocket }) => {
   const frame = useCurrentFrame();
 
   const reversedFrame = 75 - frame;
   const acceleratedFrame = remapSpeed(reversedFrame, takeOffSpeedFucntion);
 
   const finalOffset = useMemo(() => {
-    // if (planetType === "Ice") {
-    //   return 450;
-    // }
-
-    // if (planetType === "Gold") {
-    //   return 450;
-    // }
-
-    // if (planetType === "Leafy") {
-    //   return 450;
-    // }
-
-    // if (planetType === "Fire") {
-    //   return 450;
-    // }
-
-    // if (planetType === "Silver") {
-    //   return 450;
-    // }
-
     return 420;
-  }, [planetType]);
+  }, []);
 
   const rocketOffset = interpolate(
     acceleratedFrame,
