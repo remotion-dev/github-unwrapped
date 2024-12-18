@@ -1,35 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { DownloadIcon } from "../../../icons/DownloadIcon";
 import { YEAR_TO_REVIEW } from "../../../src/helpers/year";
 import { Button } from "../../Button/Button";
 import { useUserVideo } from "../../context";
 import shadow from "./shadow.module.css";
 import styles from "./styles.module.css";
-
-const getWindowSize = () => {
-  const { innerWidth, innerHeight } = window;
-  return { innerWidth, innerHeight };
-};
-
-const useWindowDimensions = () => {
-  const [windowSize, setWindowSize] = useState(getWindowSize());
-
-  useEffect(() => {
-    function handleWindowResize() {
-      setWindowSize(getWindowSize());
-    }
-
-    window.addEventListener("resize", handleWindowResize);
-
-    return () => {
-      window.removeEventListener("resize", handleWindowResize);
-    };
-  }, []);
-
-  return windowSize;
-};
-
-const WINDOW_WIDTH_THRESHOLD = 640;
 
 export type LoadingState =
   | {
@@ -48,49 +23,12 @@ export const DownloadButton: React.FC<{
   readonly style?: React.CSSProperties;
   readonly className?: string;
 }> = ({ style, ...props }) => {
-  const { status, loadingState } = useUserVideo();
-
-  const { innerWidth } = useWindowDimensions();
+  const { status } = useUserVideo();
 
   const classNames = [styles.downloadButton];
 
   if (props.className) {
     classNames.push(props.className);
-  }
-
-  if (innerWidth < WINDOW_WIDTH_THRESHOLD) {
-    return (
-      <Button
-        className={[
-          ...classNames,
-          status.type === "video-available" ? undefined : styles.loadingButton,
-        ].join(" ")}
-        disabled={loadingState.type !== "downloaded"}
-        style={{
-          pointerEvents: status.type === "video-available" ? "auto" : "none",
-          ...style,
-        }}
-        onClick={() => {
-          if (loadingState.type !== "downloaded") {
-            throw new Error("cannot click on not downloaded");
-          }
-
-          const a = document.createElement("a");
-          a.href = URL.createObjectURL(loadingState.file);
-          a.setAttribute("download", `github-unwrapped-${YEAR_TO_REVIEW}.mp4`);
-          a.click();
-        }}
-      >
-        {"progress" in status && (
-          <div
-            className={styles.loadingButtonBar}
-            style={{ width: `${status.progress * 100}%`, zIndex: -1 }}
-          />
-        )}
-        <DownloadIcon />
-        Download
-      </Button>
-    );
   }
 
   if (status.type === "querying") {
@@ -162,7 +100,7 @@ export const DownloadButton: React.FC<{
               fontSize: 16,
             }}
           >
-            Download Video
+            Download
           </div>
         </div>
       </a>
