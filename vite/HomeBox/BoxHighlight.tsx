@@ -3,7 +3,7 @@ import { AbsoluteFill } from "remotion";
 
 export const BoxHighlight: React.FC = () => {
   return (
-    <AbsoluteFill>
+    <AbsoluteFill style={{ pointerEvents: "none" }}>
       <AbsoluteFill
         style={{
           backgroundColor: "#fff",
@@ -20,7 +20,7 @@ export const BoxHighlight: React.FC = () => {
 
 export const PinkHighlightBox: React.FC = () => {
   return (
-    <AbsoluteFill>
+    <AbsoluteFill style={{ pointerEvents: "none" }}>
       <div
         style={{
           backgroundColor: "pink",
