@@ -15,7 +15,7 @@ export const FurtherActions: React.FC = () => {
       <div className={styles.furtherActionsButtonContainer}>
         <Link to="/">
           <FurtherAction
-            icon={(params) => <UserIcon {...params} />}
+            icon={(params) => <UserIcon {...params} width={15} />}
             label="Unwrap another user"
           />
         </Link>
@@ -23,7 +23,7 @@ export const FurtherActions: React.FC = () => {
           <a href={signInWithGitHubLink()}>
             <FurtherAction
               icon={(params) => (
-                <PrivateContributionsIcon {...params} width={12} />
+                <PrivateContributionsIcon {...params} width={18} />
               )}
               label="Unlock private metrics"
             />

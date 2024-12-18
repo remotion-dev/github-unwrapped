@@ -1,6 +1,10 @@
 import React from "react";
 import { z } from "zod";
-import { PANE_BACKGROUND, PANE_BORDER } from "../TopLanguages/Pane";
+import {
+  PANE_BACKGROUND,
+  PANE_BORDER,
+  PANE_TEXT_COLOR,
+} from "../TopLanguages/Pane";
 
 const Bar: React.FC<{
   readonly progress: number;
@@ -21,7 +25,7 @@ const Bar: React.FC<{
         style={{
           height: 150 * progress,
           width: 30,
-          background: most ? "white" : PANE_BACKGROUND,
+          background: most ? PANE_TEXT_COLOR : PANE_BACKGROUND,
           border: PANE_BORDER,
           borderRadius: 10,
           marginBottom: 10,
@@ -32,7 +36,7 @@ const Bar: React.FC<{
           fontFamily: "Mona Sans",
           fontWeight: "bold",
           marginLeft: 3,
-          color: "white",
+          color: PANE_TEXT_COLOR,
         }}
       >
         {letter}
@@ -51,17 +55,12 @@ export const BarChart: React.FC<{
   return (
     <div
       style={{
-        width: 400,
-        position: "absolute",
-        height: 220,
-        top: 420,
-        left: -75,
         display: "flex",
         flexDirection: "row",
         justifyContent: "center",
-        alignItems: "center",
+        alignItems: "flex-end",
         gap: 20,
-        transform: "scale(0.55)",
+        transform: "scale(0.8)",
       }}
     >
       {graphData.map((_, i) => {

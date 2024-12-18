@@ -1040,11 +1040,13 @@ export const RemotionRoot: React.FC = () => {
               83, 0, 0, 127, 127, 0, 0, 54, 93, 91, 0, 38, 54, 72, 0, 39, 58,
               82, 98, 127,
             ],
+            longestStreak: 48,
+            totalContributions: 9489,
           }}
         />
         <Still
-          width={466}
-          height={735}
+          width={600}
+          height={900}
           component={IgStoryContent}
           id="ig-story-content"
           schema={ogImageSchema}
@@ -1085,6 +1087,8 @@ export const RemotionRoot: React.FC = () => {
               83, 0, 0, 127, 127, 0, 0, 54, 93, 91, 0, 38, 54, 72, 0, 39, 58,
               82, 98, 127,
             ],
+            longestStreak: 48,
+            totalContributions: 9489,
           }}
         />
         <Still
@@ -1130,6 +1134,8 @@ export const RemotionRoot: React.FC = () => {
               83, 0, 0, 127, 127, 0, 0, 54, 93, 91, 0, 38, 54, 72, 0, 39, 58,
               82, 98, 127,
             ],
+            longestStreak: 48,
+            totalContributions: 9489,
           }}
         />
       </Folder>

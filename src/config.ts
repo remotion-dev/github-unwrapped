@@ -307,4 +307,6 @@ export const ogImageSchema = z.object({
   weekdays: z.array(z.number()),
   login: z.string(),
   topLanguage: languageSchema.or(z.null()),
+  longestStreak: z.number(),
+  totalContributions: z.number(),
 });

@@ -30,6 +30,8 @@ export const makeOrGetOgImage = async (profileStats: ProfileStats) => {
       ? parseTopLanguage(profileStats.topLanguages[0])
       : null,
     weekdays: profileStats.allWeekdays,
+    longestStreak: profileStats.longestStreak,
+    totalContributions: profileStats.totalContributions,
   };
 
   const region = getRandomRegion();
@@ -71,6 +73,8 @@ export const makeOrGetIgStory = async (profileStats: ProfileStats) => {
       ? parseTopLanguage(profileStats.topLanguages[0])
       : null,
     weekdays: profileStats.allWeekdays,
+    longestStreak: profileStats.longestStreak,
+    totalContributions: profileStats.totalContributions,
   };
 
   const region = getRandomRegion();

@@ -1,5 +1,6 @@
 import type { TopLanguage } from "../../src/config";
 import { LanguagePlanet } from "../TopLanguages/Language";
+import { PANE_TEXT_COLOR } from "../TopLanguages/Pane";
 import { computePlanetInfo } from "../TopLanguages/constants";
 
 export const Planets: React.FC<{
@@ -10,18 +11,14 @@ export const Planets: React.FC<{
   return (
     <div
       style={{
-        position: "absolute",
-        top: 428,
-        left: 173,
-        width: 360,
-        height: 215,
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        paddingRight: 20,
-        flexDirection: "column",
-        transform: "scale(0.6)",
+        paddingRight: 30,
+        flexDirection: "row",
         overflow: "hidden",
+        paddingLeft: 30,
+        borderBottom: `1px solid rgb(183, 171, 239)`,
       }}
     >
       <LanguagePlanet
@@ -29,34 +26,38 @@ export const Planets: React.FC<{
         style={{
           height: 100,
           marginBottom: 10,
+          flexShrink: 0,
         }}
       />
-      <div
-        style={{
-          color: "white",
-          fontFamily: "Mona Sans",
-          fontSize: 18,
-          marginBottom: 6,
-          fontWeight: 500,
-        }}
-      >
-        Top Language
-      </div>
-      <div
-        style={{
-          fontFamily: "Mona Sans",
-          color: "white",
-          fontSize: 30,
-          fontWeight: "bold",
-          whiteSpace: "nowrap",
-          wordBreak: "break-word",
-          textOverflow: "ellipsis",
-          width: "100%",
-          overflow: "hidden",
-          textAlign: "center",
-        }}
-      >
-        {planetInfo.name}
+      <div style={{ width: 30 }} />
+      <div>
+        <div
+          style={{
+            color: PANE_TEXT_COLOR,
+            fontFamily: "Mona Sans",
+            fontSize: 18,
+            marginBottom: 6,
+            fontWeight: 500,
+          }}
+        >
+          Top Language
+        </div>
+        <div
+          style={{
+            fontFamily: "Mona Sans",
+            color: PANE_TEXT_COLOR,
+            fontSize: 30,
+            fontWeight: "bold",
+            whiteSpace: "nowrap",
+            wordBreak: "break-word",
+            textOverflow: "ellipsis",
+            width: "100%",
+            overflow: "hidden",
+            textAlign: "center",
+          }}
+        >
+          {planetInfo.name}
+        </div>
       </div>
     </div>
   );

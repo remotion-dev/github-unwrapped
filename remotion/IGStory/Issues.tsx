@@ -1,4 +1,5 @@
 import React from "react";
+import { PANE_TEXT_COLOR } from "../TopLanguages/Pane";
 
 export const Issues: React.FC<{
   readonly issues: number;
@@ -6,22 +7,20 @@ export const Issues: React.FC<{
   return (
     <div
       style={{
-        position: "absolute",
-        color: "white",
+        color: PANE_TEXT_COLOR,
         fontFamily: "Mona Sans",
-        left: 20,
-        top: 305,
-        width: 355,
-        height: 60,
-        fontSize: 40,
+        fontSize: 60,
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        fontWeight: "600",
+        fontWeight: "700",
+        borderBottom: `1px solid rgb(183, 171, 239)`,
+        paddingTop: 20,
+        paddingBottom: 20,
       }}
     >
-      <div style={{ marginRight: 10, marginLeft: 10 }}>{issues}</div>
-      <div style={{ fontSize: 20, fontWeight: "500" }}>Issues closed</div>
+      <div style={{ marginRight: 20, marginLeft: 10 }}>{issues}</div>
+      <div style={{ fontSize: 40, fontWeight: "500" }}>Issues closed</div>
     </div>
   );
 };
