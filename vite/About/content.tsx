@@ -178,7 +178,6 @@ export const content: Array<AboutItemContent> = [
         {YEAR_TO_REVIEW}?
         <br />
         <br />
-        <strong>Developers</strong>: <br />
         Check out{" "}
         <a className={styles.aboutLink} href="https://www.remotion.dev">
           Remotion

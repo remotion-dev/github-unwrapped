@@ -41,7 +41,7 @@
 }
 
 .furtherActionsTitle {
-  color: rgba(231, 231, 231, 1);
+  color: var(--pane-text);
   font-size: 14px;
   margin-bottom: 24px;
   font-weight: 500;
@@ -61,7 +61,7 @@
   display: flex;
   gap: 12px;
   align-items: center;
-  color: white;
+  color: var(--pane-text);
   transition: font-weight 0.2s ease-in-out;
 
   &:hover {

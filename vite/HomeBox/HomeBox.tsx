@@ -1,22 +1,22 @@
 import React from "react";
-import { ShineEffect } from "../../remotion/ShineEffect";
-import { Box } from "../Box/Box";
+import { Box, BoxInner } from "../Box/Box";
+import { BoxHighlight, PinkHighlightBox } from "./BoxHighlight";
 import { HomeBoxBottom } from "./HomeBoxBottom";
 import { HomeBoxTop } from "./HomeBoxTop";
-import styles from "./styles.module.css";
 
 export const HomeBox: React.FC<{
   readonly userNotFound: boolean;
   readonly setUserNotFound: React.Dispatch<React.SetStateAction<boolean>>;
 }> = (props) => {
   return (
-    <Box
-      className={styles.homeBoxWrapper}
-      style={{ maxWidth: 800, border: 0, position: "relative" }}
-    >
-      <ShineEffect borderRadius={10} />
+    <Box style={{ maxWidth: 800, position: "relative" }}>
+      <BoxHighlight />
+      <PinkHighlightBox />
+      <PinkHighlightBox />
       <HomeBoxTop />
-      <HomeBoxBottom {...props} />
+      <BoxInner>
+        <HomeBoxBottom {...props} />
+      </BoxInner>
     </Box>
   );
 };

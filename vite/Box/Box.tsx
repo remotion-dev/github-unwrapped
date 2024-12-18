@@ -13,3 +13,9 @@ export const Box: React.FC<{
     </div>
   );
 };
+
+export const BoxInner: React.FC<{
+  readonly children: React.ReactNode;
+}> = ({ children }) => {
+  return <div className={styles.boxinner}>{children}</div>;
+};
