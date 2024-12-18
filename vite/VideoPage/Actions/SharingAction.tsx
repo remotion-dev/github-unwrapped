@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { Button } from "../../Button/Button";
+import { PANE_TEXT_COLOR } from "../../../remotion/TopLanguages/Pane";
 import { HoverEffect } from "../../Button/HoverEffect";
 import styles from "./styles.module.css";
 
@@ -43,10 +43,16 @@ export const SharingAction: React.FC<{
   className?: string;
 }> = (props) => {
   return (
-    <Button
-      style={props.style}
+    <button
+      type="button"
+      style={{
+        height: 48,
+        ...props.style,
+        background: "linear-gradient(292.9deg, #D329AB 9.44%, #312E6A 43.46%)",
+        padding: 2,
+        border: 0,
+      }}
       className={props.className}
-      hoverEffect
       onClick={props.onClick}
     >
       <div
@@ -54,8 +60,11 @@ export const SharingAction: React.FC<{
           display: "flex",
           alignItems: "center",
           gap: 8,
-          padding: "0 16px",
-          fontWeight: 500,
+          height: "100%",
+          borderRadius: 7,
+          fontWeight: "600",
+          backgroundColor: "#D3CFE8",
+          color: PANE_TEXT_COLOR,
         }}
       >
         {props.icon && (
@@ -65,6 +74,6 @@ export const SharingAction: React.FC<{
         )}
         {props.label}
       </div>
-    </Button>
+    </button>
   );
 };

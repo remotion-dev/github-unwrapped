@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from "react";
+import React, { useCallback, useRef } from "react";
 import { AbsoluteFill, spring } from "remotion";
 import { isWebkit } from "../../../remotion/Opening/devices";
 import { PlayButtonSVG } from "./PlayButtonSVG";
@@ -27,7 +27,6 @@ export const PlayButton: React.FC<{
     [],
   );
 
-  const [isHovering, setIsHovering] = useState(false);
   const onClickPlayButton: React.MouseEventHandler<HTMLDivElement> =
     useCallback(
       (e) => {
@@ -84,18 +83,14 @@ export const PlayButton: React.FC<{
       aria-disabled={fakeProgress < 1}
     >
       {progress < 1 ? <PrefetchProgress progress={progress} /> : null}
-      <div
-        className={styles.playbutton}
-        onMouseEnter={() => setIsHovering(true)}
-        onMouseLeave={() => setIsHovering(false)}
-      >
+      <div className={styles.playbutton}>
         <div
           ref={ref}
           tabIndex={0}
           style={{ borderRadius: 119 }}
           onKeyDown={handleKeyDown}
         >
-          <PlayButtonSVG isHovering={isHovering} disabled={progress < 1} />
+          <PlayButtonSVG disabled={progress < 1} />
         </div>
       </div>
     </AbsoluteFill>

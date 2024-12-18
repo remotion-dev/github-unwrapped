@@ -1,3 +1,8 @@
 .playbutton {
   cursor: pointer;
+  transition: scale 0.2s;
+}
+
+.playbutton:hover {
+  scale: 1.05;
 }
