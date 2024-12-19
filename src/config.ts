@@ -146,7 +146,6 @@ export type RenderResponse =
     }
   | {
       type: "render-running";
-      renderId: string;
       progress: number;
     }
   | {

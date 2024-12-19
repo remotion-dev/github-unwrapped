@@ -28,6 +28,11 @@ import {
 } from "./db.js";
 import { makeOrGetIgStory, makeOrGetOgImage } from "./make-og-image.js";
 import { getFinality } from "./progress.js";
+import {
+  addRenderInProgress,
+  getRenderInProgress,
+  removeRenderInProgress,
+} from "./render-pool.js";
 
 export const getRandomRegion = (): AwsRegion => {
   return getRegions()[Math.floor(Math.random() * getRegions().length)];
@@ -37,6 +42,11 @@ export const renderOrGetProgress = async (
   requestBody: unknown,
 ): Promise<RenderResponse> => {
   const { username, theme } = RenderRequest.parse(requestBody);
+  const exists = getRenderInProgress({
+    username: username.toLowerCase(),
+    theme,
+  });
+  addRenderInProgress({ theme, username: username.toLowerCase() });
 
   const existingRender = await findRender({
     username,
@@ -92,8 +102,14 @@ export const renderOrGetProgress = async (
 
     return {
       type: "render-running",
-      renderId: existingRender.renderId,
       progress: progress.overallProgress,
+    };
+  }
+
+  if (exists) {
+    return {
+      type: "render-running",
+      progress: 1,
     };
   }
 
@@ -157,10 +173,10 @@ export const renderOrGetProgress = async (
   };
 
   await saveRender(newRender, _id);
+  removeRenderInProgress({ username: username.toLowerCase(), theme });
 
   return {
     type: "render-running",
-    renderId,
     progress: 0,
   };
 };
