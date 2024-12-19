@@ -14,6 +14,8 @@ const getRandomUsername = () => {
   return usernames[Math.floor(Math.random() * usernames.length)];
 };
 
+const removeWhitespace = (str: string) => str.replace(/\s/g, "");
+
 export const LoginOptions: React.FC<Props> = ({
   userNotFound,
   setUserNotFound,
@@ -30,14 +32,15 @@ export const LoginOptions: React.FC<Props> = ({
   const handleClick: React.FormEventHandler<HTMLFormElement> = useCallback(
     (e) => {
       e.preventDefault();
-      fetch(`https://api.github.com/users/${username}`)
+      const cleanedUsername = removeWhitespace(username);
+      fetch(`https://api.github.com/users/${cleanedUsername}`)
         .then((response) => response.json())
         .then((result) => {
           if (result.message === "Not Found") {
             setUserNotFound(true);
           } else {
             setUserNotFound(false);
-            window.location.href = `/loading/${username}`;
+            window.location.href = `/loading/${cleanedUsername}`;
           }
         })
         .catch((error) => console.log("error", error));
