@@ -1,9 +1,14 @@
 import React from "react";
 
-export const ContributionNumber: React.FC<{
-  readonly currentNumber: number;
-  readonly suffix: string;
-}> = ({ currentNumber, suffix }) => {
+interface ContributionNumberProps {
+  currentNumber: number;
+  suffix: string;
+}
+
+export const ContributionNumber: React.FC<ContributionNumberProps> = ({
+  currentNumber,
+  suffix,
+}) => {
   return (
     <div
       style={{
@@ -20,9 +25,13 @@ export const ContributionNumber: React.FC<{
   );
 };
 
-export const ContributionLabel: React.FC<{
-  readonly children: React.ReactNode;
-}> = ({ children }) => {
+interface ContributionLabelProps {
+  children: React.ReactNode;
+}
+
+export const ContributionLabel: React.FC<ContributionLabelProps> = ({
+  children,
+}) => {
   return (
     <div
       style={{
