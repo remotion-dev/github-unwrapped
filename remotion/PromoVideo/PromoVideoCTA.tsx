@@ -1,6 +1,7 @@
 import { TransitionSeries, springTiming } from "@remotion/transitions";
 import { flip } from "@remotion/transitions/flip";
 import React from "react";
+import { FaArrowRight } from "react-icons/fa";
 import {
   AbsoluteFill,
   interpolate,
@@ -95,12 +96,14 @@ export const PromoVideoCallToAction: React.FC<{
                 justifyContent: "center",
                 alignItems: "center",
                 color: "white",
+                gap: 10,
                 fontSize: 40,
                 fontWeight: "bold",
                 scale: String(1 - pressIn * 0.1),
               }}
             >
-              Unwrap
+              <FaArrowRight size={15} color="white" />
+              <p>Unwrap</p>
             </div>
           </AbsoluteFill>
         </TransitionSeries.Sequence>
