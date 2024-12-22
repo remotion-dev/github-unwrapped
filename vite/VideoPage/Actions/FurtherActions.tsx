@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
+import { FaUserCircle } from "react-icons/fa";
 import { PrivateContributionsIcon } from "../../../icons/PrivateContributionsIcon";
-import { UserIcon } from "../../../icons/UserIcon";
 import { signInWithGitHubLink } from "../../sign-in-with-github";
 import { FurtherAction } from "./FurtherAction";
 import styles from "./styles.module.css";
@@ -15,7 +15,7 @@ export const FurtherActions: React.FC = () => {
       <div className={styles.furtherActionsButtonContainer}>
         <Link to="/">
           <FurtherAction
-            icon={(params) => <UserIcon {...params} width={15} />}
+            icon={(params) => <FaUserCircle {...params} width={15} />}
             label="Unwrap another user"
           />
         </Link>

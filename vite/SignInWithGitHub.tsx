@@ -1,10 +1,17 @@
+import { useState } from "react";
 import buttonStyles from "./Button/styles.module.css";
 import { signInWithGitHubLink } from "./sign-in-with-github";
 
 export const SignInWithGitHub: React.FC = () => {
+  const [isHovered, setIsHovered] = useState(false);
   return (
     <a
-      style={{ textDecoration: "none" }}
+      style={{
+        textDecoration: isHovered ? "underline" : "none",
+        transition: "text-decoration 0.3s ease",
+      }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
       className={buttonStyles.loginwithgithub}
       href={signInWithGitHubLink(true)}
     >

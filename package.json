@@ -41,6 +41,7 @@
     "polished": "^4.2.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^5.4.0",
     "react-spring": "^9.7.3",
     "remotion": "4.0.240",
     "serve-static": "^1.15.0",

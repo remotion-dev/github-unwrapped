@@ -17,6 +17,7 @@ export const SharingActions: React.FC<{}> = () => {
   return (
     <div className={styles.sharingActionsWrapper}>
       <Link
+        target="_blank"
         from={userRoute.id}
         to={"share"}
         params={() => {
@@ -31,6 +32,7 @@ export const SharingActions: React.FC<{}> = () => {
         />
       </Link>
       <Link
+        target="_blank"
         from={videoRoute.id}
         to={"share"}
         params={{ username }}
