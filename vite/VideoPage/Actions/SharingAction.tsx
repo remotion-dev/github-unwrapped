@@ -65,6 +65,7 @@ export const SharingAction: React.FC<{
           fontWeight: "600",
           backgroundColor: "#D3CFE8",
           color: PANE_TEXT_COLOR,
+          padding: "0px 10px"
         }}
       >
         {props.icon && (
