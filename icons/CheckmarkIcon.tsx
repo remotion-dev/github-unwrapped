@@ -1,4 +1,5 @@
 import type { SVGProps } from "react";
+import { PANE_TEXT_COLOR } from '../remotion/TopLanguages/Pane';
 export const CheckmarkIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -8,6 +9,7 @@ export const CheckmarkIcon = (props: SVGProps<SVGSVGElement>) => (
     stroke="currentColor"
     strokeWidth={0}
     viewBox="0 0 512 512"
+    color = {PANE_TEXT_COLOR}
     {...props}
   >
     <path

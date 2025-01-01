@@ -1,4 +1,5 @@
 import type { SVGProps } from "react";
+import { PANE_TEXT_COLOR } from '../remotion/TopLanguages/Pane';
 export const CopyIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -7,6 +8,7 @@ export const CopyIcon = (props: SVGProps<SVGSVGElement>) => (
     fill="currentColor"
     stroke="currentColor"
     strokeWidth={0}
+    color = {PANE_TEXT_COLOR}
     viewBox="0 0 24 24"
     {...props}
   >
