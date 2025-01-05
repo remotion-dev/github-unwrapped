@@ -6,6 +6,7 @@ import {
 } from "../helpers/domain.js";
 import {
   clearFailedRendersForUsername,
+  clearIgStoriesForUsername,
   clearOgImagesForUsername,
   clearRendersForUsername,
   insertProfileStats,
@@ -82,6 +83,7 @@ export const loginEndPoint = async (request: Request, response: Response) => {
   if (query.reset === "true") {
     await clearRendersForUsername({ username: stats.username });
     await clearOgImagesForUsername({ username: stats.username });
+    await clearIgStoriesForUsername({ username: stats.username });
   } else {
     await clearFailedRendersForUsername({ username: stats.username });
   }
