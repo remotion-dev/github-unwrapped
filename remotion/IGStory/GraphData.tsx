@@ -77,7 +77,7 @@ export const ContributionGraphic: React.FC<{
           paddingLeft: 20,
         }}
       >
-        <Stat align="left" data={2024} label={login} />
+        <Stat align="left" data={2025} label={login} />
         <div style={{ flex: 1 }} />
         <Stat align="right" data={longestStreak} label="Longest streak" />
         <div style={{ width: 30 }} />

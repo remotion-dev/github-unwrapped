@@ -1,1 +1,1 @@
-export const YEAR_TO_REVIEW = 2024;
+export const YEAR_TO_REVIEW = 2025;

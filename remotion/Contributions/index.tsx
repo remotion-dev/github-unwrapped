@@ -228,7 +228,7 @@ export const ContributionsScene: React.FC<{
               }}
             >
               <div style={{ textAlign: "left", paddingLeft: 10 }}>
-                <ContributionNumber currentNumber={2024} suffix="" />
+                <ContributionNumber currentNumber={2025} suffix="" />
                 <ContributionLabel>@{username}</ContributionLabel>
               </div>
               <div style={{ flex: 1 }} />
