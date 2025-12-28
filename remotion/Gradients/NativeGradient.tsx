@@ -2,8 +2,8 @@ import React, { useMemo } from "react";
 import {
   AbsoluteFill,
   Img,
-  getRemotionEnvironment,
   staticFile,
+  useRemotionEnvironment,
 } from "remotion";
 import type { GradientType } from "./available-gradients";
 import { availableGradients } from "./available-gradients";
@@ -38,7 +38,8 @@ const ImageGradient: React.FC<Props> = ({ gradient }) => {
 };
 
 export const Gradient: React.FC<Props> = ({ gradient }) => {
-  if (getRemotionEnvironment().isRendering) {
+  const env = useRemotionEnvironment();
+  if (env.isRendering) {
     return <ImageGradient gradient={gradient} />;
   }
 
