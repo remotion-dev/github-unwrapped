@@ -207,22 +207,22 @@ export type CompositionParameters = z.infer<typeof compositionSchema>;
 
 const computePlanet = (userStats: ProfileStats): z.infer<typeof PlanetEnum> => {
   if (userStats.totalContributions > 5000) {
-    return PlanetEnum.Enum.Gold;
+    return PlanetEnum.enum.Gold;
   }
 
   if (userStats.totalContributions > 2400) {
-    return PlanetEnum.Enum.Silver;
+    return PlanetEnum.enum.Silver;
   }
 
   if (userStats.totalContributions > 500) {
-    return PlanetEnum.Enum.Fire;
+    return PlanetEnum.enum.Fire;
   }
 
   if (userStats.totalContributions > 25) {
-    return PlanetEnum.Enum.Leafy;
+    return PlanetEnum.enum.Leafy;
   }
 
-  return PlanetEnum.Enum.Ice;
+  return PlanetEnum.enum.Ice;
 };
 
 export const parseTopLanguage = (topLanguage: {

@@ -50,7 +50,7 @@ export type PlanetInfo = {
 };
 
 export const mapLanguageToPlanet: Record<LanguageEnumType, PlanetInfo> = {
-  [LanguagesEnum.Enum.Java]: {
+  [LanguagesEnum.enum.Java]: {
     source: staticFile("languages/java.png"),
     gradient: "orange",
     textColor: "rgb(201, 246, 253)",
@@ -58,7 +58,7 @@ export const mapLanguageToPlanet: Record<LanguageEnumType, PlanetInfo> = {
     opacity: 0.3,
     customPlanetColor: null,
   },
-  [LanguagesEnum.Enum.Python]: {
+  [LanguagesEnum.enum.Python]: {
     source: staticFile("languages/python.png"),
     gradient: "blue",
     textColor: "rgb(200,228,252)",
@@ -66,7 +66,7 @@ export const mapLanguageToPlanet: Record<LanguageEnumType, PlanetInfo> = {
     opacity: 0.3,
     customPlanetColor: null,
   },
-  [LanguagesEnum.Enum.JavaScript]: {
+  [LanguagesEnum.enum.JavaScript]: {
     source: staticFile("languages/javascript.png"),
     gradient: "yellow",
     textColor: "rgb(253,241,190)",
@@ -74,7 +74,7 @@ export const mapLanguageToPlanet: Record<LanguageEnumType, PlanetInfo> = {
     opacity: 0.25,
     customPlanetColor: null,
   },
-  [LanguagesEnum.Enum.TypeScript]: {
+  [LanguagesEnum.enum.TypeScript]: {
     source: staticFile("languages/typescript.png"),
     gradient: "blue",
     textColor: "#71BBD8",
@@ -82,7 +82,7 @@ export const mapLanguageToPlanet: Record<LanguageEnumType, PlanetInfo> = {
     opacity: 0.3,
     customPlanetColor: null,
   },
-  [LanguagesEnum.Enum.Go]: {
+  [LanguagesEnum.enum.Go]: {
     source: staticFile("languages/go.png"),
     gradient: "blue",
     textColor: "#71BBD8",
@@ -90,7 +90,7 @@ export const mapLanguageToPlanet: Record<LanguageEnumType, PlanetInfo> = {
     opacity: 0.5,
     customPlanetColor: null,
   },
-  [LanguagesEnum.Enum.Rust]: {
+  [LanguagesEnum.enum.Rust]: {
     source: staticFile("languages/rust.png"),
     gradient: "brown",
     textColor: "#5F523E",
@@ -98,7 +98,7 @@ export const mapLanguageToPlanet: Record<LanguageEnumType, PlanetInfo> = {
     opacity: 0.7,
     customPlanetColor: null,
   },
-  [LanguagesEnum.Enum.C]: {
+  [LanguagesEnum.enum.C]: {
     source: staticFile("languages/c.png"),
     gradient: "blue",
     textColor: "#4B8CC6",
@@ -106,7 +106,7 @@ export const mapLanguageToPlanet: Record<LanguageEnumType, PlanetInfo> = {
     opacity: 0.2,
     customPlanetColor: null,
   },
-  [LanguagesEnum.Enum["C++"]]: {
+  [LanguagesEnum.enum["C++"]]: {
     source: staticFile("languages/cplusplus.png"),
     gradient: "blue",
     textColor: "#4B8CC6",
@@ -114,7 +114,7 @@ export const mapLanguageToPlanet: Record<LanguageEnumType, PlanetInfo> = {
     opacity: 0.2,
     customPlanetColor: null,
   },
-  [LanguagesEnum.Enum.Ruby]: {
+  [LanguagesEnum.enum.Ruby]: {
     source: staticFile("languages/ruby.png"),
     gradient: "red",
     textColor: "#DDA89F",
@@ -122,7 +122,7 @@ export const mapLanguageToPlanet: Record<LanguageEnumType, PlanetInfo> = {
     opacity: 0.3,
     customPlanetColor: null,
   },
-  [LanguagesEnum.Enum.Nix]: {
+  [LanguagesEnum.enum.Nix]: {
     source: staticFile("languages/nix.png"),
     gradient: "blue",
     textColor: "#88BCEA",
@@ -130,7 +130,7 @@ export const mapLanguageToPlanet: Record<LanguageEnumType, PlanetInfo> = {
     opacity: 0.3,
     customPlanetColor: null,
   },
-  [LanguagesEnum.Enum.PHP]: {
+  [LanguagesEnum.enum.PHP]: {
     source: staticFile("languages/php.png"),
     gradient: "pink",
     textColor: "#878BC1",
@@ -138,7 +138,7 @@ export const mapLanguageToPlanet: Record<LanguageEnumType, PlanetInfo> = {
     opacity: 0.45,
     customPlanetColor: null,
   },
-  [LanguagesEnum.Enum["C#"]]: {
+  [LanguagesEnum.enum["C#"]]: {
     source: staticFile("languages/csharp.png"),
     gradient: "purple",
     textColor: "#A869B8",
