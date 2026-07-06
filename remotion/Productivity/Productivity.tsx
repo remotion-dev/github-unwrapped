@@ -1,6 +1,6 @@
+import { Audio } from "@remotion/media";
 import {
   AbsoluteFill,
-  Audio,
   spring,
   staticFile,
   useCurrentFrame,

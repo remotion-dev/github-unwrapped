@@ -1,8 +1,8 @@
+import { Audio } from "@remotion/media";
 import { noise2D } from "@remotion/noise";
 import type { SpringConfig } from "remotion";
 import {
   AbsoluteFill,
-  Audio,
   Sequence,
   interpolate,
   spring,

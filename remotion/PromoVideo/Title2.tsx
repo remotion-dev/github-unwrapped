@@ -1,7 +1,7 @@
+import { Video } from "@remotion/media";
 import React from "react";
 import {
   AbsoluteFill,
-  OffthreadVideo,
   Series,
   interpolate,
   staticFile,
@@ -48,8 +48,8 @@ export const YourYearInReview: React.FC<{
         </AbsoluteFill>
         <Series>
           <Series.Sequence durationInFrames={60}>
-            <OffthreadVideo
-              startFrom={320}
+            <Video
+              trimBefore={320}
               muted
               style={{
                 position: "absolute",
@@ -62,8 +62,8 @@ export const YourYearInReview: React.FC<{
             />
           </Series.Sequence>
           <Series.Sequence durationInFrames={60}>
-            <OffthreadVideo
-              startFrom={550}
+            <Video
+              trimBefore={550}
               muted
               style={{
                 position: "absolute",
@@ -76,8 +76,8 @@ export const YourYearInReview: React.FC<{
             />
           </Series.Sequence>
           <Series.Sequence durationInFrames={60}>
-            <OffthreadVideo
-              startFrom={830}
+            <Video
+              trimBefore={830}
               muted
               style={{
                 height: widthWidth - 2,

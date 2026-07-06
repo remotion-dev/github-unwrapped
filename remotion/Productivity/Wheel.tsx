@@ -1,8 +1,8 @@
+import { Audio } from "@remotion/media";
 import { transparentize } from "polished";
 import React from "react";
 import {
   AbsoluteFill,
-  Audio,
   Sequence,
   interpolate,
   spring,

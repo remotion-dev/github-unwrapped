@@ -25,6 +25,7 @@ export const Title: React.FC<{
     >
       <Img
         src={`https://github.com/${login}.png`}
+        crossOrigin="anonymous"
         style={{
           width: 60,
           height: 60,

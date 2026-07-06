@@ -1,7 +1,7 @@
+import { Audio } from "@remotion/media";
 import React, { useMemo } from "react";
 import {
   AbsoluteFill,
-  Audio,
   Easing,
   Sequence,
   interpolate,
@@ -61,7 +61,7 @@ export const PlanetScaleSpiral: React.FC<z.infer<typeof spiralSchema>> = ({
   return (
     <AbsoluteFill>
       {isMobileDevice() ? null : (
-        <Audio startFrom={30} src={staticFile("fly-in-circles.mp3")} />
+        <Audio trimBefore={30} src={staticFile("fly-in-circles.mp3")} />
       )}
       {isMobileDevice() ? null : (
         <Sequence from={35}>

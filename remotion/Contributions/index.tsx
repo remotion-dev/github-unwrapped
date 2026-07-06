@@ -1,7 +1,7 @@
 /* eslint-disable react/no-array-index-key */
+import { Audio } from "@remotion/media";
 import {
   AbsoluteFill,
-  Audio,
   Easing,
   Img,
   Sequence,
@@ -193,7 +193,10 @@ export const ContributionsScene: React.FC<{
       <AbsoluteFill>
         {isMobileDevice() ? null : (
           <Sequence>
-            <Audio startFrom={10} src={staticFile("contribution-rocket.mp3")} />
+            <Audio
+              trimBefore={10}
+              src={staticFile("contribution-rocket.mp3")}
+            />
           </Sequence>
         )}
         {frame > 80 && <PlanetEntrance planet={planet} frame={frame} />}

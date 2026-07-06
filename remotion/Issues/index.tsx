@@ -1,8 +1,8 @@
+import { Audio } from "@remotion/media";
 import React, { useMemo } from "react";
 import type { CalculateMetadataFunction } from "remotion";
 import {
   AbsoluteFill,
-  Audio,
   Easing,
   interpolate,
   Sequence,

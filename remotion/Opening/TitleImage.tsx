@@ -54,7 +54,8 @@ export const TitleImage: React.FC<z.infer<typeof openingTitleSchema>> = ({
       }}
     >
       <Img
-        src={getAvatarImage(login)}
+        crossOrigin="anonymous"
+        src={"https://avatars.githubusercontent.com/u/1629785?v=4"}
         style={{
           width: 160,
           borderRadius: TITLE_IMAGE_INNER_BORDER_RADIUS,

@@ -1,8 +1,8 @@
+import { Audio } from "@remotion/media";
 import { scalePath, translatePath } from "@remotion/paths";
 import { makePie } from "@remotion/shapes";
 import {
   AbsoluteFill,
-  Audio,
   Easing,
   Sequence,
   interpolate,
@@ -184,7 +184,7 @@ export const PlanetScaleOut: React.FC<z.infer<typeof zoomOutSchema>> = ({
     <AbsoluteFill>
       {isMobileDevice() ? null : (
         <Audio
-          startFrom={10}
+          trimBefore={10}
           src={staticFile("first-flyby.mp3")}
           volume={0.5}
         />

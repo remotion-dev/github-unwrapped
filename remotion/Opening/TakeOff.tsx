@@ -1,8 +1,8 @@
+import { Video } from "@remotion/media";
 import { noise2D } from "@remotion/noise";
 import React from "react";
 import {
   AbsoluteFill,
-  OffthreadVideo,
   interpolate,
   staticFile,
   useCurrentFrame,
@@ -73,12 +73,11 @@ export const TakeOff: React.FC<{
           transform: "rotate(-90deg) translateX(-200px) translateY(495px)",
         }}
       >
-        <OffthreadVideo
+        <Video
           style={{
             width: 472,
           }}
           muted
-          transparent
           src={getFlame(rocket)}
         />
       </AbsoluteFill>

@@ -12,13 +12,13 @@ export const planetToGradient = (
   planet: Planet,
 ): keyof typeof availableGradients => {
   switch (planet) {
-    case PlanetEnum.Enum.Leafy:
+    case PlanetEnum.enum.Leafy:
       return "leafyRadial";
-    case PlanetEnum.Enum.Fire:
+    case PlanetEnum.enum.Fire:
       return "fireRadial";
-    case PlanetEnum.Enum.Silver:
+    case PlanetEnum.enum.Silver:
       return "silverRadial";
-    case PlanetEnum.Enum.Ice:
+    case PlanetEnum.enum.Ice:
       return "iceRadial";
     default:
       return "white"; // not used
@@ -27,13 +27,13 @@ export const planetToGradient = (
 
 export const planetToCTAGradient = (planet: Planet) => {
   switch (planet) {
-    case PlanetEnum.Enum.Leafy:
+    case PlanetEnum.enum.Leafy:
       return "linear-gradient(270.02deg, #54ad52 20.63%, #9af7bf 99.87%)";
-    case PlanetEnum.Enum.Fire:
+    case PlanetEnum.enum.Fire:
       return "linear-gradient(270.02deg, #ad5d52 20.63%, #f7a69a 99.87%)";
-    case PlanetEnum.Enum.Silver:
+    case PlanetEnum.enum.Silver:
       return "linear-gradient(270.02deg, #bbb 20.63%, #fff 99.87%)";
-    case PlanetEnum.Enum.Ice:
+    case PlanetEnum.enum.Ice:
       return "linear-gradient(270.02deg, #91AAD4 20.63%, #9ac4f7 99.87%)";
     default:
       return "linear-gradient(270.02deg, #AD8C52 20.63%, #F7E99A 99.87%)";
@@ -42,13 +42,13 @@ export const planetToCTAGradient = (planet: Planet) => {
 
 export const planetToCatColor = (planet: Planet) => {
   switch (planet) {
-    case PlanetEnum.Enum.Leafy:
+    case PlanetEnum.enum.Leafy:
       return "#9af7bf";
-    case PlanetEnum.Enum.Fire:
+    case PlanetEnum.enum.Fire:
       return "#f7a69a";
-    case PlanetEnum.Enum.Silver:
+    case PlanetEnum.enum.Silver:
       return "#fff";
-    case PlanetEnum.Enum.Ice:
+    case PlanetEnum.enum.Ice:
       return "#9ac4f7";
     default:
       return "#F7E99A";
@@ -57,13 +57,13 @@ export const planetToCatColor = (planet: Planet) => {
 
 export const planetToCTABg = (planet: Planet) => {
   switch (planet) {
-    case PlanetEnum.Enum.Leafy:
+    case PlanetEnum.enum.Leafy:
       return "#002101";
-    case PlanetEnum.Enum.Fire:
+    case PlanetEnum.enum.Fire:
       return "#290700";
-    case PlanetEnum.Enum.Silver:
+    case PlanetEnum.enum.Silver:
       return "#262626";
-    case PlanetEnum.Enum.Ice:
+    case PlanetEnum.enum.Ice:
       return "#1C2056";
     default:
       return "#291C0B";
@@ -72,13 +72,13 @@ export const planetToCTABg = (planet: Planet) => {
 
 export const prefetchPlanetImage = (planet: Planet) => {
   switch (planet) {
-    case PlanetEnum.Enum.Leafy:
+    case PlanetEnum.enum.Leafy:
       return LEAFY_PLANET;
-    case PlanetEnum.Enum.Fire:
+    case PlanetEnum.enum.Fire:
       return FIRE_PLANET;
-    case PlanetEnum.Enum.Silver:
+    case PlanetEnum.enum.Silver:
       return SILVER_PLANET;
-    case PlanetEnum.Enum.Ice:
+    case PlanetEnum.enum.Ice:
       return ICE_PLANET;
     default:
       return GOLD_PLANET;
@@ -87,13 +87,13 @@ export const prefetchPlanetImage = (planet: Planet) => {
 
 export const getPlanetFile = (planet: Planet) => {
   switch (planet) {
-    case PlanetEnum.Enum.Fire:
+    case PlanetEnum.enum.Fire:
       return FIRE_PLANET;
-    case PlanetEnum.Enum.Leafy:
+    case PlanetEnum.enum.Leafy:
       return LEAFY_PLANET;
-    case PlanetEnum.Enum.Silver:
+    case PlanetEnum.enum.Silver:
       return SILVER_PLANET;
-    case PlanetEnum.Enum.Ice:
+    case PlanetEnum.enum.Ice:
       return ICE_PLANET;
     default:
       return GOLD_PLANET;

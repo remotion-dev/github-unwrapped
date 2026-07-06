@@ -1,7 +1,7 @@
+import { Audio } from "@remotion/media";
 import React from "react";
 import {
   AbsoluteFill,
-  Audio,
   Sequence,
   interpolate,
   staticFile,
@@ -101,7 +101,7 @@ export const Star: React.FC<{
           {hitSpaceship && !isMobileDevice() ? (
             <Sequence from={stop}>
               <Audio
-                startFrom={3}
+                trimBefore={3}
                 src={
                   WINDSHIELD_HIT_SOUNDS[
                     hitSpaceship.index % WINDSHIELD_HIT_SOUNDS.length

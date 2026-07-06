@@ -1,10 +1,6 @@
+import { Video } from "@remotion/media";
 import React, { useMemo } from "react";
-import {
-  AbsoluteFill,
-  OffthreadVideo,
-  interpolate,
-  useCurrentFrame,
-} from "remotion";
+import { AbsoluteFill, interpolate, useCurrentFrame } from "remotion";
 import type { Rocket } from "../../src/config";
 import { getFlame, takeOffSpeedFucntion } from "../Opening/TakeOff";
 import { RocketSide } from "../Spaceship";
@@ -66,7 +62,7 @@ export const LandingRocket: React.FC<{
             alignItems: "center",
           }}
         >
-          <OffthreadVideo
+          <Video
             style={{
               width: height,
               height: 100,
@@ -75,9 +71,8 @@ export const LandingRocket: React.FC<{
               marginTop: -500 + marginTop,
               marginLeft: 20,
             }}
-            startFrom={80}
+            trimBefore={80}
             muted
-            transparent
             src={getFlame(rocket)}
           />
         </AbsoluteFill>

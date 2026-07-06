@@ -1,8 +1,8 @@
+import { Video } from "@remotion/media";
 import React from "react";
 import {
   AbsoluteFill,
   Easing,
-  OffthreadVideo,
   interpolate,
   spring,
   useCurrentFrame,
@@ -115,7 +115,7 @@ export const PromoVideoTitle: React.FC<{
             transform: `rotate(${rotate}rad) `,
           }}
         >
-          <OffthreadVideo
+          <Video
             style={{
               position: "absolute",
               marginLeft: -187,

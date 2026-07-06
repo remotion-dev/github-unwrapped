@@ -1,8 +1,8 @@
+import { Audio } from "@remotion/media";
 import React, { useMemo } from "react";
 import type { CalculateMetadataFunction } from "remotion";
 import {
   AbsoluteFill,
-  Audio,
   Sequence,
   Series,
   random,
@@ -231,7 +231,7 @@ export const Main: React.FC<Schema> = ({
       </Series>
       {isMobileDevice() ? null : (
         <Sequence from={durationInFrames - 230}>
-          <Audio startFrom={170} src={staticFile("landing.mp3")} />
+          <Audio trimBefore={170} src={staticFile("landing.mp3")} />
         </Sequence>
       )}
     </AbsoluteFill>

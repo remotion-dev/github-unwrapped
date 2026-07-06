@@ -1,7 +1,7 @@
+import { Audio } from "@remotion/media";
 import React from "react";
 import {
   AbsoluteFill,
-  Audio,
   Sequence,
   interpolate,
   spring,
@@ -67,7 +67,7 @@ const OpeningSceneFull: React.FC<z.infer<typeof openingTitleSchema>> = ({
     >
       {isMobileDevice() ? null : (
         <Sequence from={-20}>
-          <Audio startFrom={0} src={LAUNCH_SOUND} />
+          <Audio trimBefore={0} src={LAUNCH_SOUND} />
         </Sequence>
       )}
       <AbsoluteFill

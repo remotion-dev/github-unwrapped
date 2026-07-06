@@ -1,7 +1,8 @@
+import { Audio } from "@remotion/media";
 import { TransitionSeries, springTiming } from "@remotion/transitions";
 import { slide } from "@remotion/transitions/slide";
 import React from "react";
-import { AbsoluteFill, Audio, Sequence, staticFile } from "remotion";
+import { AbsoluteFill, Sequence, staticFile } from "remotion";
 import { z } from "zod";
 import { Gradient } from "../Gradients/NativeGradient";
 import { Noise } from "../Noise";

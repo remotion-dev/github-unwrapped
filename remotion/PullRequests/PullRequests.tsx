@@ -1,7 +1,7 @@
+import { Audio } from "@remotion/media";
 import React, { useMemo } from "react";
 import {
   AbsoluteFill,
-  Audio,
   Easing,
   Sequence,
   interpolate,
@@ -65,7 +65,7 @@ export const PullRequests: React.FC<z.infer<typeof pullRequestsSchema>> = ({
       }}
     >
       {isMobileDevice() ? null : (
-        <Audio startFrom={40} src={staticFile("reverb.mp3")} />
+        <Audio trimBefore={40} src={staticFile("reverb.mp3")} />
       )}
       {isMobileDevice() && extraPaths > 0 ? null : (
         <Sequence from={175}>

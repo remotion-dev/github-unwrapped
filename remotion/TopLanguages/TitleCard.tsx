@@ -1,7 +1,7 @@
+import { Audio } from "@remotion/media";
 import React from "react";
 import {
   AbsoluteFill,
-  Audio,
   Sequence,
   interpolate,
   random,
@@ -59,7 +59,7 @@ export const TopLanguagesTitleCard: React.FC<
     >
       {isMobileDevice() ? null : (
         <Audio
-          startFrom={20}
+          trimBefore={20}
           src={staticFile("second-whoosh.mp3")}
           volume={0.5}
         />
